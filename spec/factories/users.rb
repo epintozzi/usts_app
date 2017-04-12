@@ -4,7 +4,7 @@ FactoryGirl.define do
     last_name "Last"
     email "erin@email.com"
     password "password"
-    # password_confirmation "MyText"
+    password_confirmation "password"
     driver? false
     role 0
   end
