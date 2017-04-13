@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Usts</title>
+    <title>US Title Series</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
+  <% flash.each do |type, message| %>
+    <%= content_tag :div, sanitize(message), class: "alert-#{type}" %>
+  <% end %>
 
   <body>
     <%= yield %>
