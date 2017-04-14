@@ -1,0 +1,38 @@
+.navbar-nav li a {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.3em;
+  color: #323639 !important;
+  padding-top: 30px;
+}
+
+.navbar-nav a:hover {
+  // border-bottom: 2px solid #CF0909;
+  color: #CF0909 !important;
+}
+
+.navbar-nav a:active {
+  // border-bottom: 2px solid #CF0909;
+  color: #CF0909 !important;
+}
+
+.dropdown-menu li a {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.1em;
+  color: #323639 !important;
+  padding-top: 10px;
+}
+
+.navbar-toggle {
+  margin: 20px;
+}
+
+.logo {
+  height: 75px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20%;
+}
+
+.navbar-default {
+  background-color: #fff;
+}

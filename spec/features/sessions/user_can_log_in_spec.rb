@@ -10,7 +10,7 @@ describe "user log in" do
     expect(current_path).to eq(new_user_session_path)
     fill_in "user[email]", with: "erin@email.com"
     fill_in "user[password]", with: "password1"
-    click_on "Log in"
+    click_button "Log in"
 
     expect(current_path).to eq(root_path)
     expect(page).to have_content("Signed in successfully.")
@@ -25,7 +25,7 @@ describe "user log in" do
     expect(current_path).to eq(new_user_session_path)
     fill_in "user[email]", with: "erin@email.com"
     fill_in "user[password]", with: "password"
-    click_on "Log in"
+    click_button "Log in"
 
     expect(current_path).to eq("/users/sign_in")
     expect(page).to have_content("Invalid Email or password.")
@@ -40,7 +40,7 @@ describe "user log in" do
     expect(current_path).to eq(new_user_session_path)
     fill_in "user[email]", with: "erin1@email.com"
     fill_in "user[password]", with: "password1"
-    click_on "Log in"
+    click_button "Log in"
 
     expect(current_path).to eq("/users/sign_in")
     expect(page).to have_content("Invalid Email or password.")
