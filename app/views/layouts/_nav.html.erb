@@ -29,14 +29,21 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Competition and Boat Classes</a></li>
-            <li><a href="#">Ads and Sponsorship</a></li>
-            <li><a href="#">Resources</a></li>
+            <li>
+              <%= link_to "Competition & Boat Classes", competition_path %>
+            </li>
+            <li>
+              <%= link_to "Ads and Sponsorship", sponsorship_path %>
+            </li>
+            <li>
+              <%= link_to "Resources", racing_resources_path %>
+            </li>
             <li><a href="#">Officers</a></li>
             <li><a href="#">Driver Profiles</a></li>
           </ul>
         </li>
         <li><a href="#">Gallery</a></li>
+        <li><a href="#">Contact</a></li>
         <% if current_user %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
