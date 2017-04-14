@@ -1,0 +1,64 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to(image_tag("usts_logo_2017.png", alt: "usts-logo", class: "logo"), "/") %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Schedule</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Results <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">2017 Season</a></li>
+            <li><a href="#">Archived Results</a></li>
+          </ul>
+        </li>
+        <li><a href="#">News</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Competition and Boat Classes</a></li>
+            <li><a href="#">Ads and Sponsorship</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">Officers</a></li>
+            <li><a href="#">Driver Profiles</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Gallery</a></li>
+        <% if current_user %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Race Registration</a></li>
+            <li><a href="#">USTS Registration</a></li>
+            <li><a href="#">Unpaid Registrations</a></li>
+            <li><a href="#">Profile</a></li>
+            <li role="separator" class="divider"></li>
+              <li><a href="#">Rule Book</a></li>
+              <li><a href="#">By-laws</a></li>
+            <li role="separator" class="divider"></li>
+              <li>
+                <%= link_to "Logout", destroy_user_session_path, method: "delete" %>
+              </li>
+          </ul>
+        </li>
+        <% else %>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <li><%= link_to "Log in", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
