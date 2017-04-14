@@ -33,10 +33,13 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Sign up" %>
+      <%= f.submit "Sign up", class: 'btn btn-info' %>
     </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
+  <div class="devise-links">
+    <h6>or</h6>
+    <%= render "devise/shared/links" %>
+  </div>
 
 </div>
