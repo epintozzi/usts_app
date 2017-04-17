@@ -1,0 +1,15 @@
+<div class="container">
+
+  <h2> <%= @news.title %> </h2>
+
+  <p><%= @news.content %></p>
+
+  <p class="author-info">
+    <%= image_tag(@news.author.image, class: "avatar") %>
+    <%= @news.author.first_name %>
+    <%= @news.author.last_name %>
+  </p>
+
+  <p><%= @news.created_at %></p>
+
+</div>

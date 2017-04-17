@@ -5,9 +5,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :show]
 
+  resources :news, only: [:index, :show, :new, :create]
 
-get '/competition', to: 'pages#competition'
-get '/sponsorship', to: 'pages#sponsorship'
-get '/racing_resources', to: 'pages#racing_resources'
+  get '/competition', to: 'pages#competition'
+  get '/sponsorship', to: 'pages#sponsorship'
+  get '/racing_resources', to: 'pages#racing_resources'
 
 end
