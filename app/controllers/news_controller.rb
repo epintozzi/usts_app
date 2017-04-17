@@ -1,6 +1,7 @@
 class NewsController < ApplicationController
 
   def index
+    @all_news = News.all
   end
 
   def show
