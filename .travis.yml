@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+  - 2.3.1
+before_install:
+  - gem update --system
+  - gem --version
+bundler_args: --without production
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database code_of_arms_test;' -U postgres
