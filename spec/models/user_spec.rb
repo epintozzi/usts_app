@@ -13,12 +13,12 @@ RSpec.describe User, type: :model do
 
         expect(user).to be_invalid
       end
-      xit "is invalid without a first name" do
+      it "is invalid without a first name" do
         user = User.new(last_name: "Pintozzi", email: "erin@email.com", password: "password")
 
         expect(user).to be_invalid
       end
-      xit "is invalid without a last name" do
+      it "is invalid without a last name" do
         user = User.new(first_name: "Erin", email: "erin@email.com", password: "password")
 
         expect(user).to be_invalid

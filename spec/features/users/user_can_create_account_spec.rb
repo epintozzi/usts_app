@@ -71,7 +71,7 @@ describe "user sign up" do
     expect(current_path).to eq("/users")
   end
 
-  xscenario "user sees error if first name is blank" do
+  scenario "user sees error if first name is blank" do
     visit root_path
     click_on "Sign Up"
 
@@ -88,7 +88,7 @@ describe "user sign up" do
     expect(current_path).to eq("/users")
   end
 
-  xscenario "user sees error if last name is blank" do
+  scenario "user sees error if last name is blank" do
     visit root_path
     click_on "Sign Up"
 
