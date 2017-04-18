@@ -5,6 +5,7 @@ class RacesController < ApplicationController
   end
 
   def show
+    @race = Race.find(params[:id])
   end
 
 end

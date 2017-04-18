@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to(image_tag("usts_logo_2017.png", alt: "usts-logo", class: "logo"), "/") %>
+      <%= link_to(image_tag("usts_logo_2017_horizontal.png", alt: "usts-logo", class: "logo"), "/") %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,7 +17,7 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Schedule</a></li>
+        <li><%= link_to "Schedule", races_path %></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Results <span class="caret"></span></a>
           <ul class="dropdown-menu">
