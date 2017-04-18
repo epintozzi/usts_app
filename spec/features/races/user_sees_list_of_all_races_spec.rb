@@ -9,13 +9,21 @@ describe "/races" do
 
     expect(page).to have_content(race.city)
     expect(page).to have_content(race.state)
-    expect(page).to have_content(race.start_date)
-    expect(page).to have_content(race.end_date)
+    expect(page).to have_content(race.start_date.strftime("%b %-d"))
+    expect(page).to have_content(race.end_date.strftime("%b %-d"))
     expect(page).to have_content(race2.city)
     expect(page).to have_content(race2.state)
-    expect(page).to have_content(race2.start_date)
-    expect(page).to have_content(race2.end_date)
+    expect(page).to have_content(race2.start_date.strftime("%b %-d"))
+    expect(page).to have_content(race2.end_date.strftime("%b %-d"))
     expect(page).to have_link("Details")
     expect(page).to have_link("Register")
+  end
+  scenario "user can access race details via the index page" do
+    race = create(:race)
+
+    visit races_path
+    click_on "Details"
+
+    expect(current_path).to eq(race_path(race))
   end
 end

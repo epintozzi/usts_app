@@ -9,6 +9,7 @@ describe "races/:id" do
     expect(page).to have_content(race.city)
     expect(page).to have_content(race.state)
     expect(page).to have_content(race.street_address)
+    expect(page).to have_content(race.title)
     expect(page).to have_content(race.start_date)
     expect(page).to have_content(race.end_date)
     expect(page).to have_content(race.end_date)

@@ -1,0 +1,39 @@
+.race-tile {
+  padding: 10px;
+  background-color: #F2F6F9;
+  border: 1px solid #D4E2ED;
+  box-shadow: 0px 2px 4px #D4E2ED;
+  text-align: center;
+  max-width: 300px;
+  min-height: 175px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.race-details{
+  padding-top: 10%;
+}
+
+.race-title {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 24px;
+  color: #CF0909;
+}
+
+.race-location {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  color: #CF0909;
+}
+
+.race-dates {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  color: #18639B;
+}
+
+.race-address {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  color: #323639;
+}

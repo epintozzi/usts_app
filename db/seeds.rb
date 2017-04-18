@@ -30,7 +30,8 @@ boat_classes = BoatClass.create!(
 
 Race.create!(
   [
-    { street_address: "175 N. Nekoma Ave",
+    { title: "Race for the Kids",
+      street_address: "175 N. Nekoma Ave",
       city: "Lake Alfred",
       state: "FL",
       start_date: "2017-04-21 07:00:00",
@@ -41,7 +42,8 @@ Race.create!(
       longitude: 	-81.7340688,
       hotel_information: "Florida HomeStay Inn 33224 Hwy 27 South Haines City, FL 33844 Room Rates are set at $69.00 plus tax Date range that rooms shall be ready for occupancy is 4/19 thru 4/23 We will offer an early check-in for your group starting at 2pm Please have all of your group members/participants calling in to make reservation, use the following code to help us identify who they are: ORANGE17 Florida HomeStay Inn 33224 Hwy 27 South Haines City, FL 33844 (863) 422 8621 (Front Desk) (863) 422 8622 Due call us with all of your questions and travel coordination arrangements, so that we can better assist you prior to your arrival. Feel free to contact me directly or Gina (Guest Relations Manager) at the hotel. Juan Exposito (561) 281 3365 Mobile"
     },
-    { street_address: "Park Dr",
+    { title: "Marvin Windows presents the US Title Series",
+      street_address: "Park Dr",
       city: "Pleasant Prairie",
       state: "WI",
       start_date: "2017-05-26 07:00:00",
@@ -52,7 +54,8 @@ Race.create!(
       longitude: 	-87.926402,
       hotel_information: "LA Quinta Inn	262-857-7911, Best Western Executive 262-857-7699, Comfort Suites 262-857-3450, Value	Inn	262-857-2622"
     },
-    { street_address: "149 N. Lakewood Dr",
+    { title: "Thunder on the Lake",
+      street_address: "149 N. Lakewood Dr",
       city: "Springfield",
       state: "IL",
       start_date: "2017-06-30 07:00:00",
@@ -63,7 +66,8 @@ Race.create!(
       longitude: 	-89.6508451,
       hotel_information: "Baymont Inn and Suites, Springfield IL 5871 S. 6th St. Frontage RD east Springfield, IL 62703 Phone (217) 529-6655. Block date: June 29 through July 1 Thursday-Saturday night. Block rate: Doubles @ $95.00 + Tax, Kings @ $85.00 + Tax. Please call (217) 529-6655 and ask them to reserve a room out of : USTS boat race. Mihir Tals Manger Baymont Inn & Suites, Springfield IL 5871 South 6th St Rd frontage rd e Springfield IL 62703 Phone: (217) 529-6655 Ext. 676 Fax: (217) 529-6510 e-fax: (888) 340-3033 email: baymontsp@aol.com"
     },
-    { street_address: "65079 US 131-N",
+    { title: "Constantine Regatta",
+      street_address: "65079 US 131-N",
       city: "Constantine",
       state: "MI",
       start_date: "2017-07-21 07:00:00",
@@ -74,7 +78,8 @@ Race.create!(
       longitude: 	-85.668731,
       hotel_information: "Hotel Information Coming Soon"
     },
-    { street_address: "Lake DePue",
+    { title: "Lake DePue National Championships",
+      street_address: "Lake DePue",
       city: "DePue",
       state: "IL",
       start_date: "2017-07-26 07:00:00",

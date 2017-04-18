@@ -1,15 +1,21 @@
 <div class="container">
 
   <h2 class="page-title">Race Schedule</h2>
+  <div class="row">
+    <% @races.each do |race| %>
+      <div class="col-md-4">
+        <div class="race-tile">
+          <div class="race-details">
+            <p class="race-location"><%= race.city %>, <%= race.state %></p>
+            <p class="race-dates"><%= short_race_date(race.start_date)%> - <%= short_race_date(race.end_date)%></p>
 
-  <% @races.each do |race| %>
+            <%= link_to "Details", race_path(race), class: "btn btn-success" %>
+            <%= link_to "Register", root_path, class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
-    <p class="race-location"><%= race.city %>, <%= race.state %></p>
-    <p class="race-dates"><%= race.start_date %> - <%= race.end_date%></p>
-
-    <%= link_to "Details", root_path, class: "btn btn-success" %>
-    <%= link_to "Register", root_path, class: "btn btn-primary" %>
-    <hr>
-  <% end %>
 
 </div>
