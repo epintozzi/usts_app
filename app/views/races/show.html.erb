@@ -2,7 +2,7 @@
 
   <div class="race-left-grouping">
     <h3 class="race-title">
-      <%= @race.city %>, <%= @race.state %>
+      <%= @race.title %>
     </h3>
     <p class="race-address">
       <%= @race.street_address %>
@@ -15,18 +15,18 @@
     <%= link_to "Register", root_path, class: "btn btn-success" %>
     <%= link_to "Sanction", root_path, class: "btn btn-primary" %>
     <br>
-    <%= link_to "See others who are registered", root_path %>
+    <%= link_to "See others who are registered", root_path, class: 'small-link' %>
   </div>
 
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-4">
       <h3>General Information</h3>
-      <%= @race.details %>
+      <p class=""><%= @race.details %></p>
     </div>
     <div class="col-md-4">
       <h3>Where to Stay</h3>
-      <%= @race.hotel_information %>
+      <p class=""><%= @race.hotel_information %></p>
     </div>
     <div class="col-md-2"></div>
   </div>

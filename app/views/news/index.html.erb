@@ -3,9 +3,13 @@
   <% @all_news.each do |news| %>
 
     <div class="news_tile">
-      <h4><%= link_to news.title, news_path(news) %></h4>
-      <p><%= news.content %><p>
-      <%= news.author.first_name %> <%= news.author.last_name %>
+      <h4><%= link_to news.title, news_path(news), class: 'news-title' %></h4>
+      <p class="news-date"><%= news.created_at %></p>
+      <p class="news-snippet"><%= news.content %><p>
+      <p class="news-author">
+        <%= image_tag(news.author.image, class: "blog-avatar") %>
+        By <%= news.author.first_name %> <%= news.author.last_name %>
+      </p>
     </div>
 
     <hr>
