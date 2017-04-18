@@ -7,7 +7,7 @@
     <p class="race-location"><%= race.city %>, <%= race.state %></p>
     <p class="race-dates"><%= race.start_date %> - <%= race.end_date%></p>
 
-    <%= link_to "Details", root_path, class: "btn btn-success" %>
+    <%= link_to "Details", race_path(race), class: "btn btn-success" %>
     <%= link_to "Register", root_path, class: "btn btn-primary" %>
     <hr>
   <% end %>
