@@ -1,7 +1,7 @@
 class NewsController < ApplicationController
 
   def index
-    @all_news = News.all
+    @all_news = News.all.reverse
   end
 
   def show
