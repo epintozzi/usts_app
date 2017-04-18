@@ -7,7 +7,6 @@ describe "news index" do
     visit news_index_path
 
     expect(page).to have_content(news_article.title)
-    expect(page).to have_content(news_article.content)
     expect(page).to have_content(news_article.author.first_name)
     expect(page).to have_content(news_article.author.last_name)
     expect(page).to have_link("#{news_article.title}")
