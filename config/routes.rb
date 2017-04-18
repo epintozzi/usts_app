@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :news, only: [:index, :show, :new, :create]
 
+  resources :races, only: [:index, :show]
+
   get '/competition', to: 'pages#competition'
   get '/sponsorship', to: 'pages#sponsorship'
   get '/racing_resources', to: 'pages#racing_resources'
