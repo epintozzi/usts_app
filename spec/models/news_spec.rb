@@ -22,7 +22,6 @@ RSpec.describe News, type: :model do
     context "valid attributes" do
       it "is valid with all attributes" do
         user = User.create(first_name: "Erin", last_name: "Pintozzi", email: "erin@email.com", password: "password")
-        # binding.pry
         news = News.new(title: "News Title", content: "news content", author_id: user.id, image: "image.jpg")
 
         expect(news).to be_valid
