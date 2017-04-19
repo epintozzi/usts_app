@@ -1,15 +1,15 @@
 <div class="container">
 
-  <%= form_for @news do |f| %>
+  <%= form_for @news, html: {class: "form-group"} do |f| %>
 
     <div class="field">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
+      <%= f.label :title, class: 'required' %>
+      <%= f.text_field :title, class: 'form-control' %>
     </div>
 
     <div class="field">
-      <%= f.label :content %>
-      <%= f.text_area :content %>
+      <%= f.label :content, class: 'required' %>
+      <%= f.text_area :content, class: 'form-control', rows: 10 %>
     </div>
 
     <div class="">

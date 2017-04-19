@@ -1,73 +1,79 @@
 <div class="container">
 
-  <h2>USTS Membership Registration Form</h2>
+  <h2 class="page-title">USTS Membership Registration Form</h2>
 
-  <%= form_for @usts_reg do |f| %>
+  <%= form_for @usts_reg, html: {class: "form-group"} do |f| %>
 
     <div class="field">
       <%= f.label :race_year, class: 'required' %>
-      <%= f.select :race_year, options_for_select(year_options, selected: Date.current.year), class: 'race-year'  %>
+      <%= f.select :race_year, options_for_select(year_options, selected: Date.current.year), {}, class: 'form-control race-year'  %>
     </div>
 
     <div class="field">
       <%= f.label :first_name, class: 'required' %>
-      <%= f.text_field :first_name%>
+      <%= f.text_field :first_name, class: 'form-control'%>
     </div>
 
     <div class="field">
       <%= f.label :last_name, class: 'required' %>
-      <%= f.text_field :last_name %>
+      <%= f.text_field :last_name, class: 'form-control' %>
     </div>
 
     <div class="field">
       <%= f.label :usts_number, "USTS Member Number", class: 'required' %>
-      <%= f.text_field :usts_number %>
+      <%= f.text_field :usts_number, class: 'form-control' %>
     </div>
 
     <div class="field">
       <%= f.label :membership_type, class: 'required' %>
-      <%= f.select :membership_type, UstsRegistration.membership_types.keys.to_a, {prompt: "Choose type"}, {class:"membership-type-picker"} %>
+      <%= f.select :membership_type, UstsRegistration.membership_types.keys.to_a, {prompt: "Choose type"}, {class:"form-control membership-type-picker"} %>
     </div>
 
     <div class="field">
       <%= f.label :street_address, class: 'required' %>
-      <%= f.text_field :street_address %>
+      <%= f.text_field :street_address, class: 'form-control' %>
     </div>
 
     <div class="field">
       <%= f.label :city, class: 'required' %>
-      <%= f.text_field :city %>
+      <%= f.text_field :city, class: 'form-control' %>
     </div>
 
     <div class="field">
       <%= f.label :state, class: 'required' %>
-      <%#= f.text_field :state %>
-      <%= f.select :state, options_for_select(us_states), {prompt: "Choose State"}, class: '' %>
+      <%= f.select :state, options_for_select(us_states), {prompt: "Choose State"}, class: 'form-control' %>
     </div>
 
     <div class="field">
       <%= f.label :zip, class: 'required' %>
-      <%= f.text_field :zip %>
+      <%= f.text_field :zip, class: 'form-control' %>
     </div>
 
     <div class="field">
       <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.text_field :email, class: 'form-control' %>
     </div>
 
     <div class="field">
       <%= f.label :phone %>
-      <%= f.text_field :phone %>
+      <%= f.text_field :phone, class: 'form-control' %>
     </div>
 
     <div class="field">
       <%= f.label :fax %>
-      <%= f.text_field :fax %>
+      <%= f.text_field :fax, class: 'form-control' %>
     </div>
 
     <div class="field">
       <%= f.label :birthdate, class: 'required' %>
-      <%= f.date_select :birthdate, :start_year=>1900,:end_year=>Date.current.year%>
+      <%= f.date_select :birthdate, :order => [:month, :day, :year], :start_year=>1900,:end_year=>Date.current.year, html: {class: 'form-control'} %>
+    </div>
+
+    <div>
+      <h4 class="liability-release-header">Liability Release</h4>
+      <p class="liability-release-text">
+        This Release, Waiver of Liability, Assumption of Risk and Indemnity Agreement (the “Agreement”) is made by the undersigned applicant who with his/her heirs, legal and estate representatives and assigns is herein called “Applicant”. In consideration of the registration of Applicant’s name as a U.S. Title Series Association, Inc. (“USTS”) member, Applicant on behalf of himself/herself and on behalf of Applicant’s drivers, assistants and crew (collectively, the “Applicant Parties”): (i) acknowledges and understands that there are certain risks and dangers associated with preparation for and participation in any USTS activities and with the Applicant Parties’ presence at any such activities, including any and all acts of the Applicant Parties, and voluntarily and knowingly assumes full responsibility for any risks of personal injury, death or property damage arising out of, related to or resulting from the Applicant Parties’ preparation for and participation in USTS activities or the Applicant Parties’ presence at such activities, whether caused by the negligence of the Released Parties (as defined herein) or otherwise; (ii) releases and discharges USTS, any organization sponsoring or assisting in promoting or conducting any USTS activity, together with their members, officers, directors, employees and agents, and spectators attending any USTS activity (all of whom and which are herein collectively called the “Released Parties”) from and against any and all claims, demands, actions, causes of action, damages, liabilities, costs and expenses, whether known or unknown, whether contemplated or unforeseen, which any of the Applicant Parties’ have, had or may have against or with respect to the Released Parties arising out of, related to or resulting from the Applicant Parties’ preparation for or participation in USTS activities or the Applicant Parties’ presence at such activities; (iii) covenants not to sue the Released Parties and waives all claims arising out of, related to or resulting from the Applicant Parties’ preparation for or participation in USTS activities or the Applicant Parties’ presence at such activities; (iv) agrees to indemnify and save and hold harmless the Released Parties from any loss, liability, damage, cost or expense the Released Parties may incur arising out of, related to or resulting from the Applicant Parties’ preparation for or participation in USTS activities or the Applicant Parties’ presence at such activities, whether such loss, liability, damage, cost or expense is caused by the negligence of the Released Parties or otherwise; and (v) acknowledges that Applicant shall maintain his/her own insurance against liability for personal injury, death and/or property damage arising out of, related to or resulting from the Applicant Parties’ preparation for or participation in USTS activities or the Applicant Parties’ presence at such activities. Applicant certifies to the truth of all statements made in this Agreement and the Application on which this Agreement is contained and acknowledges he/she has read the USTS Amended Regulations and Rules and Regulations and agrees to fully comply with such regulations and rules and agrees to accept as final all decisions of the USTS. Finally, Applicant, on behalf of himself/herself and the Applicant Parties, grants to USTS the right to photograph, videotape, and/or record any of the Applicant, the Applicant Parties or any boat, vehicle or devise belonging to Applicant and to use Applicant’s name, face, likeness, voice and appearance in connection with exhibitions, publicity, advertising and promotional materials without reservation or limitation. Applicant has read this Agreement and fully understands it terms and conditions. Applicant recognizes that Applicant is voluntarily and knowingly giving up substantial rights by signing this Agreement and has signed this Agreement freely without any inducement, assurance or guarantee being made to Applicant. Applicant intends for Applicant’s signature to be a complete and unconditional release of the Released Parties from all liability. In witness whereof, the undersigned has hereunto set his/her hand and seal the day and year written below: Application will not be considered unless release is signed below.
+      </p>
     </div>
 
     <div class="field">
@@ -77,7 +83,7 @@
 
     <div class="field">
       <%= f.label :signature, "Typed signature", class: 'required' %>
-      <%= f.text_field :signature %>
+      <%= f.text_field :signature, class: 'form-control' %>
     </div>
 
     <div class="action">
