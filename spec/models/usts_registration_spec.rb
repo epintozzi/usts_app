@@ -14,7 +14,7 @@ RSpec.describe UstsRegistration, type: :model do
         state: "CO",
         zip: "80216",
         birthdate: "1987-09-26",
-        liability_release?: true,
+        liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id
@@ -34,7 +34,7 @@ RSpec.describe UstsRegistration, type: :model do
         state: "CO",
         zip: "80216",
         birthdate: "1987-09-26",
-        liability_release?: true,
+        liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id
@@ -54,7 +54,7 @@ RSpec.describe UstsRegistration, type: :model do
         state: "CO",
         zip: "80216",
         birthdate: "1987-09-26",
-        liability_release?: true,
+        liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id
@@ -73,7 +73,7 @@ RSpec.describe UstsRegistration, type: :model do
         state: "CO",
         zip: "80216",
         birthdate: "1987-09-26",
-        liability_release?: true,
+        liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id
@@ -92,7 +92,7 @@ RSpec.describe UstsRegistration, type: :model do
         state: "CO",
         zip: "80216",
         birthdate: "1987-09-26",
-        liability_release?: true,
+        liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id
@@ -111,7 +111,7 @@ RSpec.describe UstsRegistration, type: :model do
         state: "CO",
         zip: "80216",
         birthdate: "1987-09-26",
-        liability_release?: true,
+        liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id
@@ -130,7 +130,7 @@ RSpec.describe UstsRegistration, type: :model do
         state: "CO",
         zip: "80216",
         birthdate: "1987-09-26",
-        liability_release?: true,
+        liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id
@@ -149,7 +149,7 @@ RSpec.describe UstsRegistration, type: :model do
         state: "CO",
         zip: "80216",
         birthdate: "1987-09-26",
-        liability_release?: true,
+        liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id
@@ -168,7 +168,7 @@ RSpec.describe UstsRegistration, type: :model do
         city: "Denver",
         zip: "80216",
         birthdate: "1987-09-26",
-        liability_release?: true,
+        liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id
@@ -187,7 +187,7 @@ RSpec.describe UstsRegistration, type: :model do
         city: "Denver",
         state: "CO",
         birthdate: "1987-09-26",
-        liability_release?: true,
+        liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id
@@ -206,7 +206,7 @@ RSpec.describe UstsRegistration, type: :model do
         city: "Denver",
         state: "CO",
         zip: "80216",
-        liability_release?: true,
+        liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id
@@ -245,7 +245,7 @@ RSpec.describe UstsRegistration, type: :model do
         state: "CO",
         zip: "80216",
         birthdate: "1987-09-26",
-        liability_release?: false,
+        liability_release: false,
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id
@@ -265,7 +265,7 @@ RSpec.describe UstsRegistration, type: :model do
         state: "CO",
         zip: "80216",
         birthdate: "1987-09-26",
-        liability_release?: true,
+        liability_release: true,
         signature: "Erin Pintozzi",
         creator_id: user.id
         )
@@ -284,7 +284,7 @@ RSpec.describe UstsRegistration, type: :model do
         state: "CO",
         zip: "80216",
         birthdate: "1987-09-26",
-        liability_release?: true,
+        liability_release: true,
         membership_type: 0,
         creator_id: user.id
         )
@@ -306,7 +306,7 @@ RSpec.describe UstsRegistration, type: :model do
         state: "CO",
         zip: "80216",
         birthdate: "1987-09-26",
-        liability_release?: true,
+        liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id
@@ -321,7 +321,7 @@ RSpec.describe UstsRegistration, type: :model do
         state: "IL",
         zip: "60402",
         birthdate: "1990-08-12",
-        liability_release?: true,
+        liability_release: true,
         membership_type: 0,
         signature: "Ryan Barth",
         creator_id: user.id
@@ -345,7 +345,7 @@ RSpec.describe UstsRegistration, type: :model do
         state: "CO",
         zip: "80216",
         birthdate: "1987-09-26",
-        liability_release?: true,
+        liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id
@@ -365,7 +365,7 @@ RSpec.describe UstsRegistration, type: :model do
         state: "CO",
         zip: "80216",
         birthdate: "1987-09-26",
-        liability_release?: true,
+        liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
         email: "erin@email.com",

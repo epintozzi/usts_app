@@ -7,7 +7,7 @@ FactoryGirl.define do
     end
     password "password"
     password_confirmation "password"
-    driver? false
+    driver false
     role 0
     image "image.jpg"
   end

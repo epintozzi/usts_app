@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419184343) do
+ActiveRecord::Schema.define(version: 20170419202535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20170419184343) do
     t.text     "first_name"
     t.text     "last_name"
     t.string   "email",                  default: "",    null: false
-    t.boolean  "driver?",                default: false
+    t.boolean  "driver",                 default: false
     t.integer  "role",                   default: 0
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
@@ -84,12 +84,12 @@ ActiveRecord::Schema.define(version: 20170419184343) do
     t.text     "phone"
     t.text     "fax"
     t.datetime "birthdate"
-    t.boolean  "liability_release?"
+    t.boolean  "liability_release"
     t.integer  "membership_type"
     t.text     "signature"
     t.integer  "creator_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.index ["creator_id"], name: "index_usts_registrations_on_creator_id", using: :btree
   end
 

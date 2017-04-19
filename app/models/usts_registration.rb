@@ -13,4 +13,6 @@ class UstsRegistration < ApplicationRecord
   validates :liability_release?, presence: true, inclusion: { in: [true] }
   validates :membership_type, presence: true
   validates :signature, presence: true
+
+  enum membership_type: [:nonracing, :racing, :kpro]
 end
