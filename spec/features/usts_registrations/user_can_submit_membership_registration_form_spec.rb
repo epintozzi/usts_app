@@ -8,7 +8,7 @@ describe "usts_registration/new" do
 
     visit new_usts_registration_path
 
-    within ('.race-year') do
+    within ('#usts_registration_race_year') do
       select 2017
     end
     fill_in "usts_registration[first_name]", with: "Erin"
