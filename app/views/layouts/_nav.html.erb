@@ -43,18 +43,20 @@
           </ul>
         </li>
         <li><a href="#">Gallery</a></li>
-        <li><a href="#">Contact</a></li>
+        <!-- <li><a href="#">Contact</a></li> -->
         <% if current_user %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, <%= current_user.first_name %><img class="avatar" src= '<%= "#{current_user.image}" %>'> <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Race Registration</a></li>
-            <li><a href="#">USTS Registration</a></li>
+            <li>
+              <%= link_to "USTS Registration", new_usts_registration_path %>
+            </li>
             <li><a href="#">Unpaid Registrations</a></li>
             <li><a href="#">Profile</a></li>
             <li role="separator" class="divider"></li>
-              <li><a href="#">Rule Book</a></li>
-              <li><a href="#">By-laws</a></li>
+              <li><%=link_to "Rule Book", asset_path("usts_rule_book_2017.pdf"), target: :_blank  %></li>
+              <li><%=link_to "By-laws", asset_path("by_laws_usts_2017.pdf"), target: :_blank  %></li>
             <li role="separator" class="divider"></li>
               <li>
                 <%= link_to "Logout", destroy_user_session_path, method: "delete" %>
