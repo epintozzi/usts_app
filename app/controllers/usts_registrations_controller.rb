@@ -7,8 +7,6 @@ class UstsRegistrationsController < ApplicationController
   def create
     @usts_reg = UstsRegistration.new(usts_registration_params)
     @usts_reg.creator = current_user
-
-    # binding.pry
     if @usts_reg.save
       flash[:success] = "You have successfully sumbitted your registration."
       redirect_to new_usts_registration_path

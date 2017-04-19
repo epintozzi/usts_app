@@ -6,7 +6,7 @@
 
     <div class="field">
       <%= f.label :race_year %>
-      <%= f.text_field :race_year %>
+      <%= f.select :race_year, options_for_select(year_options), {prompt: "Choose Year"}, class: 'race-year' %>
     </div>
 
     <div class="field">
@@ -26,7 +26,7 @@
 
     <div class="field">
       <%= f.label :membership_type %>
-      <%= f.select :membership_type, UstsRegistration.membership_types.keys.to_a, {:prompt => "Choose type"}, {class:"membership-type-picker"} %>
+      <%= f.select :membership_type, UstsRegistration.membership_types.keys.to_a, {prompt: "Choose type"}, {class:"membership-type-picker"} %>
     </div>
 
     <div class="field">
@@ -41,7 +41,8 @@
 
     <div class="field">
       <%= f.label :state %>
-      <%= f.text_field :state %>
+      <%#= f.text_field :state %>
+      <%= f.select :state, options_for_select(us_states), {prompt: "Choose State"}, class: '' %>
     </div>
 
     <div class="field">
@@ -66,7 +67,7 @@
 
     <div class="field">
       <%= f.label :birthdate %>
-      <%= f.text_field :birthdate %>
+      <%= f.date_select :birthdate, :start_year=>1900,:end_year=>Date.current.year%>
     </div>
 
     <div class="field">
