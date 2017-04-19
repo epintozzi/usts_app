@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418201635) do
+ActiveRecord::Schema.define(version: 20170419184343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,5 +71,28 @@ ActiveRecord::Schema.define(version: 20170418201635) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "usts_registrations", force: :cascade do |t|
+    t.integer  "race_year"
+    t.text     "first_name"
+    t.text     "last_name"
+    t.text     "usts_number"
+    t.text     "street_address"
+    t.text     "city"
+    t.text     "state"
+    t.text     "zip"
+    t.text     "email"
+    t.text     "phone"
+    t.text     "fax"
+    t.datetime "birthdate"
+    t.boolean  "liability_release?"
+    t.integer  "membership_type"
+    t.text     "signature"
+    t.integer  "creator_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["creator_id"], name: "index_usts_registrations_on_creator_id", using: :btree
+  end
+
   add_foreign_key "news", "users", column: "author_id"
+  add_foreign_key "usts_registrations", "users", column: "creator_id"
 end

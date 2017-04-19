@@ -9,7 +9,7 @@
       <%= @race.city %>, <%= @race.state %>
     </p>
     <p class="race-dates">
-      <%= @race.start_date %> - <%= @race.end_date %>
+      <%= short_race_date(@race.start_date) %> - <%= short_race_date(@race.end_date) %>
     </p>
 
     <%= link_to "Register", root_path, class: "btn btn-success" %>
