@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :show]
 
-  resources :news, only: [:index, :show, :new, :create]
+  resources :news
 
   resources :races, only: [:index, :show]
 

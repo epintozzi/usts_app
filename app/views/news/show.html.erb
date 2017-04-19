@@ -13,6 +13,9 @@
         </p>
         <p class="news-date"><%= news_date(@news.published_on) %></p>
       </div>
+      <%# if current_user.admin? %>
+        <%= link_to "Edit", edit_news_path(@news), class: 'btn btn-success' %>
+      <%# end %>
     </div>
 
     <div class="col-md-8">

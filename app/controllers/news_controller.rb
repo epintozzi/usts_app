@@ -24,6 +24,21 @@ class NewsController < ApplicationController
     end
   end
 
+  def edit
+    @news = News.find(params[:id])
+  end
+
+  def update
+    @news = News.find(params[:id])
+    if @news.update(news_params)
+      flash[:success] = "You have successfully updated this post."
+      redirect_to news_path(@news)
+    else
+      flash[:alert] = "Something went wrong. Please try your update again."
+      render :edit
+    end
+  end
+
   private
 
   def news_params
