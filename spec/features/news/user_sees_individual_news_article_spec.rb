@@ -10,6 +10,6 @@ describe "/news/:id" do
     expect(page).to have_content(news.content)
     expect(page).to have_content(news.author.first_name)
     expect(page).to have_content(news.author.last_name)
-    expect(page).to have_content(news.created_at.strftime("%b %-d, %Y"))
+    expect(page).to have_content(news.published_on.strftime("%b %-d, %Y"))
   end
 end

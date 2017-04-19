@@ -1,7 +1,7 @@
 class NewsController < ApplicationController
 
   def index
-    @all_news = News.all.reverse
+    @all_news = News.all.order(published_on: :desc)
   end
 
   def show
@@ -27,7 +27,7 @@ class NewsController < ApplicationController
   private
 
   def news_params
-    params.require(:news).permit(:id, :title, :content, :author_id)
+    params.require(:news).permit(:id, :title, :content, :author_id, :published_on)
   end
 
 end
