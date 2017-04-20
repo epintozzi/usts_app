@@ -384,5 +384,9 @@ RSpec.describe UstsRegistration, type: :model do
       reg = create(:usts_registration)
       expect(reg).to respond_to(:creator)
     end
+    it "has many race registrations" do
+      reg = create(:usts_registration)
+      expect(reg).to respond_to(:race_registrations)
+    end
   end
 end

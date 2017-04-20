@@ -46,4 +46,11 @@ RSpec.describe Race, type: :model do
       end
     end
   end
+
+  describe "relationships" do
+    it "has many race registrations" do
+      race = create(:race)
+      expect(race).to respond_to(:race_registrations)
+    end
+  end
 end

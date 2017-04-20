@@ -1,5 +1,6 @@
 class UstsRegistration < ApplicationRecord
   belongs_to :creator, class_name: "User"
+  has_many :race_registrations
 
   validates :race_year, presence: true, length: { is: 4 }
   validates :first_name, presence: true

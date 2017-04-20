@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419232445) do
+ActiveRecord::Schema.define(version: 20170420181713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,23 @@ ActiveRecord::Schema.define(version: 20170419232445) do
     t.datetime "updated_at",   null: false
     t.datetime "published_on"
     t.index ["author_id"], name: "index_news_on_author_id", using: :btree
+  end
+
+  create_table "race_registrations", force: :cascade do |t|
+    t.boolean "paid",                default: false
+    t.text    "boat_number"
+    t.text    "boat_owner"
+    t.text    "boat_owner_zip"
+    t.text    "boat_name"
+    t.text    "emergency_contact"
+    t.text    "emergency_phone"
+    t.boolean "emergency_contact_at_race"
+    t.integer "race_id"
+    t.integer "boat_class_id"
+    t.integer "usts_registration_id"
+    t.index ["boat_class_id"], name: "index_race_registrations_on_boat_class_id", using: :btree
+    t.index ["race_id"], name: "index_race_registrations_on_race_id", using: :btree
+    t.index ["usts_registration_id"], name: "index_race_registrations_on_usts_registration_id", using: :btree
   end
 
   create_table "races", force: :cascade do |t|
@@ -95,5 +112,8 @@ ActiveRecord::Schema.define(version: 20170419232445) do
   end
 
   add_foreign_key "news", "users", column: "author_id"
+  add_foreign_key "race_registrations", "boat_classes"
+  add_foreign_key "race_registrations", "races"
+  add_foreign_key "race_registrations", "usts_registrations"
   add_foreign_key "usts_registrations", "users", column: "creator_id"
 end
