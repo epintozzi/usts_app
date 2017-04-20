@@ -1,7 +1,7 @@
 class NewsController < ApplicationController
 
   def index
-    @all_news = News.all.reverse
+    @all_news = News.all.order(published_on: :desc)
   end
 
   def show
@@ -24,10 +24,25 @@ class NewsController < ApplicationController
     end
   end
 
+  def edit
+    @news = News.find(params[:id])
+  end
+
+  def update
+    @news = News.find(params[:id])
+    if @news.update(news_params)
+      flash[:success] = "You have successfully updated this post."
+      redirect_to news_path(@news)
+    else
+      flash[:alert] = "Something went wrong. Please try your update again."
+      render :edit
+    end
+  end
+
   private
 
   def news_params
-    params.require(:news).permit(:id, :title, :content, :author_id)
+    params.require(:news).permit(:id, :title, :content, :author_id, :published_on)
   end
 
 end

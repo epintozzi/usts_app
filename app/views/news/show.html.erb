@@ -9,10 +9,13 @@
       <div class="detail-author">
         <p class="news-author">
           <%= image_tag(@news.author.image, class: "blog-avatar") %>
-          By <%= @news.author.first_name %> <%= @news.author.last_name %>
+          By <%= @news.author.first_name %> <%= @news.author.last_name %><br>
         </p>
-        <p class="news-date"><%= news_date(@news.created_at) %></p>
+        <p class="news-date"><%= news_date(@news.published_on) %></p>
       </div>
+      <% if current_user.admin? || current_user.editor? %>
+        <%= link_to "Edit", edit_news_path(@news), class: 'btn btn-success' %>
+      <% end %>
     </div>
 
     <div class="col-md-8">

@@ -5,7 +5,7 @@
       <div class="col-md-4">
         <div class="news-tile">
           <h4><%= link_to news.title, news_path(news), class: 'news-title' %></h4>
-          <p class="news-date"><%= news_date(news.created_at) %></p>
+          <p class="news-date"><%= news_date(news.published_on) %></p>
           <p class="news-snippet"><%#= news.content %><p>
           <p class="news-author">
             <%= image_tag(news.author.image, class: "blog-avatar") %>
