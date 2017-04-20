@@ -46,7 +46,7 @@ RSpec.describe RaceRegistration, type: :model do
         boat_class = create(:boat_class)
         usts_registration = create(:usts_registration)
         race = create(:race)
-        race_reg = RaceRegistration.new(boat_class: boat_class, usts_registration: usts_registration, race: race, boat_number: "V26", paid: 1, boat_owner: "Erin", boat_owner_zip: "80216", boat_name: "Fast Flyer", emergency_contact: "Brad Barth", emergency_phone: "7087880906", emergency_contact_at_race: 1)
+        race_reg = RaceRegistration.new(boat_class: boat_class, usts_registration: usts_registration, race: race, boat_number: "V26", paid: 1, boat_owner: "Erin", boat_owner_zip: "80216", boat_name: "Fast Flyer", emergency_contact: "Brad Barth", emergency_phone: "9876544321", emergency_contact_at_race: 1)
 
         expect(race_reg).to be_valid
       end
