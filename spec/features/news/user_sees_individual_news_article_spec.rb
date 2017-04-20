@@ -2,6 +2,10 @@ require "rails_helper"
 
 describe "/news/:id" do
   scenario "user sees individual news article" do
+    user = create(:user)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
     news = create(:news)
 
     visit news_path(news)

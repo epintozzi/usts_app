@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "news/:id/edit" do
   scenario "user can edit existing news posting" do
-    user = create(:user)
+    user = create(:user, role: 2)
     news = create(:news)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -12,7 +12,7 @@ describe "news/:id/edit" do
     click_on "Edit"
 
     expect(current_path).to eq(edit_news_path(news))
-    
+
     fill_in "news[title]", with: "New Title"
     fill_in "news[content]", with: "New Content"
     select 2016
