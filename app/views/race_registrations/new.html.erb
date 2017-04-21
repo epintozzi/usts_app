@@ -6,7 +6,7 @@
 
     <div class="field">
       <%= f.label :usts_registration, "Registrant Name", class: 'required' %>
-      <%= f.select :usts_registration_id, options_for_select(usts_registration_name_list), {prompt: "Select Race Registrant"}, class: 'form-control' %>
+      <%= f.select :usts_registration_id, options_for_select(usts_registration_name_list, selected: current_user.id), {prompt: "Select Race Registrant"}, class: 'form-control' %>
     </div>
 
     <div class="field">
