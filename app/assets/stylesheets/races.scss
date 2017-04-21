@@ -8,6 +8,8 @@
   min-height: 175px;
   margin-top: 10px;
   margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .race-details{
@@ -36,4 +38,43 @@
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
   color: #323639;
+}
+
+.race-details-show {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.race-left-grouping {
+  background-color: #ffffff;
+  margin-top: -20px;
+  height: 300px;
+}
+
+.race-right-grouping {
+  background-image: asset-url("lake_alfred_map.png");
+  margin-top: -20px;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.race-info-band {
+  background-color: #F2F6F9;
+  min-height: 300px;
+  border-top: 1px solid #D4E2ED;
+  border-bottom: 1px solid #D4E2ED;
+  padding-bottom: 20px;
+}
+
+
+
+.race-general-info, .race-where-to-stay {
+  text-align: justify;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.upcoming-events-band {
+  margin-bottom: -25px;
 }

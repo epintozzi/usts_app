@@ -1,7 +1,18 @@
+.jumbotron {
+  background-image: asset-url("home_splash_image.jpg");
+  background-position: center;
+  margin-top: -20px;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 0px;
+}
+
 .recent-news-band {
   background-color: #F2F6F9;
   border: 1px solid #D4E2ED;
-
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .news-tile-home {
@@ -13,4 +24,11 @@
   min-height: 175px;
   margin-top: 10px;
   margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sponsors-band {
+  min-height: 200px;
+  margin-bottom: -25px;
 }

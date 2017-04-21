@@ -1,38 +1,61 @@
-<div class="container">
 
-  <div class="race-left-grouping">
-    <h3 class="race-title">
-      <%= @race.title %>
-    </h3>
-    <p class="race-address">
-      <%= @race.street_address %>
-      <%= @race.city %>, <%= @race.state %>
-    </p>
-    <p class="race-dates">
-      <%= short_race_date(@race.start_date) %> - <%= short_race_date(@race.end_date) %>
-    </p>
+<div class="row">
+  <div class="col-md-6 race-left-grouping">
+    <div class="race-details-show">
+      <h3 class="race-title">
+        <%= @race.title %>
+      </h3>
+      <p class="race-address">
+        <%= @race.street_address %><br>
+        <%= @race.city %>, <%= @race.state %>
+      </p>
+      <p class="race-dates">
+        <%= short_race_date(@race.start_date) %> - <%= short_race_date(@race.end_date) %>
+      </p>
 
-    <%= link_to "Register", root_path, class: "btn btn-success" %>
-    <%= link_to "Sanction", root_path, class: "btn btn-primary" %>
-    <br>
-    <%= link_to "See others who are registered", race_registrations_path, class: 'small-link' %>
+      <%= link_to "Register", new_race_registration_path, class: "btn btn-solid-red" %>
+      <%= link_to "Sanction", root_path, class: "btn btn-outline-red" %>
+      <br>
+      <%= link_to "See others who are registered", race_registrations_path, class: 'small-link' %>
+    </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-4">
-      <h3>General Information</h3>
+  <div class="col-md-6 race-right-grouping">
+    <!-- map goes here -->
+  </div>
+</div>
+
+
+
+<div class="row race-info-band">
+  <div class="col-md-1"></div>
+  <div class="col-md-5">
+    <div class="race-general-info">
+      <h3 class="page-subtitle">General Information</h3>
       <p class=""><%= @race.details %></p>
     </div>
-    <div class="col-md-4">
-      <h3>Where to Stay</h3>
+  </div>
+  <div class="col-md-5">
+    <div class="race-where-to-stay">
+      <h3 class="page-subtitle">Where to Stay</h3>
       <p class=""><%= @race.hotel_information %></p>
     </div>
-    <div class="col-md-2"></div>
   </div>
+  <div class="col-md-1"></div>
+</div>
 
-  <div class="upcoming-events">
-    <h3>Upcoming Events</h3>
+<div class="upcoming-events-band">
+  <h3 class="page-subtitle">Upcoming Events</h3>
+  <div class="container">
+    <div class="row">
+      <% @races.each do |race| %>
+        <div class="col-md-4">
+          <div class="race-tile">
+            <%= render partial: "shared/race_tile", locals: {race: race} %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 
 </div>
