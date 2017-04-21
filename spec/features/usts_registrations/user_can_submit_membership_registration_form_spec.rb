@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "usts_registration/new" do
+describe "usts_registrations/new" do
   scenario "user can submit member registration form" do
     user = create(:user)
 

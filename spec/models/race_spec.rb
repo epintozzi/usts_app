@@ -46,4 +46,24 @@ RSpec.describe Race, type: :model do
       end
     end
   end
+
+  describe "relationships" do
+    it "has many race registrations" do
+      race = create(:race)
+      expect(race).to respond_to(:race_registrations)
+    end
+  end
+
+  describe "model methods" do
+    it "generates a list of races' ids with title and location" do
+      race_1 = create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL")
+      race_2 = create(:race, title: "Nationals", city: "DePue", state: "IL")
+
+      list = Race.title_location_list
+      count = Race.title_location_list.count
+
+      expect(list).to eq([["Race for the Kids - Lake Alfred, FL", race_1.id], ["Nationals - DePue, IL", race_2.id]])
+      expect(count).to eq(2)
+    end
+  end
 end
