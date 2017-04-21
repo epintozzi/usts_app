@@ -1,5 +1,13 @@
 class RaceRegistrationsController < ApplicationController
 
+  def index
+    @all_registrations = RaceRegistration.all
+  end
+
+  def show
+    @user_registrations = RaceRegistration.all.where(usts_registration_id: current_user.id)
+  end
+
   def new
     @race_reg = RaceRegistration.new()
   end

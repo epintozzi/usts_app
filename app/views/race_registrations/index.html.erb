@@ -1,0 +1,19 @@
+<div class="container">
+
+  <h2 class="page-title">All Race Registrations</h2>
+
+  <% @all_registrations.each do |race_reg| %>
+
+    <p>
+      <%= link_to "#{race_reg.race.title} - #{race_reg.race.city}, #{race_reg.race.state}", race_path(race_reg.race) %>
+    </p>
+
+    <p>
+      <%= race_reg.usts_registration.first_name %>
+      <%= race_reg.usts_registration.last_name %> - 
+      <%= race_reg.boat_class.class_name %>
+    </p>
+
+  <% end %>
+
+</div>

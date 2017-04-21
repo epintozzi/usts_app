@@ -1,7 +1,9 @@
 FactoryGirl.define do
   factory :usts_registration do
     race_year 2017
-    first_name "Erin"
+    sequence :first_name do |n|
+      "First Name #{n}"
+    end
     last_name "Pintozzi"
     sequence :usts_number do |n|
       "1234#{n}"
