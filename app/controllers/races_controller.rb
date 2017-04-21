@@ -6,6 +6,7 @@ class RacesController < ApplicationController
 
   def show
     @race = Race.find(params[:id])
+    @races = Race.all.limit(3)
   end
 
 end

@@ -5,13 +5,7 @@
     <% @races.each do |race| %>
       <div class="col-md-4">
         <div class="race-tile">
-          <div class="race-details">
-            <%= link_to "#{race.city}, #{race.state}", race_path(race), class: 'race-location'%>
-              <p class="race-dates"><%= short_race_date(race.start_date)%> - <%= short_race_date(race.end_date)%></p>
-
-            <%= link_to "Details", race_path(race), class: "btn btn-solid-blue" %>
-            <%= link_to "Register", root_path, class: "btn btn-outline-blue" %>
-          </div>
+          <%= render partial: "shared/race_tile", locals: {race: race} %>
         </div>
       </div>
     <% end %>

@@ -8,6 +8,8 @@
   min-height: 175px;
   margin-top: 10px;
   margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .race-details{
@@ -65,15 +67,14 @@
   padding-bottom: 20px;
 }
 
-.race-subtitle {
-  text-align: center;
-  padding-top: 20px;
-  padding-bottom: 15px;
-}
+
 
 .race-general-info, .race-where-to-stay {
   text-align: justify;
   padding-left: 20px;
   padding-right: 20px;
-  // padding-bottom: 20px;
+}
+
+.upcoming-events-band {
+  margin-bottom: -25px;
 }
