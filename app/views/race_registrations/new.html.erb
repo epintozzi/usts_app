@@ -11,7 +11,7 @@
 
     <div class="field">
       <%= f.label :race, class: 'required' %>
-      <%= f.collection_select :race_id, Race.all, :id, :city, { prompt: "Select Race"}, class: 'form-control'%>
+      <%= f.select :race_id, options_for_select(list_of_race_titles_and_cities), {prompt: "Select Race"}, class: 'form-control' %>
     </div>
 
     <div class="field">
