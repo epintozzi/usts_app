@@ -11,8 +11,8 @@ describe "race_registrations/new" do
 
     visit new_race_registration_path
 
+    select "Erin Pintozzi"
     select "Lake Alfred"
-    select "Erin"
     select "125cc Runabout"
     fill_in "race_registration[boat_number]", with: "V26"
     fill_in "race_registration[boat_name]", with: "Ronda"
@@ -21,8 +21,9 @@ describe "race_registrations/new" do
     fill_in "race_registration[emergency_contact]", with: "Brad Barth"
     fill_in "race_registration[emergency_phone]", with: "9876544321"
     check "race_registration[emergency_contact_at_race]"
-
+# save_and_open_page
     click_on "Submit Race Registration"
+
 
     expect(page).to have_content("You have successfully registered for this race.")
     expect(current_path).to eq(new_race_registration_path)

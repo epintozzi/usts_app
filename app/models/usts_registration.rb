@@ -16,4 +16,16 @@ class UstsRegistration < ApplicationRecord
   validates :signature, presence: true
 
   enum membership_type: [:nonracing, :racing, :kpro]
+
+  def self.full_name_list
+    name_list = []
+    all.each do |registrant|
+      user_and_name = ["#{registrant.first_name} #{registrant.last_name}", registrant.id]
+      name_list << user_and_name
+    end
+    return name_list
+  end
+
+
+
 end

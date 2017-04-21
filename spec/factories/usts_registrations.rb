@@ -3,7 +3,9 @@ FactoryGirl.define do
     race_year 2017
     first_name "Erin"
     last_name "Pintozzi"
-    usts_number "12345"
+    sequence :usts_number do |n|
+      "1234#{n}"
+    end
     street_address "123 Main St"
     city "Denver"
     state "CO"
