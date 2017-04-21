@@ -6,11 +6,11 @@
       <div class="col-md-4">
         <div class="race-tile">
           <div class="race-details">
-            <p class="race-location"><%= race.city %>, <%= race.state %></p>
-            <p class="race-dates"><%= short_race_date(race.start_date)%> - <%= short_race_date(race.end_date)%></p>
+            <%= link_to "#{race.city}, #{race.state}", race_path(race), class: 'race-location'%>
+              <p class="race-dates"><%= short_race_date(race.start_date)%> - <%= short_race_date(race.end_date)%></p>
 
-            <%= link_to "Details", race_path(race), class: "btn btn-success" %>
-            <%= link_to "Register", root_path, class: "btn btn-primary" %>
+            <%= link_to "Details", race_path(race), class: "btn btn-solid-blue" %>
+            <%= link_to "Register", root_path, class: "btn btn-outline-blue" %>
           </div>
         </div>
       </div>

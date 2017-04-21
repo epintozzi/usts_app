@@ -52,6 +52,7 @@ a {
   font-size: 26px;
   color: #323639;
   padding-bottom: 40px;
+  text-align: center;
 }
 
 label {
@@ -69,4 +70,52 @@ label.required:after {
 
 .form-control {
   // max-width: 75%;
+}
+
+.btn-solid-red {
+  background-color: #CF0909;
+  font-family: 'Open Sans', sans-serif;
+  color: #ffffff;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #CF0909;
+}
+
+.btn-solid-red:hover, .btn-outline-red:hover {
+  background-color: #9C0606;
+  color: #ffffff;
+  border: 2px solid #9C0606;
+}
+
+.btn-solid-blue {
+  background-color: #18639B;
+  font-family: 'Open Sans', sans-serif;
+  color: #ffffff;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #18639B;
+}
+
+.btn-solid-blue:hover, .btn-outline-blue:hover {
+  background-color: #104369;
+  color: #ffffff;
+  border: 2px solid #104369;
+}
+
+.btn-outline-red {
+  background-color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+  color: #CF0909;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #CF0909;
+}
+
+.btn-outline-blue {
+  background-color: #F2F6F9;
+  font-family: 'Open Sans', sans-serif;
+  color: #18639B;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #18639B;
 }

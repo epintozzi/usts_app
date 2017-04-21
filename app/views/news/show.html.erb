@@ -13,8 +13,8 @@
         </p>
         <p class="news-date"><%= news_date(@news.published_on) %></p>
       </div>
-      <% if current_user.admin? || current_user.editor? %>
-        <%= link_to "Edit", edit_news_path(@news), class: 'btn btn-success' %>
+      <% if current_user && (current_user.admin? || current_user.editor?) %>
+        <%= link_to "Edit", edit_news_path(@news), class: 'btn btn-outline-red' %>
       <% end %>
     </div>
 
