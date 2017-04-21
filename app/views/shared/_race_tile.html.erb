@@ -3,5 +3,5 @@
     <p class="race-dates"><%= short_race_date(race.start_date)%> - <%= short_race_date(race.end_date)%></p>
 
   <%= link_to "Details", race_path(race), class: "btn btn-solid-blue" %>
-  <%= link_to "Register", root_path, class: "btn btn-outline-blue" %>
+  <%= link_to "Register", new_race_registration_path, class: "btn btn-outline-blue" %>
 </div>

@@ -391,7 +391,7 @@ RSpec.describe UstsRegistration, type: :model do
   end
 
   describe "model methods" do
-    it "generates a list of registrants' ids and full names" do
+    it "generates a list of racing registrants' ids and full names" do
       user_1 = create(:usts_registration, first_name: "Erin", last_name: "Pintozzi")
       user_2 = create(:usts_registration, first_name: "Brad", last_name: "Barth")
 
@@ -400,6 +400,16 @@ RSpec.describe UstsRegistration, type: :model do
 
       expect(list).to eq([["Erin Pintozzi", user_1.id], ["Brad Barth", user_2.id]])
       expect(count).to eq(2)
+    end
+    it "does not include non-racing members on full_name_list" do
+      user_1 = create(:usts_registration, first_name: "Erin", last_name: "Pintozzi", membership_type: 0)
+      user_2 = create(:usts_registration, first_name: "Brad", last_name: "Barth")
+
+      list = UstsRegistration.where(membership_type: "racing").full_name_list
+      count = UstsRegistration.where(membership_type: "racing").full_name_list.count
+
+      expect(list).to eq([["Brad Barth", user_2.id]])
+      expect(count).to eq(1)
     end
   end
 end
