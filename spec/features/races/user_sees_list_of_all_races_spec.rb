@@ -26,4 +26,12 @@ describe "/races" do
 
     expect(current_path).to eq(race_path(race))
   end
+  scenario "user does not see registration button for past races" do
+    create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: '2017-04-21', end_date: '2017-04-23')
+
+    visit races_path
+
+    expect(page).to have_link("Details")
+    expect(page).to_not have_link("Register")
+  end
 end

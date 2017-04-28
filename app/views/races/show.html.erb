@@ -12,8 +12,9 @@
       <p class="race-dates">
         <%= short_race_date(@race.start_date) %> - <%= short_race_date(@race.end_date) %>
       </p>
-
-      <%= link_to "Register", new_race_registration_path, class: "btn btn-solid-red" %>
+      <% if @race.future? %>
+        <%= link_to "Register", new_race_registration_path, class: "btn btn-solid-red" %>
+      <% end %>
       <%= link_to "Sanction", root_path, class: "btn btn-outline-red" %>
       <br>
       <%= link_to "See others who are registered", race_registrations_path, class: 'small-link' %>
