@@ -1,13 +1,16 @@
 <div class="footer">
   <div class="row">
     <div class="col-md-4">
-        <%= link_to "Contact Us", root_path, class: "contact-link" %>
+        <p class = "contact-area"><%= link_to "Contact Us", root_path, class: "contact-link" %></p>
     </div>
     <div class="col-md-4">
-        <p class="copyright-text"> <%= Date.current.year %> US Title Series. All Rights Reserved.</p>
+        <p class="copyright-text"> &copy <%= Date.current.year %> US Title Series. All Rights Reserved.</p>
     </div>
-    <div class="col-md-4">
-
+    <div class="col-md-4 social">
+      <%= link_to(image_tag("facebook.png", alt: "Facebook", class: "social-icon"), "https://www.facebook.com/USTitleSeries", target: :_blank) %>
+      <%= link_to(image_tag("instagram.png", alt: "Instagram", class: "social-icon"), "https://www.instagram.com/ustitleseries/", target: :_blank) %>
+      <%= link_to(image_tag("twitter.png", alt: "Twitter", class: "social-icon"), "https://twitter.com/USTitleSeries", target: :_blank) %>
+      <%= link_to(image_tag("youtube.png", alt: "Youtube", class: "social-icon"), "https://www.youtube.com/user/USTitleSeries", target: :_blank) %>
     </div>
   </div>
 </div>
