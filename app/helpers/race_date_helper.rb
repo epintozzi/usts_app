@@ -4,4 +4,5 @@ module RaceDateHelper
     date.strftime("%b %-d")
   end
 
+
 end

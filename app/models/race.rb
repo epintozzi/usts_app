@@ -6,12 +6,16 @@ class Race < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
 
+  scope :future, -> { where('start_date >= ?', Date.today) }
+
   def self.title_location_list
-    race_list = []
-    all.each do |race|
-      title_and_location = ["#{race.title} - #{race.city}, #{race.state}", race.id]
-      race_list << title_and_location
+    Race.future.map do |race|
+      ["#{race.title} - #{race.city}, #{race.state}", race.id]
     end
-    return race_list
   end
+
+  def future?
+    self.start_date.future?
+  end
+
 end
