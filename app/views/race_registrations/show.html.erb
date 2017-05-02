@@ -1,0 +1,14 @@
+<div class="container">
+  <h2 class="page-title">My Race Registrations</h2>
+
+  <div class="unpaid-reg-list">
+    <% @user_registrations.each do |reg| %>
+      <p> <%= reg.race.title %> </p>
+      <p> <%= reg.race.city %>, <%= reg.race.state %> </p>
+      <p> <%= reg.boat_class.class_name %> </p>
+      <p>For testing: <%= reg.usts_registration.first_name %> </p>
+    <% end %>
+
+  </div>
+
+</div>

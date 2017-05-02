@@ -1,11 +1,12 @@
 class RaceRegistrationsController < ApplicationController
 
   def index
-    @all_registrations = RaceRegistration.all
+    # @all_registrations = RaceRegistration.all
+    @all_registrations = RaceRegistration.group(:race).count
   end
 
   def show
-    @user_registrations = RaceRegistration.all.where(usts_registration_id: current_user.id)
+    @user_registrations = RaceRegistration.all.where(usts_registration_id: current_user.id) #how does it know it's me?? the reg_id isn't a person???
   end
 
   def new

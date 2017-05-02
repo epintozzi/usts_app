@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :race do
+    title "Race for the Kids"
     street_address "123 Lake Street"
     city "DePue"
     state "IL"
