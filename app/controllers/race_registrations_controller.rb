@@ -19,7 +19,7 @@ class RaceRegistrationsController < ApplicationController
       flash[:success] = "You have successfully registered for this race."
       redirect_to new_race_registration_path
     else
-      flash[:alert] = "Something went wrong. Please try your registration again."
+      flash[:alert] = "Something went wrong. #{@race_reg.errors.full_messages.join(' ')}. Please try your registration again."
       render :new
     end
   end
