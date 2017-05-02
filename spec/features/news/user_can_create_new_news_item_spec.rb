@@ -31,7 +31,7 @@ describe "user creates news post" do
 
     click_on "Create News"
 
-    expect(page).to have_content("Something went wrong. Please try again.")
+    expect(page).to have_content("Something went wrong. Title can't be blank. Please try again.")
   end
   scenario "user sees error if content is blank when creating news" do
     user = create(:user)
@@ -44,6 +44,6 @@ describe "user creates news post" do
 
     click_on "Create News"
 
-    expect(page).to have_content("Something went wrong. Please try again.")
+    expect(page).to have_content("Something went wrong. Content can't be blank. Please try again.")
   end
 end

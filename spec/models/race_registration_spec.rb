@@ -51,5 +51,23 @@ RSpec.describe RaceRegistration, type: :model do
         expect(race_reg).to be_valid
       end
     end
+    context "uniqueness" do
+      it "is invalid for user to register for same race and class" do
+        boat_class = create(:boat_class)
+        boat_class_2 = create(:boat_class)
+        usts_registration = create(:usts_registration)
+        usts_registration_2 = create(:usts_registration)
+        race = create(:race)
+        race_reg_1 = RaceRegistration.create(boat_class: boat_class, usts_registration: usts_registration, race: race, boat_number: "V26", paid: 1, boat_owner: "Erin", boat_owner_zip: "80216", boat_name: "Fast Flyer", emergency_contact: "Brad Barth", emergency_phone: "9876544321", emergency_contact_at_race: 1)
+        race_reg_2 = RaceRegistration.create(boat_class: boat_class, usts_registration: usts_registration, race: race, boat_number: "V26", paid: 1, boat_owner: "Erin", boat_owner_zip: "80216", boat_name: "Fast Flyer", emergency_contact: "Brad Barth", emergency_phone: "9876544321", emergency_contact_at_race: 1)
+        race_reg_3 = RaceRegistration.create(boat_class: boat_class_2, usts_registration: usts_registration, race: race, boat_number: "V26", paid: 1, boat_owner: "Erin", boat_owner_zip: "80216", boat_name: "Fast Flyer", emergency_contact: "Brad Barth", emergency_phone: "9876544321", emergency_contact_at_race: 1)
+        race_reg_4 = RaceRegistration.create(boat_class: boat_class, usts_registration: usts_registration_2, race: race, boat_number: "V26", paid: 1, boat_owner: "Erin", boat_owner_zip: "80216", boat_name: "Fast Flyer", emergency_contact: "Brad Barth", emergency_phone: "9876544321", emergency_contact_at_race: 1)
+
+        expect(race_reg_1).to be_valid
+        expect(race_reg_2).to be_invalid
+        expect(race_reg_3).to be_valid
+        expect(race_reg_4).to be_valid
+      end
+    end
   end
 end
