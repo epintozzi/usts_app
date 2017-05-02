@@ -10,3 +10,7 @@ services:
   - postgresql
 before_script:
   - psql -c 'create database usts_app_test;' -U postgres
+addons:
+  apt:
+    packages:
+      - openssl
