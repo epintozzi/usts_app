@@ -2,8 +2,7 @@ language: ruby
 rvm:
   - 2.3.1
 before_install:
-  - gem install bundler
-  - gem update --system --source http://rubygems.org
+  - gem update --system
   - gem --version
 bundler_args: --without production
 services:
