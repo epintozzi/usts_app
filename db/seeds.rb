@@ -6,6 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+sponsors = Sponsor.create!(
+  [
+    {name: "Marvin Windows and Doors", url: "http://www.marvin.com/", image: "marvin_windows.png"},
+    {name: "Depue Men's Club", url: "http://www.depuemensclub.org/", image: "depue_mens_club.jpg"},
+    {name: "Race for the Kids", url: "http://raceforthekidsfoundation.org/", image: "race_for_the_kids.jpg"}
+  ]
+)
+
 boat_classes = BoatClass.create!(
   [ {class_name: 'KPro', registration_fee: 15},
     {class_name: '125cc Hydro', registration_fee: 50},
