@@ -11,7 +11,7 @@ class UstsRegistration < ApplicationRecord
   validates :state, presence: true
   validates :zip, presence: true
   validates :birthdate, presence: true
-  validates :liability_release?, presence: true, inclusion: { in: [true] }
+  validates :liability_release, presence: true, inclusion: { in: [true] }
   validates :membership_type, presence: true
   validates :signature, presence: true
 
