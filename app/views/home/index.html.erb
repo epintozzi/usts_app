@@ -23,6 +23,11 @@
   <div class="sponsors-band">
     <div class="container">
       <h3 class="page-subtitle">Sponsors</h3>
+        <div class="sponsor-logos">
+          <% @sponsors.each do |sponsor| %>
+            <%= render partial: "shared/sponsors", locals: {sponsor: sponsor} %>
+          <% end %>
+        </div>
     </div>
   </div>
 
