@@ -11,7 +11,9 @@ Rails.application.routes.draw do
 
   resources :usts_registrations, only: [:new, :create]
 
-  resources :race_registrations, only: [:index, :show, :new, :create]
+
+  resources :race_registrations, only: [:index, :new, :create]
+  get '/my_registrations', to: 'race_registrations#show'
 
   get '/competition', to: 'pages#competition'
   get '/sponsorship', to: 'pages#sponsorship'

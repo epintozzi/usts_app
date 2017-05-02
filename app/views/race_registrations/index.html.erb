@@ -2,16 +2,17 @@
 
   <h2 class="page-title">All Race Registrations</h2>
 
-  <% @all_registrations.each do |race_reg| %>
-
+  <% @all_registrations.each do |race| %>
     <p>
-      <%= link_to "#{race_reg.race.title} - #{race_reg.race.city}, #{race_reg.race.state}", race_path(race_reg.race) %>
+      <%= link_to "#{race[0].title} - #{race[0].city}, #{race[0].state}: #{race[1]} Registered", race_path(race[0]) %>
     </p>
 
     <p>
-      <%= race_reg.usts_registration.first_name %>
-      <%= race_reg.usts_registration.last_name %> - 
-      <%= race_reg.boat_class.class_name %>
+      <% race[0].race_registrations.each do |reg| %>
+      <p> <%= reg.usts_registration.first_name  %>
+        <%= reg.usts_registration.last_name %> -
+        <%= reg.boat_class.class_name %> </p>
+      <% end %>
     </p>
 
   <% end %>
