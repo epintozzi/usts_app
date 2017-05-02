@@ -6,9 +6,9 @@ describe "/" do
 
     visit root_path
 
-    expect(page).to have_content(sponsor_1.image)
-    expect(page).to have_content(sponsor_2.image)
-    expect(page).to have_link(sponsor_1.url)
-    expect(page).to have_link(sponsor_2.url)
+    expect(page).to have_css("img[src*='#{sponsor_1.image}']")
+    expect(page).to have_css("img[src*='#{sponsor_2.image}']")
+    expect(page).to have_link(href: sponsor_1.url)
+    expect(page).to have_link(href: sponsor_2.url)
   end
 end
