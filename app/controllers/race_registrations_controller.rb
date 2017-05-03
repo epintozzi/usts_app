@@ -1,4 +1,5 @@
 class RaceRegistrationsController < ApplicationController
+  load_and_authorize_resource only: [:show, :new, :create]
 
   def index
     # @all_registrations = RaceRegistration.all
@@ -6,7 +7,7 @@ class RaceRegistrationsController < ApplicationController
   end
 
   def show
-    @user_registrations = RaceRegistration.all.where(usts_registration_id: current_user.id) #how does it know it's me?? the reg_id isn't a person???
+    @user_registrations = RaceRegistration.all.where(usts_registration_id: current_user.id) #how does it know it's me?? the reg_id isn't a person??? This is intended to be a list of all a single user's active registrations
   end
 
   def new
