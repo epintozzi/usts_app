@@ -11,7 +11,7 @@ class UstsRegistrationsController < ApplicationController
       flash[:success] = "You have successfully sumbitted your registration."
       redirect_to new_usts_registration_path
     else
-      flash[:alert] = "There was a problem with your submission. Please try again."
+      flash[:alert] = "There was a problem with your submission. #{@usts_reg.errors.full_messages.join(' ')}. Please try again."
       render :new
     end
   end

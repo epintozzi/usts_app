@@ -26,4 +26,32 @@ describe "news/:id/edit" do
     expect(page).to have_content("New Content")
     expect(page).to have_content("Nov 26, 2016")
   end
+  scenario "user sees error if content is blank when updating news" do
+    user = create(:user, role: 2)
+    news = create(:news, author: user)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit edit_news_path(news)
+
+    fill_in "news[content]", with: nil
+
+    click_on "Update News"
+
+    expect(page).to have_content("Something went wrong. Content can't be blank. Please try your update again.")
+  end
+  scenario "user sees error if title is blank when updating news" do
+    user = create(:user, role: 2)
+    news = create(:news, author: user)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit edit_news_path(news)
+
+    fill_in "news[title]", with: nil
+
+    click_on "Update News"
+
+    expect(page).to have_content("Something went wrong. Title can't be blank. Please try your update again.")
+  end
 end
