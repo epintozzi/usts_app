@@ -19,4 +19,11 @@ Rails.application.routes.draw do
   get '/sponsorship', to: 'pages#sponsorship'
   get '/racing_resources', to: 'pages#racing_resources'
 
+  namespace :admin do
+    get '/dashboard', to: 'dashboard#show'
+    # patch '/dashboard', to: 'dashboard#update'
+    # resources :users, only: [:edit, :update]
+    # resources :items, only: [:index, :edit, :update, :show]
+  end
+
 end
