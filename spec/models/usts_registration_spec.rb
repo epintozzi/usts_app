@@ -429,8 +429,19 @@ RSpec.describe UstsRegistration, type: :model do
 
   describe "model methods" do
     it "generates a list of racing registrants' ids and full names" do
-      user_1 = create(:usts_registration, first_name: "Erin", last_name: "Pintozzi")
-      user_2 = create(:usts_registration, first_name: "Brad", last_name: "Barth")
+      user_1 = create(:usts_registration, first_name: "Erin", last_name: "Pintozzi", membership_type: 1)
+      user_2 = create(:usts_registration, first_name: "Brad", last_name: "Barth", membership_type: 1)
+
+      list = UstsRegistration.full_name_list
+      count = UstsRegistration.full_name_list.count
+
+      expect(list).to eq([["Erin Pintozzi", user_1.id], ["Brad Barth", user_2.id]])
+      expect(count).to eq(2)
+    end
+
+    it "generates a list of kpro registrants' ids and full names" do
+      user_1 = create(:usts_registration, first_name: "Erin", last_name: "Pintozzi", membership_type: 2)
+      user_2 = create(:usts_registration, first_name: "Brad", last_name: "Barth", membership_type: 2)
 
       list = UstsRegistration.full_name_list
       count = UstsRegistration.full_name_list.count
