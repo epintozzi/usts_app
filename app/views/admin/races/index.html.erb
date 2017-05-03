@@ -1,0 +1,10 @@
+<div class="container">
+  <h2 class="page-title">Manage Races</h2>
+
+  <%= link_to "Add new race", new_admin_race_path, class: 'btn btn-solid-red' %>
+
+  <% @races.each do |race| %>
+    <p><%= race.start_date.year %>: <%= race.title %> - <%= race.city %>, <%= race.state %></p>
+  <% end %>
+
+</div>
