@@ -5,7 +5,8 @@ class UstsRegistration < ApplicationRecord
   validates :race_year, presence: true, length: { is: 4 }
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :usts_number, presence: true, uniqueness: true
+  validates :usts_number, presence: true
+  validates :usts_number, uniqueness: { scope: [:race_year], message: "has already been registered for this race year" }
   validates :street_address, presence: true
   validates :city, presence: true
   validates :state, presence: true

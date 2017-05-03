@@ -294,7 +294,7 @@ RSpec.describe UstsRegistration, type: :model do
     end
 
     context "uniqueness" do
-      it "is it invalid if usts_number already exists" do
+      it "is it invalid if usts_number already exists for the same race year" do
         user = create(:user)
         reg_1 = UstsRegistration.create(
         race_year: 2017,
@@ -329,6 +329,43 @@ RSpec.describe UstsRegistration, type: :model do
 
         expect(reg_1).to be_valid
         expect(reg_2).to be_invalid
+      end
+
+      it "is it valid if usts_number already exists in a different race year" do
+        user = create(:user)
+        reg_1 = UstsRegistration.create(
+        race_year: 2017,
+        first_name: "Erin",
+        last_name: "Pintozzi",
+        usts_number: "12345",
+        street_address: "123 main st",
+        city: "Denver",
+        state: "CO",
+        zip: "80216",
+        birthdate: "1987-09-26",
+        liability_release: true,
+        membership_type: 0,
+        signature: "Erin Pintozzi",
+        creator_id: user.id
+        )
+        reg_2 = UstsRegistration.create(
+        race_year: 2016,
+        first_name: "Ryan",
+        last_name: "Barth",
+        usts_number: "12345",
+        street_address: "123 main st",
+        city: "Berwyn",
+        state: "IL",
+        zip: "60402",
+        birthdate: "1990-08-12",
+        liability_release: true,
+        membership_type: 0,
+        signature: "Ryan Barth",
+        creator_id: user.id
+        )
+
+        expect(reg_1).to be_valid
+        expect(reg_2).to be_valid
       end
     end
 
@@ -392,8 +429,19 @@ RSpec.describe UstsRegistration, type: :model do
 
   describe "model methods" do
     it "generates a list of racing registrants' ids and full names" do
-      user_1 = create(:usts_registration, first_name: "Erin", last_name: "Pintozzi")
-      user_2 = create(:usts_registration, first_name: "Brad", last_name: "Barth")
+      user_1 = create(:usts_registration, first_name: "Erin", last_name: "Pintozzi", membership_type: 1)
+      user_2 = create(:usts_registration, first_name: "Brad", last_name: "Barth", membership_type: 1)
+
+      list = UstsRegistration.full_name_list
+      count = UstsRegistration.full_name_list.count
+
+      expect(list).to eq([["Erin Pintozzi", user_1.id], ["Brad Barth", user_2.id]])
+      expect(count).to eq(2)
+    end
+
+    it "generates a list of kpro registrants' ids and full names" do
+      user_1 = create(:usts_registration, first_name: "Erin", last_name: "Pintozzi", membership_type: 2)
+      user_2 = create(:usts_registration, first_name: "Brad", last_name: "Barth", membership_type: 2)
 
       list = UstsRegistration.full_name_list
       count = UstsRegistration.full_name_list.count

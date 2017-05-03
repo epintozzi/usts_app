@@ -57,7 +57,9 @@
             <li>
               <%= link_to "My Registrations", my_registrations_path %>
             </li>
-            <li><a href="#">Profile</a></li>
+            <li>
+              <%= link_to "Profile Settings", edit_user_registration_path %>
+            </li>
             <li role="separator" class="divider"></li>
               <li><%=link_to "Rule Book", asset_path("usts_rule_book_2017.pdf"), target: :_blank  %></li>
               <li><%=link_to "By-laws", asset_path("by_laws_usts_2017.pdf"), target: :_blank  %></li>
