@@ -3,6 +3,9 @@ class RaceRegistration < ApplicationRecord
   belongs_to :usts_registration
   belongs_to :race
 
+  validates :race, presence: true
+  validates :usts_registration, presence: true
   validates :boat_number, presence: true
+  validates :boat_class, presence: true
   validates :boat_class, uniqueness: { scope: [:usts_registration, :race], message: "has already been registered for this driver and race location" }
 end

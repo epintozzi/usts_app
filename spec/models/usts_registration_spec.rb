@@ -450,7 +450,7 @@ RSpec.describe UstsRegistration, type: :model do
       expect(count).to eq(2)
     end
     it "does not include non-racing members on full_name_list" do
-      user_1 = create(:usts_registration, first_name: "Erin", last_name: "Pintozzi", membership_type: 0)
+      create(:usts_registration, first_name: "Erin", last_name: "Pintozzi", membership_type: 0)
       user_2 = create(:usts_registration, first_name: "Brad", last_name: "Barth")
 
       list = UstsRegistration.where(membership_type: "racing").full_name_list

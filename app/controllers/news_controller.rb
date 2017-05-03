@@ -1,4 +1,5 @@
 class NewsController < ApplicationController
+  load_and_authorize_resource only: [:new, :create, :edit, :update]
 
   def index
     @all_news = News.all.order(published_on: :desc)

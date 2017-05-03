@@ -1,4 +1,11 @@
 class UstsRegistrationsController < ApplicationController
+  load_and_authorize_resource only: [:index, :show, :new, :create]
+
+  def index
+  end
+
+  def show
+  end
 
   def new
     @usts_reg = UstsRegistration.new
