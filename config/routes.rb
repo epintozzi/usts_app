@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: 'dashboard#show'
     # patch '/dashboard', to: 'dashboard#update'
-    # resources :users, only: [:edit, :update]
+    resources :races, except: :destroy
     # resources :items, only: [:index, :edit, :update, :show]
   end
 
