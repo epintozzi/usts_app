@@ -20,7 +20,7 @@ describe "/admin/races" do
 
   scenario "editor does not see list of all races" do
     editor = create(:user, role: 1)
-    race_1, race_2 = create_list(:race, 2)
+    create_list(:race, 2)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(editor)
 
@@ -31,7 +31,7 @@ describe "/admin/races" do
 
   scenario "normal user does not see list of all races" do
     user = create(:user, role: 0)
-    race_1, race_2 = create_list(:race, 2)
+    create_list(:race, 2)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -42,7 +42,7 @@ describe "/admin/races" do
 
   scenario "non-logged in user does not see list of all races" do
     user = create(:user, role: 0)
-    race_1, race_2 = create_list(:race, 2)
+    create_list(:race, 2)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
