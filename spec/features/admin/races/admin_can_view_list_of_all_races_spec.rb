@@ -14,6 +14,8 @@ describe "/admin/races" do
     expect(current_path).to eq(admin_races_path)
     expect(page).to have_content("Manage Races")
     expect(page).to have_link("Add new race")
+    expect(page).to have_link("Edit")
+    expect(page).to have_link("View")
     expect(page).to have_content(race_1.title)
     expect(page).to have_content(race_2.title)
   end
