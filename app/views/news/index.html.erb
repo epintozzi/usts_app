@@ -1,5 +1,10 @@
 <div class="container">
   <h2 class="page-title">News</h2>
+  <p>
+    <% if current_user && (current_user.admin? || current_user.editor?) %>
+      <%= link_to "Add News Post", new_news_path, class: 'btn btn-solid-red' %>
+    <% end %>
+  </p>
   <div class="row">
     <% @all_news.each do |news| %>
       <div class="col-md-4">
