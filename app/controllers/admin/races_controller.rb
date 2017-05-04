@@ -18,7 +18,7 @@ class Admin::RacesController < Admin::BaseController
       flash[:success] = "This race has successfully been created."
       redirect_to admin_races_path
     else
-      flash[:alert] = "Something went wrong. #{@race.errors.full_messages.join(' ')}. Please try again."
+      flash[:danger] = "Something went wrong. #{@race.errors.full_messages.join(' ')}. Please try again."
       render :new
     end
   end
@@ -33,7 +33,7 @@ class Admin::RacesController < Admin::BaseController
       flash[:success] = "This race has successfully been updated."
       redirect_to admin_races_path
     else
-      flash[:alert] = "Something went wrong. #{@race.errors.full_messages.join(' ')}. Please try again."
+      flash[:danger] = "Something went wrong. #{@race.errors.full_messages.join(' ')}. Please try again."
       render :edit
     end
   end

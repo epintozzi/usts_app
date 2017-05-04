@@ -20,7 +20,7 @@ class NewsController < ApplicationController
       flash[:success] = "Your news post has been successfully created."
       redirect_to news_path(@news)
     else
-      flash[:alert] = "Something went wrong. #{@news.errors.full_messages.join(' ')}. Please try again."
+      flash[:danger] = "Something went wrong. #{@news.errors.full_messages.join(' ')}. Please try again."
       render :new
     end
   end
@@ -35,7 +35,7 @@ class NewsController < ApplicationController
       flash[:success] = "You have successfully updated this post."
       redirect_to news_path(@news)
     else
-      flash[:alert] = "Something went wrong. #{@news.errors.full_messages.join(' ')}. Please try your update again."
+      flash[:danger] = "Something went wrong. #{@news.errors.full_messages.join(' ')}. Please try your update again."
       render :edit
     end
   end
