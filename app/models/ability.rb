@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    if user
+    if user.id
       can [:new, :create], [RaceRegistration, UstsRegistration]
       can [:show], RaceRegistration
     end
