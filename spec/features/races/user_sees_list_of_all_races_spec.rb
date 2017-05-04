@@ -3,7 +3,7 @@ require "rails_helper"
 describe "/races" do
   scenario "user sees list of all races for season" do
     race = create(:race)
-    race2 = Race.create(city: "Denver", state: "CO", start_date: "2017-06-26 16:33:57", end_date: "2017-06-26 16:33:57")
+    race2 = Race.create(city: "Denver", state: "CO", start_date: "2017-06-26 16:33:57", end_date: "2017-06-26 16:33:57", title: "New race")
 
     visit races_path
 
