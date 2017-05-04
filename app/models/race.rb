@@ -5,6 +5,7 @@ class Race < ApplicationRecord
   validates :state, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
+  validates :title, presence: true
 
   scope :future, -> { where('start_date >= ?', Date.today) }
 
