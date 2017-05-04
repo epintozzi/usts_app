@@ -1,0 +1,52 @@
+<%= form_for [:admin, @race], html: {class: "form-group"} do |f| %>
+
+  <div class="field">
+    <%= f.label :title, "Title (ex: Race for the Kids)" , class: 'required' %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :street_address %>
+    <%= f.text_field :street_address, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city, class: 'required' %>
+    <%= f.text_field :city, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :state, class: 'required' %>
+    <%= f.text_field :state, class: 'form-control' %>
+  </div>
+
+  <div class="field race-start">
+    <%= f.label :start_date, class: 'required' %>
+    <%= f.date_select :start_date, :order => [:month, :day, :year], :start_year=>Date.current.year,:end_year=>Date.current.next_year.year, html: {class: 'form-control'} %>
+  </div>
+
+  <div class="field race-end">
+    <%= f.label :end_date, class: 'required' %>
+    <%= f.date_select :end_date, :order => [:month, :day, :year], :start_year=>Date.current.year,:end_year=>Date.current.next_year.year, html: {class: 'form-control'} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :details %>
+    <%= f.text_area :details, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hotel_information %>
+    <%= f.text_area :hotel_information, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fee_override, "Fee Override (Optional): This will override the standard race registration fee for this race only. Leave blank to charge normal fees." %>
+    <%= f.number_field :fee_override, {min: 0, class: 'form-control'} %>
+  </div>
+
+  <div class="action">
+    <%= f.submit class: "btn btn-solid-red"%>
+  </div>
+
+<% end %>

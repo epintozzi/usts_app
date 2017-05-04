@@ -24,9 +24,18 @@ class Admin::RacesController < Admin::BaseController
   end
 
   def edit
+    @race = Race.find(params[:id])
   end
 
   def update
+    @race = Race.find(params[:id])
+    if @race.update(race_params)
+      flash[:success] = "This race has successfully been updated."
+      redirect_to admin_races_path
+    else
+      flash[:alert] = "Something went wrong. #{@race.errors.full_messages.join(' ')}. Please try again."
+      render :edit
+    end
   end
 
   private
