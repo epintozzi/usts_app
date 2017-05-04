@@ -7,7 +7,10 @@ describe "authorized user creates news post" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit new_news_path
+    visit news_index_path
+
+    click_on "Add News Post"
+    expect(current_path).to eq(new_news_path)
 
     fill_in "news[title]", with: "Title"
     fill_in "news[content]", with: "This is content"
@@ -27,7 +30,10 @@ describe "authorized user creates news post" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit new_news_path
+    visit news_index_path
+
+    click_on "Add News Post"
+    expect(current_path).to eq(new_news_path)
 
     fill_in "news[title]", with: "Title"
     fill_in "news[content]", with: "This is content"
@@ -74,16 +80,14 @@ describe "authorized user creates news post" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit new_news_path
+    visit news_index_path
 
-    expect(page).to have_content("You are not authorized to access this page.")
-    expect(current_path).to eq(root_path)
+    expect(page).to_not have_link("Add News Post")
   end
 
   scenario "non-logged in user cannot create a news item" do
-    visit new_news_path
+    visit news_index_path
 
-    expect(page).to have_content("You are not authorized to access this page.")
-    expect(current_path).to eq(root_path)
+    expect(page).to_not have_link("Add News Post")
   end
 end
