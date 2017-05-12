@@ -17,7 +17,7 @@ h3 {
 h4 {
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 18px;
-  color: #323639;
+  color: #18639B;
 }
 
 h5 {
@@ -150,4 +150,18 @@ label.required:after {
 .alert-alert {
   background-color: #f2dede;
   border-color: #ebccd1;
+}
+
+.basic-page {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+}
+
+.lead-text {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.4;
 }
