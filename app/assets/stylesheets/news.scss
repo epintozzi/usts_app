@@ -8,7 +8,8 @@
   margin-top: 10px;
   margin-bottom: 40px;
   margin-left: auto;
-  margin-right: auto; 
+  margin-right: auto;
+  position: relative;
 }
 
 .news-title {
@@ -35,10 +36,20 @@
   color: #18639B;
 }
 
+.news-author-tile {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 11px;
+  color: #18639B;
+  position: absolute;
+  margin-left: 10px;
+  bottom: 0;
+  left: 0;
+}
+
 .blog-avatar {
   height: 30px;
   border-radius: 50%;
-  padding-right: 5px;
+  margin-right: 5px;
 }
 
 .article-title {
