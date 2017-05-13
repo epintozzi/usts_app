@@ -1,0 +1,12 @@
+<div class="container">
+  <h2 class="page-title">Manage USTS Registrations</h2>
+  <%= link_to "Export USTS Registrations", root_path, class: 'btn btn-solid-red' %>
+  <div class="usts-registration-list">
+    <% @usts_registrations.each do |reg| %>
+    <p>
+      <%= reg.race_year %>: <%= reg.first_name %> <%= reg.last_name %> - <%= reg.membership_type %>
+    </p>
+    <% end %>
+  </div>
+
+</div>
