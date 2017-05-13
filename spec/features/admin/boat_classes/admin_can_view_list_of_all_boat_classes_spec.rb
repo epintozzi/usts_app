@@ -13,7 +13,7 @@ describe "/admin/boat_classes" do
 
     expect(current_path).to eq(admin_boat_classes_path)
     expect(page).to have_content("Manage Boat Classes")
-    expect(page).to have_link("Add new boat_class")
+    expect(page).to have_link("Add boat class")
     expect(page).to have_link("Edit")
     expect(page).to have_content(boat_class_1.class_name)
     expect(page).to have_content(boat_class_2.class_name)
