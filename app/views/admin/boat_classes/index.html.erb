@@ -6,7 +6,7 @@
   <% @boat_classes.each do |boat_class| %>
     <p>
       <%= link_to "Edit", edit_admin_boat_class_path(boat_class), class: "small-link" %>
-      <%= boat_class.class_name %>
+      <%= boat_class.class_name %> | Fee: <%= number_to_currency(boat_class.registration_fee) %>
     </p>
   <% end %>
 
