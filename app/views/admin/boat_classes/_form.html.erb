@@ -1,0 +1,16 @@
+<%= form_for [:admin, @boat_class], html: {class: "form-group"} do |f| %>
+  <div class="field">
+    <%= f.label :class_name, class: 'required' %>
+    <%= f.text_field :class_name, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :registration_fee, class: 'required' %>
+    <%= f.number_field :registration_fee, {min: 0, class: 'form-control'} %>
+  </div>
+
+  <div class="action">
+    <%= f.submit class: "btn btn-solid-red"%>
+  </div>
+
+<% end %>
