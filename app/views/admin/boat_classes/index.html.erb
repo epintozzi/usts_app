@@ -1,0 +1,13 @@
+<div class="container">
+  <h2 class="page-title">Manage Boat Classes</h2>
+
+  <%= link_to "Add boat class", new_admin_boat_class_path, class: 'btn btn-solid-red' %>
+
+  <% @boat_classes.each do |boat_class| %>
+    <p>
+      <%= link_to "Edit", edit_admin_boat_class_path(boat_class), class: "small-link" %>
+      <%= boat_class.class_name %> | Fee: <%= number_to_currency(boat_class.registration_fee) %>
+    </p>
+  <% end %>
+
+</div>
