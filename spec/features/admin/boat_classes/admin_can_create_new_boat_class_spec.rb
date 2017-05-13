@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "admin/boat/new" do
+describe "admin/boat_class/new" do
   scenario "admin can create a boat_class" do
     admin = create(:user, role: 2)
 
