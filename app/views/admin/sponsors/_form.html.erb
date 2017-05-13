@@ -1,0 +1,21 @@
+<%= form_for [:admin, @sponsor], html: {class: "form-group"} do |f| %>
+  <div class="field">
+    <%= f.label :name, class: 'required' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image, class: 'required' %>
+    <%= f.text_field :image, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :url%>
+    <%= f.text_field :url, class: 'form-control' %>
+  </div>
+
+  <div class="action">
+    <%= f.submit class: "btn btn-solid-red"%>
+  </div>
+
+<% end %>
