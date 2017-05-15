@@ -1,12 +1,19 @@
 <div class="container">
   <h2 class="page-title">Manage Users</h2>
 
-  <%= link_to "Add new user", new_admin_user_path, class: 'btn btn-solid-red' %>
+  <%#= link_to "Add new user", new_admin_user_path, class: 'btn btn-solid-red' %>
+  <p class="lead-text">
+    Editors can only create and edit blog posts.
+    Admins have full access to all admin features: races, registrations, classes, sponsors, users, gallery, news, and results.
+  </p>
 
   <% @users.each do |user| %>
     <p>
       <%= link_to "Edit", edit_admin_user_path(user), class: "small-link" %>
       <%= user.first_name %> <%= user.last_name %>
+      <% if user.admin? || user.editor? %>
+        <font class="admin-flag"> <%= user.role %></font>
+      <% end %>
     </p>
   <% end %>
 
