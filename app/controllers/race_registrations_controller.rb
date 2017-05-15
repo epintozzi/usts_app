@@ -2,7 +2,6 @@ class RaceRegistrationsController < ApplicationController
   load_and_authorize_resource only: [:show, :new, :create]
 
   def index
-    # @all_registrations = RaceRegistration.all
     @all_registrations = RaceRegistration.group(:race).count
   end
 
