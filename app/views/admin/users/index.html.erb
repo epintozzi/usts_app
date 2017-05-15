@@ -1,0 +1,13 @@
+<div class="container">
+  <h2 class="page-title">Manage Users</h2>
+
+  <%= link_to "Add new user", new_admin_user_path, class: 'btn btn-solid-red' %>
+
+  <% @users.each do |user| %>
+    <p>
+      <%= link_to "Edit", edit_admin_user_path(user), class: "small-link" %>
+      <%= user.first_name %> <%= user.last_name %>
+    </p>
+  <% end %>
+
+</div>
