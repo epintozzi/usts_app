@@ -17,7 +17,8 @@ RSpec.describe UstsRegistration, type: :model do
         liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
 
         expect(reg).to be_invalid
@@ -37,7 +38,8 @@ RSpec.describe UstsRegistration, type: :model do
         liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
 
         expect(reg).to be_invalid
@@ -57,7 +59,8 @@ RSpec.describe UstsRegistration, type: :model do
         liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
 
         expect(reg).to be_invalid
@@ -76,7 +79,8 @@ RSpec.describe UstsRegistration, type: :model do
         liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
 
         expect(reg).to be_invalid
@@ -95,7 +99,8 @@ RSpec.describe UstsRegistration, type: :model do
         liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
 
         expect(reg).to be_invalid
@@ -114,7 +119,8 @@ RSpec.describe UstsRegistration, type: :model do
         liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
 
         expect(reg).to be_invalid
@@ -133,7 +139,8 @@ RSpec.describe UstsRegistration, type: :model do
         liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
 
         expect(reg).to be_invalid
@@ -152,7 +159,8 @@ RSpec.describe UstsRegistration, type: :model do
         liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
 
         expect(reg).to be_invalid
@@ -171,7 +179,8 @@ RSpec.describe UstsRegistration, type: :model do
         liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
 
         expect(reg).to be_invalid
@@ -190,7 +199,8 @@ RSpec.describe UstsRegistration, type: :model do
         liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
 
         expect(reg).to be_invalid
@@ -209,7 +219,8 @@ RSpec.describe UstsRegistration, type: :model do
         liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
 
         expect(reg).to be_invalid
@@ -228,7 +239,8 @@ RSpec.describe UstsRegistration, type: :model do
         birthdate: "1987-09-26",
         membership_type: 0,
         signature: "Erin Pintozzi",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
 
         expect(reg).to be_invalid
@@ -248,7 +260,8 @@ RSpec.describe UstsRegistration, type: :model do
         liability_release: false,
         membership_type: 0,
         signature: "Erin Pintozzi",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
 
         expect(reg).to be_invalid
@@ -267,7 +280,8 @@ RSpec.describe UstsRegistration, type: :model do
         birthdate: "1987-09-26",
         liability_release: true,
         signature: "Erin Pintozzi",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
 
         expect(reg).to be_invalid
@@ -286,7 +300,8 @@ RSpec.describe UstsRegistration, type: :model do
         birthdate: "1987-09-26",
         liability_release: true,
         membership_type: 0,
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
 
         expect(reg).to be_invalid
@@ -309,7 +324,8 @@ RSpec.describe UstsRegistration, type: :model do
         liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
         reg_2 = UstsRegistration.create(
         race_year: 2017,
@@ -324,7 +340,8 @@ RSpec.describe UstsRegistration, type: :model do
         liability_release: true,
         membership_type: 0,
         signature: "Ryan Barth",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
 
         expect(reg_1).to be_valid
@@ -346,7 +363,8 @@ RSpec.describe UstsRegistration, type: :model do
         liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
         reg_2 = UstsRegistration.create(
         race_year: 2016,
@@ -361,7 +379,8 @@ RSpec.describe UstsRegistration, type: :model do
         liability_release: true,
         membership_type: 0,
         signature: "Ryan Barth",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
 
         expect(reg_1).to be_valid
@@ -385,7 +404,8 @@ RSpec.describe UstsRegistration, type: :model do
         liability_release: true,
         membership_type: 0,
         signature: "Erin Pintozzi",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
 
         expect(reg).to be_valid
@@ -408,7 +428,8 @@ RSpec.describe UstsRegistration, type: :model do
         email: "erin@email.com",
         phone: "123-456-7890",
         fax: "987-654-4321",
-        creator_id: user.id
+        creator_id: user.id,
+        paid: false
         )
 
         expect(reg).to be_valid

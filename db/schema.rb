@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502201645) do
+ActiveRecord::Schema.define(version: 20170515213452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,9 @@ ActiveRecord::Schema.define(version: 20170502201645) do
     t.integer "race_id"
     t.integer "boat_class_id"
     t.integer "usts_registration_id"
+    t.integer "creator_id"
     t.index ["boat_class_id"], name: "index_race_registrations_on_boat_class_id", using: :btree
+    t.index ["creator_id"], name: "index_race_registrations_on_creator_id", using: :btree
     t.index ["race_id"], name: "index_race_registrations_on_race_id", using: :btree
     t.index ["usts_registration_id"], name: "index_race_registrations_on_usts_registration_id", using: :btree
   end
@@ -114,14 +116,16 @@ ActiveRecord::Schema.define(version: 20170502201645) do
     t.integer  "membership_type"
     t.text     "signature"
     t.integer  "creator_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.boolean  "paid",              default: false
     t.index ["creator_id"], name: "index_usts_registrations_on_creator_id", using: :btree
   end
 
   add_foreign_key "news", "users", column: "author_id"
   add_foreign_key "race_registrations", "boat_classes"
   add_foreign_key "race_registrations", "races"
+  add_foreign_key "race_registrations", "users", column: "creator_id"
   add_foreign_key "race_registrations", "usts_registrations"
   add_foreign_key "usts_registrations", "users", column: "creator_id"
 end

@@ -16,6 +16,7 @@ class RaceRegistrationsController < ApplicationController
 
   def create
     @race_reg = RaceRegistration.new(race_registration_params)
+    @race_reg.creator = current_user
     if @race_reg.save
       flash[:success] = "You have successfully registered for this race."
       redirect_to new_race_registration_path
