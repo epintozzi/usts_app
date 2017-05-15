@@ -7,5 +7,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  has_many :race_registrations
+
   enum role: [:normal, :editor, :admin]
 end

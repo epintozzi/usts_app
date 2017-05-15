@@ -7,7 +7,10 @@ class RaceRegistrationsController < ApplicationController
   end
 
   def show
-    @user_registrations = RaceRegistration.all.where(usts_registration_id: current_user.id) #how does it know it's me?? the reg_id isn't a person??? This is intended to be a list of all a single user's active registrations
+    race_regs = RaceRegistration.where(creator_id: current_user.id)
+    race_regs += RaceRegistration.includes(:usts_registration).where(usts_registrations: {creator_id: current_user.id})
+    @race_registrations = race_regs.uniq
+
   end
 
   def new
