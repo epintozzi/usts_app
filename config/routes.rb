@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :usts_registrations, only: [:index]
     resources :boat_classes, except: [:show, :destroy]
     resources :sponsors, except: [:show, :destroy]
+    resources :users, except: [:show, :destroy]
   end
 
 end
