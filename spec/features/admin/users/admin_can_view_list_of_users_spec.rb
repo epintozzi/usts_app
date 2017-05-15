@@ -13,7 +13,6 @@ describe "/admin/users" do
 
     expect(current_path).to eq(admin_users_path)
     expect(page).to have_content("Manage Users")
-    expect(page).to have_link("Add new user")
     expect(page).to have_link("Edit")
     expect(page).to have_content(user_1.first_name)
     expect(page).to have_content(user_2.first_name)
