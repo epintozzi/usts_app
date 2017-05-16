@@ -6,7 +6,7 @@ describe "admin/users/edit/:id" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-    user = create(:user, first_name: "Erin", image: "image.jpg")
+    user = create(:user, first_name: "Erin")
 
     visit edit_admin_user_path(user)
 
