@@ -18,6 +18,7 @@ FactoryGirl.define do
     birthdate "1987-04-19 12:43:43"
     liability_release true
     membership_type 1
+    paid false
     signature "Signature text"
     association :creator, factory: :user
   end

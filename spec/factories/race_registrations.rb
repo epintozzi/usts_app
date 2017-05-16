@@ -11,5 +11,6 @@ FactoryGirl.define do
     race
     boat_class
     usts_registration
+    association :creator, factory: :user
   end
 end

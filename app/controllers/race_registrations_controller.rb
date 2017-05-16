@@ -2,12 +2,14 @@ class RaceRegistrationsController < ApplicationController
   load_and_authorize_resource only: [:show, :new, :create]
 
   def index
-    # @all_registrations = RaceRegistration.all
     @all_registrations = RaceRegistration.group(:race).count
   end
 
   def show
-    @user_registrations = RaceRegistration.all.where(usts_registration_id: current_user.id) #how does it know it's me?? the reg_id isn't a person??? This is intended to be a list of all a single user's active registrations
+    race_regs = RaceRegistration.where(creator_id: current_user.id)
+    race_regs += RaceRegistration.includes(:usts_registration).where(usts_registrations: {creator_id: current_user.id})
+    @race_registrations = race_regs.uniq
+
   end
 
   def new
@@ -16,6 +18,7 @@ class RaceRegistrationsController < ApplicationController
 
   def create
     @race_reg = RaceRegistration.new(race_registration_params)
+    @race_reg.creator = current_user
     if @race_reg.save
       flash[:success] = "You have successfully registered for this race."
       redirect_to new_race_registration_path
