@@ -8,7 +8,7 @@
     <div class="col-md-2">
       <div class="detail-author">
         <p class="news-author">
-          <%= image_tag(@news.author.image, class: "blog-avatar") %>
+          <%= image_tag(@news.author.image.url(:thumb), class: "blog-avatar") %>
           By <%= @news.author.first_name %> <%= @news.author.last_name %><br>
         </p>
         <p class="news-date"><%= news_date(@news.published_on) %></p>

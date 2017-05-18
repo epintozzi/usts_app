@@ -7,6 +7,9 @@ class Race < ApplicationRecord
   validates :end_date, presence: true
   validates :title, presence: true
 
+  has_attached_file :sanction
+  validates_attachment :sanction, content_type: { content_type: "application/pdf" }
+
   scope :future, -> { where('start_date >= ?', Date.today) }
 
   def self.title_location_list

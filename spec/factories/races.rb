@@ -9,7 +9,7 @@ FactoryGirl.define do
     latitude 41.3242
     start_date "2017-07-26 16:33:57"
     end_date "2017-07-30 16:33:57"
-    sanction "santion.pdf"
+    sanction Rack::Test::UploadedFile.new(Rails.root() + 'spec/assets/sanction.pdf', 'application/pdf')
     details "These are details about the race"
     hotel_information "This is hotel information about the race"
   end

@@ -41,6 +41,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :sanction %>
+    <%= f.file_field :sanction, as: :file %>
+  </div>
+
+  <div class="field">
     <%= f.label :fee_override, "Fee Override (Optional): This will override the standard race registration fee for this race only. Leave blank to charge normal fees." %>
     <%= f.number_field :fee_override, {min: 0, class: 'form-control'} %>
   </div>
