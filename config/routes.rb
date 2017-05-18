@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   resources :races, only: [:index, :show]
 
+  resources :galleries, only: [:index, :show]
+
+  # resources :photos, only: [:show]
+
   resources :usts_registrations, only: [:new, :create]
 
 
@@ -28,6 +32,7 @@ Rails.application.routes.draw do
     resources :boat_classes, except: [:show, :destroy]
     resources :sponsors, except: [:show, :destroy]
     resources :users, except: [:show, :destroy]
+    resources :galleries, except: [:show, :destroy]
   end
 
 end

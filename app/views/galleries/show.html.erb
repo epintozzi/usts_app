@@ -1,0 +1,10 @@
+<div class="container">
+  <h2 class="page-title"> <%= @gallery.name %> </h2>
+
+  <% @gallery.photos.each do |photo| %>
+    <div class="col-md-4">
+      <%= image_tag(photo.image.url(:thumb), class: "gallery-thumb") %>
+    </div>
+  <% end %>
+
+</div>

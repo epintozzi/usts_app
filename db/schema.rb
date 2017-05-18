@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170518200848) do
+ActiveRecord::Schema.define(version: 20170518220913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(version: 20170518200848) do
     t.float    "registration_fee"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+  end
+
+  create_table "galleries", force: :cascade do |t|
+    t.text     "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "news", force: :cascade do |t|
@@ -34,6 +40,19 @@ ActiveRecord::Schema.define(version: 20170518200848) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.index ["author_id"], name: "index_news_on_author_id", using: :btree
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.text     "photographer"
+    t.text     "caption"
+    t.integer  "gallery_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.index ["gallery_id"], name: "index_photos_on_gallery_id", using: :btree
   end
 
   create_table "race_registrations", force: :cascade do |t|
@@ -135,6 +154,7 @@ ActiveRecord::Schema.define(version: 20170518200848) do
   end
 
   add_foreign_key "news", "users", column: "author_id"
+  add_foreign_key "photos", "galleries"
   add_foreign_key "race_registrations", "boat_classes"
   add_foreign_key "race_registrations", "races"
   add_foreign_key "race_registrations", "users", column: "creator_id"

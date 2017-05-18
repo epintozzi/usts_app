@@ -1,0 +1,11 @@
+<%= form_for [:admin, @gallery], html: {class: "form-group"} do |f| %>
+  <div class="field">
+    <%= f.label :name, class: 'required' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="action">
+    <%= f.submit class: "btn btn-solid-red"%>
+  </div>
+
+<% end %>
