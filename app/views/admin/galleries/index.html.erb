@@ -2,6 +2,7 @@
   <h2 class="page-title">Manage Galleries</h2>
 
   <%= link_to "Add new gallery", new_admin_gallery_path, class: 'btn btn-solid-red' %>
+  <%= link_to "Add new photo", new_admin_photo_path, class: 'btn btn-solid-red' %>
 
   <% @galleries.each do |gallery| %>
     <p>

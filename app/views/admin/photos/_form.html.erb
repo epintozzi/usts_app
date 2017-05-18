@@ -1,0 +1,26 @@
+<%= form_for [:admin, @photo], html: {class: "form-group"} do |f| %>
+  <div class="field">
+    <%= f.label :photographer %>
+    <%= f.text_field :photographer, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :caption %>
+    <%= f.text_field :caption, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image, class: 'required' %>
+    <%= f.file_field :image, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gallery, class: 'required' %>
+    <%= f.collection_select(:gallery_id, Gallery.all, :id, :name, { prompt: "Select Gallery" }, class: 'form-control') %>
+  </div>
+
+  <div class="action">
+    <%= f.submit "Add photo to gallery", class: "btn btn-solid-red"%>
+  </div>
+
+<% end %>

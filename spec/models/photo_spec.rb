@@ -14,7 +14,7 @@ RSpec.describe Photo, type: :model do
     context "valid attributes" do
       it "is valid with all required attributes" do
         gallery = create(:gallery)
-        photo = Photo.create(image: "http://usts-app-assets.s3.amazonaws.com/sponsors/images/000/000/002/original/depue_mens_club.jpg?1495136989")
+        photo = Photo.create(image: "http://usts-app-assets.s3.amazonaws.com/sponsors/images/000/000/002/original/depue_mens_club.jpg?1495136989", gallery_id: gallery.id)
 
         expect(photo).to be_valid
       end
