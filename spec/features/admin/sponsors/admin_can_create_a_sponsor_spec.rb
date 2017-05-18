@@ -10,7 +10,7 @@ describe "admin/sponsor/new" do
 
     fill_in "sponsor[name]", with: "DePue Men's Club"
     fill_in "sponsor[url]", with: "www.depue.com"
-    fill_in "sponsor[image]", with: "image.jpg"
+    page.attach_file("sponsor_image", Rails.root + 'spec/assets/image.JPG')
 
     click_on "Create Sponsor"
 
@@ -27,7 +27,7 @@ describe "admin/sponsor/new" do
     visit new_admin_sponsor_path
 
     fill_in "sponsor[url]", with: "www.depue.com"
-    fill_in "sponsor[image]", with: "image.png"
+    page.attach_file("sponsor_image", Rails.root + 'spec/assets/image.JPG')
 
     click_on "Create Sponsor"
 
