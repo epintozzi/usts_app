@@ -1,0 +1,9 @@
+<div class="container">
+
+  <h2 class="page-title">Photo Galleries</h2>
+
+  <% @galleries.each do |gallery| %>
+    <%= link_to gallery.name, gallery_path(gallery) %>
+  <% end %>
+
+</div>

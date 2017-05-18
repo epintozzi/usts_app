@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :news
 
   resources :races, only: [:index, :show]
+  
+  resources :galleries, only: [:index, :show]
 
   resources :usts_registrations, only: [:new, :create]
 
