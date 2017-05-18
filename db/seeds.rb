@@ -6,13 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-sponsors = Sponsor.create!(
-  [
-    {name: "Marvin Windows and Doors", url: "http://www.marvin.com/", image: "marvin_windows.png"},
-    {name: "Depue Men's Club", url: "http://www.depuemensclub.org/", image: "depue_mens_club.jpg"},
-    {name: "Race for the Kids", url: "http://raceforthekidsfoundation.org/", image: "race_for_the_kids.jpg"}
-  ]
-)
+# sponsors = Sponsor.create!(
+#   [
+#     {name: "Marvin Windows and Doors", url: "http://www.marvin.com/", image: "marvin_windows.png"},
+#     {name: "Depue Men's Club", url: "http://www.depuemensclub.org/", image: "depue_mens_club.jpg"},
+#     {name: "Race for the Kids", url: "http://raceforthekidsfoundation.org/", image: "race_for_the_kids.jpg"}
+#   ]
+# )
 
 boat_classes = BoatClass.create!(
   [ {class_name: 'KPro', registration_fee: 15},
@@ -44,7 +44,6 @@ Race.create!(
       state: "FL",
       start_date: "2017-04-21 07:00:00",
       end_date: "2017-04-23 07:00:00",
-      sanction: "sanction.pdf",
       details: "For those attending the Lake Alfred, FL race: All teams will be required to have a tarp underneath the engines of all of their boats at all times when in the pit area and working on the engine with any fluids, beginning when you arrive to when you leave. In addition, cans with gas and methanol are not be next to any generators. This is being monitored by the City of Lake Alfred and they have advised us that they will not tolerate any exceptions. The first time it is a warning and the second time you will be disqualified for the day. There will be a barrel available to dump your oils into.",
       latitude: 28.0928333,
       longitude: 	-81.7340688,
@@ -56,7 +55,6 @@ Race.create!(
       state: "WI",
       start_date: "2017-05-26 07:00:00",
       end_date: "2017-05-28 07:00:00",
-      sanction: "sanction.pdf",
       details: "More details coming soon.",
       latitude: 42.530116,
       longitude: 	-87.926402,
@@ -68,7 +66,6 @@ Race.create!(
       state: "IL",
       start_date: "2017-06-30 07:00:00",
       end_date: "2017-07-02 07:00:00",
-      sanction: "sanction.pdf",
       details: "More details coming soon.",
       latitude: 39.6845682,
       longitude: 	-89.6508451,
@@ -80,7 +77,6 @@ Race.create!(
       state: "MI",
       start_date: "2017-07-21 07:00:00",
       end_date: "2017-07-23 07:00:00",
-      sanction: "sanction.pdf",
       details: "More details coming soon.",
       latitude: 41.8526111,
       longitude: 	-85.668731,
@@ -92,7 +88,6 @@ Race.create!(
       state: "IL",
       start_date: "2017-07-26 07:00:00",
       end_date: "2017-07-30 07:00:00",
-      sanction: "sanction.pdf",
       details: "More details coming soon.",
       latitude: 41.3230718,
       longitude: 	-89.3114441,

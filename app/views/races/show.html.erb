@@ -15,7 +15,7 @@
       <% if @race.future? %>
         <%= link_to "Register", new_race_registration_path, class: "btn btn-solid-red" %>
       <% end %>
-      <%= link_to "Sanction", root_path, class: "btn btn-outline-red" %>
+      <%= link_to "Sanction", @race.sanction.url, class: "btn btn-outline-red", target: :_blank %>
       <br>
       <%= link_to "See others who are registered", race_registrations_path, class: 'small-link' %>
     </div>
@@ -31,13 +31,13 @@
   <div class="col-md-5">
     <div class="race-general-info">
       <h3 class="page-subtitle">General Information</h3>
-      <p class=""><%= @race.details %></p>
+      <p class=""><%= simple_format(@race.details) %></p>
     </div>
   </div>
   <div class="col-md-5">
     <div class="race-where-to-stay">
       <h3 class="page-subtitle">Where to Stay</h3>
-      <p class=""><%= @race.hotel_information %></p>
+      <p class=""><%= simple_format(@race.hotel_information) %></p>
     </div>
   </div>
   <div class="col-md-1"></div>

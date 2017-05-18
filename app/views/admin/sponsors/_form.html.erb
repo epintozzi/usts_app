@@ -5,13 +5,14 @@
   </div>
 
   <div class="field">
-    <%= f.label :image, class: 'required' %>
-    <%= f.text_field :image, class: 'form-control' %>
+    <%= f.label :url%>
+    <%= f.text_field :url, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= f.label :url%>
-    <%= f.text_field :url, class: 'form-control' %>
+    <%= f.label :image, "Sponsor Logo" %>
+    <%= f.file_field :image, class: 'form-control' %>
+
   </div>
 
   <div class="action">
