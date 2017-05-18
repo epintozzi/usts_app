@@ -38,7 +38,7 @@ describe "/admin/photos/new" do
 
   scenario "admin sees error if gallery is missing" do
     admin = create(:user, role: 2)
-    gallery = create(:gallery)
+    create(:gallery)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -53,7 +53,7 @@ describe "/admin/photos/new" do
 
   scenario "editor cannot create a image" do
     editor = create(:user, role: 1)
-    gallery = create(:gallery)
+    create(:gallery)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(editor)
 
@@ -63,7 +63,7 @@ describe "/admin/photos/new" do
 
   scenario "normal user cannot create a image" do
     user = create(:user, role: 0)
-    gallery = create(:gallery)
+    create(:gallery)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
