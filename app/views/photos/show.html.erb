@@ -1,0 +1,9 @@
+<div class="container">
+
+  <%= link_to "Back to Gallery", gallery_path(@photo.gallery) %>
+
+  <%= image_tag(@photo.image.url(:original), class: "gallery-photo-medium") %>
+  <p class="caption"><%= @photo.caption  %> | 
+  Photographer: <%= @photo.photographer  %></p>
+
+</div>

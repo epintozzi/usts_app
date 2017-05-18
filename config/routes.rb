@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :galleries, only: [:index, :show]
 
-  # resources :photos, only: [:show]
+  resources :photos, only: [:show]
 
   resources :usts_registrations, only: [:new, :create]
 

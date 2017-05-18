@@ -3,7 +3,7 @@
 
   <% @gallery.photos.each do |photo| %>
     <div class="col-md-4">
-      <%= image_tag(photo.image.url(:thumb), class: "gallery-thumb") %>
+      <%= link_to(image_tag(photo.image.url(:thumb), class: "gallery-thumb"), photo_path(photo)) %>
     </div>
   <% end %>
 
