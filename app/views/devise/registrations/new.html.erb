@@ -21,6 +21,11 @@
       </div>
 
       <div class="field">
+        <%= f.label :image, "Profile Picture" %>
+        <%= f.file_field :image, class: 'form-control'  %>
+      </div>
+
+      <div class="field">
         <%= f.label :password, class: 'required' %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -31,11 +36,6 @@
       <div class="field">
         <%= f.label :password_confirmation, class: 'required' %><br />
         <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
-      </div>
-
-      <div class="field">
-        <%= f.label :image, "Profile Picture" %>
-        <%= f.file_field :image, class: 'form-control'  %>
       </div>
 
       <div class="actions">

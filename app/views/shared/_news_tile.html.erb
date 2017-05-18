@@ -2,6 +2,6 @@
 <p class="news-date"><%= news_date(news.published_on) %></p>
 <p class="news-snippet"><%#= news.content %><p>
 <p class="news-author-tile">
-  <%= image_tag(news.author.image, class: "blog-avatar") %>
+  <%= image_tag(news.author.image.url(:thumb), class: "blog-avatar") %>
   By <%= news.author.first_name %> <%= news.author.last_name %>
 </p>
