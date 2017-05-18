@@ -1,0 +1,13 @@
+<div class="container">
+  <h2 class="page-title">Manage Galleries</h2>
+
+  <%= link_to "Add new gallery", new_admin_gallery_path, class: 'btn btn-solid-red' %>
+
+  <% @galleries.each do |gallery| %>
+    <p>
+      <%= link_to "Edit", edit_admin_gallery_path(gallery), class: "small-link" %>
+      <%= gallery.name %>
+    </p>
+  <% end %>
+
+</div>

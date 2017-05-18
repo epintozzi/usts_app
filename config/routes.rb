@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resources :boat_classes, except: [:show, :destroy]
     resources :sponsors, except: [:show, :destroy]
     resources :users, except: [:show, :destroy]
+    resources :galleries, except: [:show, :destroy]
   end
 
 end
