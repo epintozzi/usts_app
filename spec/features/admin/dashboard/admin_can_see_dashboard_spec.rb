@@ -10,7 +10,7 @@ describe "/admin/dashboard" do
     visit admin_dashboard_path
 
     expect(page).to have_content("Manage Races")
-    expect(page).to have_content("Manage Gallery")
+    expect(page).to have_content("Manage Galleries")
     expect(page).to have_content("Manage News")
     expect(page).to have_content("Manage Race Registrations")
     expect(page).to have_content("Manage USTS Membership Registrations")
