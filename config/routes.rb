@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     resources :sponsors, except: [:show, :destroy]
     resources :users, except: [:show, :destroy]
     resources :galleries, except: [:show, :destroy]
+    resources :photos, except: [:show]
   end
 
 end
