@@ -17,4 +17,11 @@ RSpec.describe Gallery, type: :model do
       end
     end
   end
+
+  describe "relationships" do
+    it "has many photos" do
+      gallery = create(:gallery)
+      expect(gallery).to respond_to(:photos)
+    end
+  end
 end
