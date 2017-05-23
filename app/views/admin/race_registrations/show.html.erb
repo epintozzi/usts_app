@@ -1,0 +1,21 @@
+<div class="container">
+  <%= link_to "Back to All Race Registrations", admin_race_registrations_path %>
+
+  <h2 class="page-title">Race Registration for <%= @race_registration.usts_registration.first_name %> <%= @race_registration.usts_registration.last_name %> at <%= @race_registration.race.city %>, <%= @race_registration.race.state %></h2>
+
+  <h4>Race Registration Details</h4>
+  <%= link_to "Edit Registration Details", edit_admin_race_registration_path(@race_registration), class: "small-link" %>
+  <p>Driver: <%= @race_registration.usts_registration.first_name %><%= @race_registration.usts_registration.last_name %></p>
+  <p>Race: <%= @race_registration.race.title %> | <%= @race_registration.race.city %>, <%= @race_registration.race.state %></p>
+  <p>Class: <%= @race_registration.boat_class.class_name %></p>
+  <p>Boat number: <%= @race_registration.boat_number %></p>
+  <p>Boat name: <%= @race_registration.boat_name %></p>
+  <p>Boat owner: <%= @race_registration.boat_owner %></p>
+  <p>Boat owner zip: <%= @race_registration.boat_owner_zip %></p>
+  <p>Emergency Contant Person: <%= @race_registration.emergency_contact %></p>
+  <p>Emergency Contant Phone: <%= @race_registration.emergency_phone %></p>
+  <p>Emergency Contant at race site? <%= @race_registration.emergency_contact_at_race? %></p>
+  <% if @race_registration.creator %>
+    <p>Registered by: <%= @race_registration.creator.first_name %> <%= @race_registration.creator.last_name %></p>
+  <% end %>
+</div>

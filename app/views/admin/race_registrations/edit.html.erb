@@ -1,0 +1,58 @@
+<div class="container">
+
+  <h2 class="page-title">Update Race Registration for <%= @race_registration.usts_registration.first_name %> <%= @race_registration.usts_registration.last_name %></h2>
+
+  <%= form_for [:admin, @race_registration], html: {class: "form-group"} do |f| %>
+
+
+    <div class="field">
+      <%= f.label :race, class: 'required' %>
+      <%= f.select :race_id, options_for_select(list_of_race_titles_and_cities), {prompt: "Select Race"}, class: 'form-control' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :boat_class, class: 'required' %>
+      <%= f.collection_select :boat_class_id, BoatClass.all, :id, :class_name, { prompt: "Select Class"}, class: 'form-control' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :boat_number, class: 'required' %>
+      <%= f.text_field :boat_number, class: 'form-control'%>
+    </div>
+
+    <div class="field">
+      <%= f.label :boat_name%>
+      <%= f.text_field :boat_name, class: 'form-control'%>
+    </div>
+
+    <div class="field">
+      <%= f.label :boat_owner%>
+      <%= f.text_field :boat_owner, class: 'form-control'%>
+    </div>
+
+    <div class="field">
+      <%= f.label :boat_owner_zip%>
+      <%= f.text_field :boat_owner_zip, class: 'form-control'%>
+    </div>
+
+    <div class="field">
+      <%= f.label :emergency_contact, "Emergency contact person"%>
+      <%= f.text_field :emergency_contact, class: 'form-control'%>
+    </div>
+
+    <div class="field">
+      <%= f.label :emergency_phone%>
+      <%= f.text_field :emergency_phone, class: 'form-control'%>
+    </div>
+
+    <div class="field">
+      <%= f.check_box :emergency_contact_at_race %>
+      <%= f.label :emergency_contact_at_race, "Check here if your emergency contact will be at the race site"%>
+    </div>
+
+
+    <%= f.submit "Update Race Registration", class: 'btn btn-solid-red' %>
+
+  <% end %>
+
+</div>

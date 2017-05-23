@@ -4,6 +4,9 @@
   <div class="usts-registration-list">
     <% @usts_registrations.each do |reg| %>
     <p>
+      <%= link_to "View", admin_usts_registration_path(reg), class: "small-link" %>
+      <%= link_to "Edit", edit_admin_usts_registration_path(reg), class: "small-link" %>
+      <%= link_to "Delete", admin_usts_registration_path(reg), method: "delete", class: "small-link" %>
       <%= reg.race_year %>: <%= reg.first_name %> <%= reg.last_name %> - <%= reg.membership_type %>
     </p>
     <% end %>
