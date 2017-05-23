@@ -1,12 +1,15 @@
 <div class="container">
   <h2 class="page-title">Manage Galleries</h2>
 
+  <p class="lead-text">Deleting a gallery will delete all its photos as well. To delete individual photos, click on "Edit" next to the Gallerly name where the photo resides.</p>
+
   <%= link_to "Add new gallery", new_admin_gallery_path, class: 'btn btn-solid-red' %>
   <%= link_to "Add new photo", new_admin_photo_path, class: 'btn btn-solid-red' %>
 
   <% @galleries.each do |gallery| %>
     <p>
       <%= link_to "Edit", edit_admin_gallery_path(gallery), class: "small-link" %>
+      <%= link_to "Delete", admin_gallery_path(gallery), method: "delete", class: "small-link" %>
       <%= gallery.name %>
     </p>
   <% end %>

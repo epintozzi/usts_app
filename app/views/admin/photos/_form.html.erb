@@ -1,12 +1,8 @@
 <%= form_for [:admin, @photo], html: {class: "form-group"} do |f| %>
-  <div class="field">
-    <%= f.label :photographer %>
-    <%= f.text_field :photographer, class: 'form-control' %>
-  </div>
 
   <div class="field">
-    <%= f.label :caption %>
-    <%= f.text_field :caption, class: 'form-control' %>
+    <%= f.label :gallery, class: 'required' %>
+    <%= f.collection_select(:gallery_id, Gallery.all, :id, :name, { prompt: "Select Gallery" }, class: 'form-control') %>
   </div>
 
   <div class="field">
@@ -15,8 +11,13 @@
   </div>
 
   <div class="field">
-    <%= f.label :gallery, class: 'required' %>
-    <%= f.collection_select(:gallery_id, Gallery.all, :id, :name, { prompt: "Select Gallery" }, class: 'form-control') %>
+    <%= f.label :photographer %>
+    <%= f.text_field :photographer, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :caption %>
+    <%= f.text_field :caption, class: 'form-control' %>
   </div>
 
   <div class="action">

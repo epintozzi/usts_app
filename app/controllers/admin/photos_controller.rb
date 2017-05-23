@@ -15,7 +15,7 @@ class Admin::PhotosController < Admin::BaseController
   def create
     @photo = Photo.new(photo_params)
     if @photo.save
-      flash[:success] = "This photo has successfully been added to #{@photo.gallery.name}."
+      flash[:success] = "This photo has successfully been added to #{@photo.gallery.name}. #{view_context.link_to("Add another photo", new_admin_photo_path(@photo), class: 'small-link')}"
       redirect_to gallery_path(@photo.gallery)
     else
       flash[:danger] = "Something went wrong. #{@photo.errors.full_messages.join(' ')}. Please try again."
@@ -36,6 +36,13 @@ class Admin::PhotosController < Admin::BaseController
       flash[:danger] = "Something went wrong. #{@photo.errors.full_messages.join(' ')}. Please try again."
       render :edit
     end
+  end
+
+  def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+    flash[:success] = "This photo has been deleted."
+    redirect_to edit_admin_gallery_path(@photo.gallery)
   end
 
   private
