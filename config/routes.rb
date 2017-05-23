@@ -27,8 +27,8 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'dashboard#show'
     resources :races, except: [:show, :destroy]
     resources :news, only: :index
-    resources :race_registrations, only: [:index]
-    resources :usts_registrations, only: [:index]
+    resources :race_registrations, only: [:index, :show, :edit, :update]
+    resources :usts_registrations, only: [:index, :show, :edit, :update]
     resources :boat_classes, except: [:show, :destroy]
     resources :sponsors, except: [:show, :destroy]
     resources :users, except: [:show, :destroy]
