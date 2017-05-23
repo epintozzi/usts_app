@@ -12,6 +12,7 @@ describe "/photos/:id" do
 
     expect(page).to have_content(photo.photographer)
     expect(page).to have_content(photo.caption)
+    expect(page).to have_css("img[src*='#{photo.image}']")
   end
   scenario "normal user sees photo and details" do
     editor = create(:user, role: 1)
@@ -24,6 +25,7 @@ describe "/photos/:id" do
 
     expect(page).to have_content(photo.photographer)
     expect(page).to have_content(photo.caption)
+    expect(page).to have_css("img[src*='#{photo.image}']")
   end
   scenario "normal user sees photo and details" do
     user = create(:user)
@@ -36,6 +38,7 @@ describe "/photos/:id" do
 
     expect(page).to have_content(photo.photographer)
     expect(page).to have_content(photo.caption)
+    expect(page).to have_css("img[src*='#{photo.image}']")
   end
 
   scenario "non-logged in user sees photo and details" do
@@ -46,5 +49,6 @@ describe "/photos/:id" do
 
     expect(page).to have_content(photo.photographer)
     expect(page).to have_content(photo.caption)
+    expect(page).to have_css("img[src*='#{photo.image}']")
   end
 end
