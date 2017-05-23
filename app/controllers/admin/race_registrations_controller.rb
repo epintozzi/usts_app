@@ -27,6 +27,7 @@ class Admin::RaceRegistrationsController < Admin::BaseController
     @race_registration = RaceRegistration.find(params[:id])
     @race_registration.destroy
     flash[:success] = "This race registration has been deleted."
+    redirect_to admin_race_registrations_path
   end
 
   private
