@@ -1,15 +1,9 @@
 <div class="container">
 
-  <h2 class="page-title">Update Race Registration</h2>
+  <h2 class="page-title">Update Race Registration for <%= @race_registration.usts_registration.first_name %> <%= @race_registration.usts_registration.last_name %></h2>
 
   <%= form_for [:admin, @race_registration], html: {class: "form-group"} do |f| %>
 
-    <div class="field">
-      <%= f.label :usts_registration, "Registrant Name", class: 'required' %>
-      <br>
-      <%= link_to "Your name will not appear on this list if you do not have a current USTS Membership. Click here to register for USTS Membership.", new_usts_registration_path, class: "small-link" %>
-      <%= f.select :usts_registration_id, options_for_select(usts_registration_name_list, selected: current_user_or_blank), {prompt: "Select Race Registrant"}, class: 'form-control' %>
-    </div>
 
     <div class="field">
       <%= f.label :race, class: 'required' %>

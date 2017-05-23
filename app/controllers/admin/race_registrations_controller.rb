@@ -23,6 +23,12 @@ class Admin::RaceRegistrationsController < Admin::BaseController
     end
   end
 
+  def destroy
+    @race_registration = RaceRegistration.find(params[:id])
+    @race_registration.destroy
+    flash[:success] = "This race registration has been deleted."
+  end
+
   private
 
   def race_registration_params

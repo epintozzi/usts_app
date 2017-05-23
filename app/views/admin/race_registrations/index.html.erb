@@ -4,7 +4,9 @@
   <div class="race-registration-list">
     <% @race_registrations.each do |reg| %>
     <p>
-      <%= link_to "Edit Registration", edit_admin_race_registration_path(reg), class: "small-link" %>
+      <%= link_to "View", admin_race_registration_path(reg), class: "small-link" %>
+      <%= link_to "Edit", edit_admin_race_registration_path(reg), class: "small-link" %>
+      <%= link_to "Delete", admin_race_registration_path(reg), method: "delete", class: "small-link" %>
       <%= reg.race.city %>, <%= reg.race.state %>: <%= reg.usts_registration.first_name %> <%= reg.usts_registration.last_name %> - <%= reg.boat_class.class_name %>
     </p>
     <% end %>

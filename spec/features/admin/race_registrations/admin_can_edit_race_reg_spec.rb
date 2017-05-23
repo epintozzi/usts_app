@@ -11,7 +11,7 @@ describe "/admin/race_registrations/:id" do
 
     visit admin_race_registrations_path
 
-    click_on "Edit Registration"
+    click_on "Edit"
 
     expect(current_path).to eq(edit_admin_race_registration_path(race_reg))
     expect(page).to have_content(race_reg.race.city)
