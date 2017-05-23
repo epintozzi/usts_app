@@ -38,11 +38,17 @@ class Admin::GalleriesController < Admin::BaseController
     end
   end
 
+  def destroy
+    @gallery = Gallery.find(params[:id])
+    @gallery.destroy
+    flash[:success] = "This gallery and all its photos have been deleted."
+    redirect_to admin_galleries_path
+  end
+
   private
 
   def gallery_params
     params.require(:gallery).permit(:id, :name)
   end
-
 
 end
