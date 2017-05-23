@@ -8,6 +8,7 @@ describe "/galleries/:id" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     gallery = create(:gallery)
+    create(:photo, gallery_id: gallery.id)
 
     visit galleries_path
 
