@@ -1,8 +1,8 @@
 <div class="container">
+  <%= link_to "Back to All Galleries", galleries_path %>
   <h2 class="page-title"> <%= @gallery.name %> </h2>
-
   <% if @gallery.photos.blank? %>
-    <p>Sorry, it looks like nothing has been added to this gallery yet.</p>
+    <p class="text-center">Sorry, it looks like nothing has been added to this gallery yet.</p>
   <% else %>
     <% @gallery.photos.each do |photo| %>
       <div class="col-md-3">

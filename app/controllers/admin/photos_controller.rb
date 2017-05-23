@@ -38,6 +38,13 @@ class Admin::PhotosController < Admin::BaseController
     end
   end
 
+  def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+    flash[:success] = "This photo has been deleted."
+    redirect_to edit_admin_gallery_path(@photo.gallery)
+  end
+
   private
 
   def photo_params

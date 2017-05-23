@@ -9,3 +9,17 @@
   </div>
 
 <% end %>
+
+<% if @gallery.photos.blank? %>
+  <p>There are no photos in this Gallery yet.</p>
+<% else %>
+  <h3>Photos in this Gallery</h3>
+
+  <% @gallery.photos.each do |photo| %>
+    <div class="col-md-3">
+      <%= image_tag(photo.image.url(:thumb), class: "center-block gallery-thumb") %>
+      <%= link_to "Edit", edit_admin_photo_path(photo), class: "small-link center-text" %><br>
+      <%= link_to "Delete", admin_photo_path(photo), method: "delete", class: "small-link center-text" %>
+    </div>
+  <% end %>
+<% end %>
