@@ -165,3 +165,26 @@ label.required:after {
   font-weight: 300;
   line-height: 1.4;
 }
+
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 150px;
+  min-height: 100%;
+}
+
+.page-container {
+
+}
