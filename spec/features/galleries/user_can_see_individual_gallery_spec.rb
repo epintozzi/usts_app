@@ -57,4 +57,15 @@ describe "/galleries/:id" do
     expect(current_path).to eq(gallery_path(gallery))
     expect(page).to have_content(gallery.name)
   end
+
+  scenario "user sees notice if no photos in gallery" do
+    gallery = create(:gallery)
+
+    visit galleries_path
+
+    click_on gallery.name
+
+    expect(current_path).to eq(gallery_path(gallery))
+    expect(page).to have_content("Sorry, it looks like nothing has been added to this gallery yet.")
+  end
 end
