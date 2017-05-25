@@ -2,6 +2,11 @@ class Admin::UstsRegistrationsController < Admin::BaseController
 
   def index
     @usts_registrations = UstsRegistration.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @usts_registrations.to_csv, filename: "usts-registrations-#{Date.today}.csv" }
+    end
   end
 
   def show
