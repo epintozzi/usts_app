@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="page-title">Manage USTS Registrations</h2>
-  <%= link_to "Export USTS Registrations", root_path, class: 'btn btn-solid-red' %>
+  <%= link_to "Export USTS Registrations", admin_usts_registrations_path(format: "csv"), class: 'btn btn-solid-red' %>
   <div class="usts-registration-list">
     <% @usts_registrations.each do |reg| %>
     <p>
