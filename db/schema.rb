@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170518220913) do
+ActiveRecord::Schema.define(version: 20170525225930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,18 +56,20 @@ ActiveRecord::Schema.define(version: 20170518220913) do
   end
 
   create_table "race_registrations", force: :cascade do |t|
-    t.boolean "paid",                      default: false
-    t.text    "boat_number"
-    t.text    "boat_owner"
-    t.text    "boat_owner_zip"
-    t.text    "boat_name"
-    t.text    "emergency_contact"
-    t.text    "emergency_phone"
-    t.boolean "emergency_contact_at_race"
-    t.integer "race_id"
-    t.integer "boat_class_id"
-    t.integer "usts_registration_id"
-    t.integer "creator_id"
+    t.boolean  "paid",                      default: false
+    t.text     "boat_number"
+    t.text     "boat_owner"
+    t.text     "boat_owner_zip"
+    t.text     "boat_name"
+    t.text     "emergency_contact"
+    t.text     "emergency_phone"
+    t.boolean  "emergency_contact_at_race"
+    t.integer  "race_id"
+    t.integer  "boat_class_id"
+    t.integer  "usts_registration_id"
+    t.integer  "creator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["boat_class_id"], name: "index_race_registrations_on_boat_class_id", using: :btree
     t.index ["creator_id"], name: "index_race_registrations_on_creator_id", using: :btree
     t.index ["race_id"], name: "index_race_registrations_on_race_id", using: :btree

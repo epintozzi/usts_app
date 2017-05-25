@@ -10,4 +10,74 @@ class RaceRegistration < ApplicationRecord
   validates :boat_number, presence: true
   validates :boat_class, presence: true
   validates :boat_class, uniqueness: { scope: [:usts_registration, :race], message: "has already been registered for this driver and race location" }
+
+
+  # def self.to_csv
+  #   attributes = %w{id boat_number boat_name boat_owner boat_owner_zip emergency_contact emergency_phone emergency_contact_at_race }
+  #
+  #   CSV.generate(headers: true) do |csv|
+  #     csv << attributes
+  #
+  #     all.each do |race_reg|
+  #       csv << attributes.map{ |attr| race_reg.send(attr) }
+  #     end
+  #   end
+  # end
+
+  # def self.to_csv(options = {})
+  # CSV.generate(options) do |csv|
+  #   csv.add_row column_names
+  #   all.each do |race_reg|
+  #     values = race_reg.attributes.values
+  #     csv.add_row values
+  #     end
+  #   end
+  # end
+
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << %w{id
+                race_city
+                race_state
+                race_title
+                driver_first_name
+                driver_last_name
+                driver_usts_number
+                boat_number
+                boat_name
+                boat_owner
+                boat_owner_zip
+                emergency_contact
+                emergency_phone
+                emergency_contact_at_race
+                paid?
+                creator_first_name
+                creator_last_name
+                created_at
+                }
+      all.each do |race_reg|
+        csv << [race_reg.id,
+                race_reg.race.city,
+                race_reg.race.state,
+                race_reg.race.title,
+                race_reg.usts_registration.first_name,
+                race_reg.usts_registration.last_name,
+                race_reg.usts_registration.usts_number,
+                race_reg.boat_name,
+                race_reg.boat_name,
+                race_reg.boat_owner,
+                race_reg.boat_owner_zip,
+                race_reg.emergency_contact,
+                race_reg.emergency_phone,
+                race_reg.emergency_contact_at_race,
+                race_reg.paid,
+                race_reg.creator.try(:first_name),
+                race_reg.creator.try(:last_name),
+                race_reg.created_at
+                ]
+      end
+
+    end
+  end
+
 end

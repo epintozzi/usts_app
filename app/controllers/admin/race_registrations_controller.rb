@@ -2,6 +2,11 @@ class Admin::RaceRegistrationsController < Admin::BaseController
 
   def index
     @race_registrations = RaceRegistration.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @race_registrations.to_csv, filename: "race-registrations-#{Date.today}.csv" }
+    end
   end
 
   def show
