@@ -89,14 +89,14 @@ describe "usts_registrations/new" do
     expect(page).to have_content("There was a problem with your submission. Last name can't be blank. Please try again.")
   end
 
-  scenario "user sees error message if usts number is missing when submitting usts registration form" do
+  scenario "user sees error message if usts number is missing when submitting usts registration form for racing membership" do
 
     within ('#usts_registration_race_year') do
       select 2017
     end
     fill_in "usts_registration[first_name]", with: "Erin"
     fill_in "usts_registration[last_name]", with: "Pintozzi"
-    select "nonracing"
+    select "racing"
     fill_in "usts_registration[street_address]", with: "123 Main St"
     fill_in "usts_registration[city]", with: "Denver"
     select "Colorado"

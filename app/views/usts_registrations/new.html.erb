@@ -20,14 +20,16 @@
     </div>
 
     <div class="field">
-      <%= f.label :usts_number, "USTS Member Number", class: 'required' %>
-      <%= f.text_field :usts_number, class: 'form-control' %>
-    </div>
-
-    <div class="field">
       <%= f.label :membership_type, class: 'required' %>
       <%= f.select :membership_type, UstsRegistration.membership_types.keys.to_a, {prompt: "Choose type"}, {class:"form-control membership-type-picker"} %>
     </div>
+
+    <div class="field">
+      <%= f.label :usts_number, "USTS Member Number", class: 'conditionally-required' %>
+      <p>Required for Racing and KPRO memberships. Leave blank for Non-Racing membership. If you do not know your member number, please contact Susan Sailor or Contact Us here.</p>
+      <%= f.text_field :usts_number, class: 'form-control' %>
+    </div>
+
 
     <div class="field">
       <%= f.label :street_address, class: 'required' %>

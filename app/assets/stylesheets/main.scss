@@ -78,6 +78,11 @@ label.required:after {
   color: #CF0909;
 }
 
+label.conditionally-required:after {
+  content:" *";
+  color: #FFBF00;
+}
+
 .form-control {
   // max-width: 75%;
 }
