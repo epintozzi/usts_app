@@ -1,0 +1,17 @@
+.results-table {
+  width: 700px;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.results-table, th, tr, td {
+  border: 1px solid #D4E2ED;
+  padding: 5px;
+  color: #323639;
+  font-family: 'Open Sans', sans-serif;
+}
+
+tr:nth-child(even) {
+  background-color: #F2F6F9;
+}

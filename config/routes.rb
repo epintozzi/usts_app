@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get '/competition', to: 'pages#competition'
   get '/sponsorship', to: 'pages#sponsorship'
   get '/racing_resources', to: 'pages#racing_resources'
+  get '/results_2017', to: 'pages#results_2017'
 
   namespace :admin do
     get '/dashboard', to: 'dashboard#show'
