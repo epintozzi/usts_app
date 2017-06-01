@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get '/competition', to: 'pages#competition'
   get '/sponsorship', to: 'pages#sponsorship'
   get '/racing_resources', to: 'pages#racing_resources'
-  get '/results_2017', to: 'pages#results_2017'
+  get '/results_2017', to: 'pages#results_2017' #TODO: remove after admin import is set up
 
   namespace :admin do
     get '/dashboard', to: 'dashboard#show'
@@ -35,6 +35,10 @@ Rails.application.routes.draw do
     resources :users, except: [:show, :destroy]
     resources :galleries, except: [:show]
     resources :photos, except: [:show]
+    resources :race_results, only: [:index]
+    resources :race_results do
+      collection {post :import}
+    end
   end
 
 end
