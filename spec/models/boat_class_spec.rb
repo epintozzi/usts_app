@@ -33,8 +33,13 @@ RSpec.describe BoatClass, type: :model do
   describe "relationships" do
     it "has many race registrations" do
       boat_class = create(:boat_class)
-      
+
       expect(boat_class).to respond_to(:race_registrations)
+    end
+    it "has many race results" do
+      boat_class = create(:boat_class)
+
+      expect(boat_class).to respond_to(:race_results)
     end
   end
 end
