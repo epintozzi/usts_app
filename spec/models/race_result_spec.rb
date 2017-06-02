@@ -111,4 +111,17 @@ RSpec.describe RaceResult, type: :model do
     end
   end
 
+  describe "formatting" do
+    it "formats uppercase name to titlecase" do
+      driver = "ERIN PINTOZZI"
+      new_name = RaceResult.new.proper_caps(driver)
+      expect(new_name).to eq("Erin Pintozzi")
+    end
+    it "formats lowercase name to titlecase" do
+      driver = "erin pintozzi"
+      new_name = RaceResult.new.proper_caps(driver)
+      expect(new_name).to eq("Erin Pintozzi")
+    end
+  end
+
 end

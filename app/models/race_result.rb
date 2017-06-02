@@ -15,5 +15,9 @@ class RaceResult < ApplicationRecord
     end
   end
 
+  def proper_caps(name)
+    name.titlecase
+  end
+
 
 end
