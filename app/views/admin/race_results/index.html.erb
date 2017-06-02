@@ -1,16 +1,27 @@
 <div class="container">
   <h2 class="page-title">Manage Race Results</h2>
 
-  <%= form_tag import_admin_race_results_path, multipart: true do %>
-  <%= label_tag "Import race results" %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import Results", class: 'btn btn-solid-red' %>
-  <% end %>
+  <h3>Import Results</h3>
 
-  <h4>All Results</h4>
+  <p>
+    Results must be imported as a CSV file. Headers should be (in any order): <code>driver_name</code>, <code>points</code>, <code>race_id</code>, and <code>boat_class_id</code>. Do not include any additional information on the import file. <%=link_to "Download a sample CSV here.", asset_path("sample_results_import_csv.csv"), target: :_blank, class: 'small-link'  %>
+    Please use the following for <code>race_id</code> and <code>boat_class_id</code> in your CSV file:
+  </p>
+
+  <div class="results-id-tables">
+    <%= render partial: 'import_form' %>
+
+    <%= render partial: 'boat_class_id_table' %>
+    <%= render partial: 'race_id_table' %>
+
+  </div>
+
+
+
+  <h3>All Results</h3>
 
   <% @boat_classes.each do |boat_class| %>
-  <h5><%=boat_class.class_name%></h5>
+  <h4><%=boat_class.class_name%></h4>
   <table>
     <thead>
       <th>
