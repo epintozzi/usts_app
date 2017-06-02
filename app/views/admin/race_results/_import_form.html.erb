@@ -1,0 +1,5 @@
+<%= form_tag import_admin_race_results_path, multipart: true do %>
+<%= label_tag "Import race results" %>
+<%= file_field_tag :file %>
+<%= submit_tag "Import Results", class: 'btn btn-solid-red' %>
+<% end %>

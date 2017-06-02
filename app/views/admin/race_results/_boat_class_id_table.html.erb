@@ -1,0 +1,18 @@
+<table class="boat-class-id-table">
+  <thead>
+    <th>Boat Class</th>
+    <th>Id</th>
+  </thead>
+  <tbody>
+    <% @boat_classes.each do |boat_class| %>
+      <tr>
+        <td>
+          <%= boat_class.class_name %>
+        </td>
+        <td>
+          <%= boat_class.id %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -113,14 +113,16 @@ RSpec.describe RaceResult, type: :model do
 
   describe "formatting" do
     it "formats uppercase name to titlecase" do
-      driver = "ERIN PINTOZZI"
-      new_name = RaceResult.new.proper_caps(driver)
-      expect(new_name).to eq("Erin Pintozzi")
+      boat_class_1 = create(:boat_class)
+      race = create(:race)
+      result = RaceResult.create(driver_name: "TUCKER DOGGO", points: 400, boat_class_id: boat_class_1.id, race_id: race.id)
+      expect(result.driver_name).to eq("Tucker Doggo")
     end
     it "formats lowercase name to titlecase" do
-      driver = "erin pintozzi"
-      new_name = RaceResult.new.proper_caps(driver)
-      expect(new_name).to eq("Erin Pintozzi")
+      boat_class_1 = create(:boat_class)
+      race = create(:race)
+      result = RaceResult.create(driver_name: "tucker doggo", points: 400, boat_class_id: boat_class_1.id, race_id: race.id)
+      expect(result.driver_name).to eq("Tucker Doggo")
     end
   end
 
