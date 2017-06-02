@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get '/sponsorship', to: 'pages#sponsorship'
   get '/racing_resources', to: 'pages#racing_resources'
 
+  get '/cart', to: 'shopping_cart#show'
+
   namespace :admin do
     get '/dashboard', to: 'dashboard#show'
     resources :races, except: [:show, :destroy]

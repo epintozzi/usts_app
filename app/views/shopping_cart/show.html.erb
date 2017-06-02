@@ -1,0 +1,9 @@
+<div class="container">
+  <h2 class="page-title">Shopping Cart</h2>
+  <p class="lead-text">Pay for your registrations. You can only pay for registrations that you have submitted yourself.</p>
+
+  <% @unpaid_race_registrations.each do |reg| %>
+  <%# binding.pry %>
+    <%= reg.race.city %>
+  <% end %>
+</div>

@@ -60,4 +60,14 @@ class RaceRegistration < ApplicationRecord
     end
   end
 
+  def self.unpaid_race_reg(current_user)
+    race_reg_all = RaceRegistration.where(creator_id: current_user.id, paid: false)
+    future_unpaid_race_reg = race_reg_all.map do |reg|
+      if reg.race.future?
+        reg
+      end
+    end
+    return future_unpaid_race_reg
+  end
+
 end
