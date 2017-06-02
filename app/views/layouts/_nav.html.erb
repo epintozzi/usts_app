@@ -79,7 +79,7 @@
           <a href="#">
             <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
             <span class="badge">
-              <%= RaceRegistration.where(creator_id: current_user.id).count %>
+              <%= total_upaid_reg(current_user) %>
             </span>
           </a>
         </li>

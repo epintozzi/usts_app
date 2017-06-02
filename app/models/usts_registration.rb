@@ -16,7 +16,10 @@ class UstsRegistration < ApplicationRecord
   validates :membership_type, presence: true
   validates :signature, presence: true
 
+  scope :usts_registrations_this_year, -> { where(race_year: Date.today.year) }
+
   enum membership_type: [:nonracing, :racing, :kpro]
+
 
   def self.full_name_list
     name_list = []
