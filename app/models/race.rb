@@ -1,5 +1,6 @@
 class Race < ApplicationRecord
   has_many :race_registrations
+  has_many :race_results
 
   validates :city, presence: true
   validates :state, presence: true

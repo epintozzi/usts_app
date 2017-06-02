@@ -1,0 +1,52 @@
+<div class="container">
+  <h2 class="page-title">Manage Race Results</h2>
+
+  <%= form_tag import_admin_race_results_path, multipart: true do %>
+  <%= label_tag "Import race results" %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import Results", class: 'btn btn-solid-red' %>
+  <% end %>
+
+  <h4>All Results</h4>
+
+  <% @boat_classes.each do |boat_class| %>
+  <h5><%=boat_class.class_name%></h5>
+  <table>
+    <thead>
+      <th>
+        Driver Name
+      </th>
+      <% @races.each do |race| %>
+      <th>
+        <%= race.city %>
+      </th>
+      <% end %>
+      <th>
+        Total
+      </th>
+    </thead>
+    <% @driver_names = RaceResult.where(race: @races, boat_class: boat_class).pluck(:driver_name).uniq %>
+    <tbody>
+      <% @driver_names.each do |driver| %>
+      <tr>
+        <td>
+          <%= driver %>
+        </td>
+        <% @races.each do |race| %>
+          <td>
+            <%= RaceResult.where(race: race, boat_class: boat_class, driver_name: driver).first.try(:points) %>
+          </td>
+        <% end %>
+        <td>
+          <%= RaceResult.where(boat_class: boat_class, driver_name: driver, race: @races).sum(:points) %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <% end %>
+
+
+
+</div>

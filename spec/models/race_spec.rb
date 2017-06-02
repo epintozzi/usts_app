@@ -57,6 +57,10 @@ RSpec.describe Race, type: :model do
       race = create(:race)
       expect(race).to respond_to(:race_registrations)
     end
+    it "has many race results" do
+      race = create(:race)
+      expect(race).to respond_to(:race_results)
+    end
   end
 
   describe "model methods" do
