@@ -1,0 +1,41 @@
+<div class="container">
+  <h2 class="page-title"> <%= Date.today.year %> Race Results </h2>
+
+  <% @boat_classes.each do |boat_class| %>
+  <h4><%=boat_class.class_name%></h4>
+  <table>
+    <thead>
+      <th>
+        Driver Name
+      </th>
+      <% @races.each do |race| %>
+      <th>
+        <%= race.city %>
+      </th>
+      <% end %>
+      <th>
+        Total
+      </th>
+    </thead>
+    <% @driver_names = RaceResult.where(race: @races, boat_class: boat_class).pluck(:driver_name).uniq %>
+    <tbody>
+      <% @driver_names.each do |driver| %>
+      <tr>
+        <td>
+          <%= driver %>
+        </td>
+        <% @races.each do |race| %>
+          <td>
+            <%= RaceResult.where(race: race, boat_class: boat_class, driver_name: driver).first.try(:points) %>
+          </td>
+        <% end %>
+        <td>
+          <%= RaceResult.where(boat_class: boat_class, driver_name: driver, race: @races).sum(:points) %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <% end %>
+</div>
