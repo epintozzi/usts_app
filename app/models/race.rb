@@ -11,7 +11,10 @@ class Race < ApplicationRecord
   has_attached_file :sanction
   validates_attachment :sanction, content_type: { content_type: "application/pdf" }
 
-  scope :future, -> { where('start_date >= ?', Date.today) }
+  scope :future, -> { where('start_date >= ?', Date.today) } #gets collection of all races in the future
+
+  scope :races_this_year, -> { where('start_date > ? AND start_date < ?', Date.today.beginning_of_year, Date.today.end_of_year) }
+
 
   def self.title_location_list
     Race.future.map do |race|
@@ -20,7 +23,11 @@ class Race < ApplicationRecord
   end
 
   def future?
-    self.start_date.future?
+    self.start_date.future? #checks if specific race object is in the future
+  end
+
+  def race_this_year?
+    self.start_date > Date.today.beginning_of_year && self.start_date < Date.today.end_of_year
   end
 
 end

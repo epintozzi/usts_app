@@ -5,7 +5,7 @@
   </thead>
   <tbody>
     <% @races.each do |race| %>
-      <% if race.start_date.year == Date.today.year %>
+      <% if race.race_this_year? %>
       <tr>
         <td>
           <%= race.city %>
