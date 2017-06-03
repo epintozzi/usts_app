@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <th>Member</th>
+    <th>Membership Type</th>
+    <th>Date Registered</th>
+    <th>Amount Due</th>
+    <th>Pay?</th>
+  </thead>
+  <tbody>
+    <% @unpaid_usts_registrations.each do |reg| %>
+      <tr>
+        <td> <%= reg.first_name %> <%= reg.last_name %> </td>
+        <td> <%= reg.membership_type %> </td>
+        <td> <%= long_race_date(reg.created_at) if reg.created_at%> </td>
+        <td>
+          <%#= number_to_currency(reg.boat_class.registration_fee) %>
+        </td>
+        <td>
+          <%= check_box(:usts_registration, :paid) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
