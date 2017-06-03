@@ -1,0 +1,21 @@
+<div class="container">
+  <h2 class="page-title">Shopping Cart</h2>
+  <p class="lead-text">Pay for your registrations. You can only pay for registrations that you have submitted yourself even if it's for another member.</p>
+
+
+  <h3>Unpaid Race Registrations</h3>
+
+  <%= render partial: 'unpaid_race_reg' %>
+
+
+  <h3>Unpaid USTS Membership Registrations</h3>
+
+  <%= render partial: 'unpaid_usts_reg' %>
+
+  <h3>Total Due</h3>
+
+  <p class="amount-due"><%= number_to_currency(100) %></p>
+
+  <%= link_to "Pay Now", root_path, class: 'btn btn-solid-red' %>
+
+</div>

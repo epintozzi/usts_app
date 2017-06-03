@@ -1,0 +1,30 @@
+<table>
+  <thead>
+    <th>Driver</th>
+    <th>Race Site</th>
+    <th>Class</th>
+    <th>Date Registered</th>
+    <th>Amount Due</th>
+    <th>Pay?</th>
+  </thead>
+  <tbody>
+    <% @unpaid_race_registrations.each do |reg| %>
+      <tr>
+        <td> <%= reg.usts_registration.first_name %> <%= reg.usts_registration.last_name %> </td>
+        <td> <%= reg.race.city %> </td>
+        <td> <%= reg.boat_class.class_name %> </td>
+        <td> <%= long_race_date(reg.created_at) if reg.created_at%> </td>
+        <td>
+          <% if reg.race.fee_override? %>
+            <%= number_to_currency(reg.race.fee_override) %>
+          <% else %>
+            <%= number_to_currency(reg.boat_class.registration_fee) %>
+          <% end %>
+        </td>
+        <td>
+          <%= check_box(:race_registration, :paid) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
