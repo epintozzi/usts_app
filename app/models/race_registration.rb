@@ -11,6 +11,10 @@ class RaceRegistration < ApplicationRecord
   validates :boat_class, presence: true
   validates :boat_class, uniqueness: { scope: [:usts_registration, :race], message: "has already been registered for this driver and race location" }
 
+  scope :for_user, -> (user) { where(creator_id: user.id)}
+  scope :unpaid_registrations, -> {where(paid: false)}
+  scope :for_future_races, -> { where(race: Race.future) }
+
   def self.to_csv
     CSV.generate do |csv|
       csv << %w{id
@@ -60,14 +64,8 @@ class RaceRegistration < ApplicationRecord
     end
   end
 
-  def self.unpaid_race_reg(current_user)
-    race_reg_all = RaceRegistration.where(creator_id: current_user.id, paid: false)
-    future_unpaid_race_reg = race_reg_all.map do |reg|
-      if reg.race.future?
-        reg
-      end
-    end
-    return future_unpaid_race_reg
+  def self.unpaid_race_reg(user)
+    RaceRegistration.for_user(user).unpaid_registrations.for_future_races
   end
 
 end
