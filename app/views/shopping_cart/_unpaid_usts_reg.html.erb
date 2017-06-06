@@ -1,4 +1,4 @@
-<table>
+<table class="unpaid-usts-table-cart">
   <thead>
     <th>Member</th>
     <th>Membership Type</th>
@@ -13,7 +13,7 @@
         <td> <%= reg.membership_type %> </td>
         <td> <%= long_race_date(reg.created_at) if reg.created_at%> </td>
         <td>
-          <%#= number_to_currency(reg.boat_class.registration_fee) %>
+          <%= number_to_currency(reg.membership_prices[reg.membership_type.to_sym]) %>
         </td>
         <td>
           <%= check_box(:usts_registration, :paid) %>
