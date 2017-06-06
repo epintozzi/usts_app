@@ -41,3 +41,13 @@
   padding-left: 25px;
   padding-right: 25px;
 }
+
+.carousel {
+  margin-top: -50px;
+}
+
+.home-slider-image {
+  max-height: 400px !important;
+  min-width: 100% !important;
+  object-fit: cover;
+}

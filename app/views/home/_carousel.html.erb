@@ -1,0 +1,32 @@
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <% @gallery.photos.each_with_index do |photo, n| %>
+    <li data-target='#MyCarousel' data-interval='1000' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
+    <% end %>
+  </ol>
+
+  <!-- Wrapper for slides -->
+
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <%= image_tag(@gallery.photos.first.image.url(:original), class: "home-slider-image") %>
+    </div>
+    <% @gallery.photos.drop(1).each do |photo| %>
+    <div class="item">
+      <%= image_tag(photo.image.url(:original), class: "home-slider-image") %>
+    </div>
+    <% end %>
+  </div>
+
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

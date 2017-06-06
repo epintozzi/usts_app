@@ -9,7 +9,7 @@
   <% @galleries.each do |gallery| %>
     <p>
       <%= link_to "Edit", edit_admin_gallery_path(gallery), class: "small-link" %>
-      <%= link_to "Delete", admin_gallery_path(gallery), method: "delete", class: "small-link" %>
+      <%= link_to "Delete", admin_gallery_path(gallery), method: "delete", class: "small-link" unless gallery == Gallery.first%>
       <%= gallery.name %>
     </p>
   <% end %>
