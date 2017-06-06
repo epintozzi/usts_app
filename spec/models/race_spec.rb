@@ -76,7 +76,7 @@ RSpec.describe Race, type: :model do
     end
     it "scopes races to future date" do
       create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: '2017-04-21', end_date: '2017-04-23')
-      race_2 = create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: '2017-12-21', end_date: '2017-12-23')
+      race_2 = create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: Date.tomorrow, end_date: Date.tomorrow)
 
       list = Race.title_location_list
       count = Race.title_location_list.count
@@ -84,12 +84,29 @@ RSpec.describe Race, type: :model do
       expect(list).to eq([["Nationals - DePue, IL", race_2.id]])
       expect(count).to eq(1)
     end
+    it "scopes races as this year" do
+      race_1 = create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: Date.today, end_date: Date.tomorrow)
+      race_2 = create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: Date.today.next_year, end_date: Date.tomorrow.next_year)
+
+      this_year = Race.races_this_year
+      all_races = Race.all
+
+      expect(this_year).to eq([race_1])
+      expect(all_races).to eq([race_1, race_2])
+    end
     it "identifies races as future" do
-      race_1 = create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: '2017-04-21', end_date: '2017-04-23')
-      race_2 = create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: '2017-12-21', end_date: '2017-12-23')
+      race_1 = create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: Date.yesterday, end_date: Date.today)
+      race_2 = create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: Date.tomorrow, end_date: Date.tomorrow)
 
       expect(race_1.future?).to eq(false)
       expect(race_2.future?).to eq(true)
+    end
+    it "identifies races as this year" do
+      race_1 = create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: '2017-04-21', end_date: '2017-04-23')
+      race_2 = create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: '2027-12-21', end_date: '2027-12-23')
+
+      expect(race_1.race_this_year?).to eq(true)
+      expect(race_2.race_this_year?).to eq(false)
     end
   end
 end

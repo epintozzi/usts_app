@@ -85,4 +85,62 @@ RSpec.describe RaceRegistration, type: :model do
       expect(reg).to respond_to(:creator_id)
     end
   end
+
+  describe "model methods" do
+    it "scopes race reg to a user" do
+      user = create(:user)
+      reg_1 = create(:race_registration, creator_id: user.id)
+      reg_2 = create(:race_registration)
+
+      all_reg = RaceRegistration.all
+
+      expect(RaceRegistration.for_user(user)). to eq([reg_1])
+      expect(all_reg).to eq([reg_1, reg_2])
+    end
+
+    it "scopes race reg to upaid registrations" do
+      reg_1 = create(:race_registration, paid: false)
+      reg_2 = create(:race_registration, paid: true)
+
+      unpaid_reg = RaceRegistration.unpaid_registrations
+      all_reg = RaceRegistration.all
+
+      expect(unpaid_reg).to eq([reg_1])
+      expect(all_reg).to eq([reg_1, reg_2])
+    end
+
+    it "scopes race reg to future races date registrations" do
+      race_1 = create(:race, start_date: Date.tomorrow, end_date: Date.tomorrow)
+      race_2 = create(:race, start_date: Date.yesterday, end_date: Date.yesterday)
+      reg_1 = create(:race_registration, race_id: race_1.id)
+      reg_2 = create(:race_registration, race_id: race_2.id)
+
+      future_reg = RaceRegistration.for_future_races
+
+      all_reg = RaceRegistration.all
+
+      expect(future_reg).to eq([reg_1])
+      expect(all_reg).to eq([reg_1, reg_2])
+    end
+
+    it "generates collection of unpaid registrations for a user for race dates in the future" do
+      user = create(:user)
+      race_1 = create(:race, start_date: Date.tomorrow, end_date: Date.tomorrow)
+      race_2 = create(:race, start_date: Date.tomorrow, end_date: Date.tomorrow)
+      race_3 = create(:race, start_date: Date.yesterday, end_date: Date.yesterday)
+      race_4 = create(:race, start_date: Date.yesterday, end_date: Date.yesterday)
+
+      reg_1 = create(:race_registration, creator_id: user.id, race_id: race_1.id, paid: true)
+      reg_2 = create(:race_registration, creator_id: user.id, race_id: race_2.id, paid: false)
+      reg_3 = create(:race_registration, creator_id: user.id, race_id: race_3.id, paid: false)
+      reg_4 = create(:race_registration, race_id: race_4.id, paid: true)
+
+      user_unpaid_this_year = RaceRegistration.unpaid_race_reg(user)
+
+      all_reg = RaceRegistration.all
+
+      expect(user_unpaid_this_year).to eq([reg_2])
+      expect(all_reg).to eq([reg_1, reg_2, reg_3, reg_4])
+    end
+  end
 end

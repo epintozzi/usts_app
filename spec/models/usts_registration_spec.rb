@@ -586,6 +586,7 @@ RSpec.describe UstsRegistration, type: :model do
       expect(list).to eq([["Erin Pintozzi", user_1.id], ["Brad Barth", user_2.id]])
       expect(count).to eq(2)
     end
+
     it "does not include non-racing members on full_name_list" do
       create(:usts_registration, first_name: "Erin", last_name: "Pintozzi", membership_type: 0)
       user_2 = create(:usts_registration, first_name: "Brad", last_name: "Barth")
@@ -595,6 +596,58 @@ RSpec.describe UstsRegistration, type: :model do
 
       expect(list).to eq([["Brad Barth", user_2.id]])
       expect(count).to eq(1)
+    end
+
+    it "scopes usts reg to a user" do
+      user = create(:user)
+      reg_1 = create(:usts_registration, creator_id: user.id)
+      reg_2 = create(:usts_registration)
+
+      all_reg = UstsRegistration.all
+
+      expect(UstsRegistration.for_user(user)). to eq([reg_1])
+      expect(all_reg).to eq([reg_1, reg_2])
+    end
+
+    it "scopes usts reg to upaid registrations" do
+      reg_1 = create(:usts_registration, paid: false)
+      reg_2 = create(:usts_registration, paid: true)
+
+      unpaid_reg = UstsRegistration.unpaid_registrations
+      all_reg = UstsRegistration.all
+
+      expect(unpaid_reg).to eq([reg_1])
+      expect(all_reg).to eq([reg_1, reg_2])
+    end
+
+    it "scopes usts reg to regs for this year" do
+      reg_1 = create(:usts_registration, race_year: Date.today.year)
+      reg_2 = create(:usts_registration, race_year: Date.today.next_year.year)
+      reg_3 = create(:usts_registration, race_year: Date.today.last_year.year)
+
+      this_year = UstsRegistration.usts_registrations_this_year
+
+      all_reg = UstsRegistration.all
+
+      expect(this_year).to eq([reg_1])
+      expect(all_reg).to eq([reg_1, reg_2, reg_3])
+    end
+
+    it "generates collection of unpaid registrations for a user for this year" do
+      user = create(:user)
+      reg_1 = create(:usts_registration, creator_id: user.id, race_year: Date.today.year, paid: true)
+      reg_2 = create(:usts_registration, creator_id: user.id, race_year: Date.today.year, paid: false)
+      reg_3 = create(:usts_registration, creator_id: user.id, race_year: Date.today.last_year.year, paid: false)
+      reg_4 = create(:usts_registration, race_year: Date.today.year, paid: false)
+      reg_5 = create(:usts_registration, race_year: Date.today.last_year.year, paid: false)
+      reg_6 = create(:usts_registration, race_year: Date.today.year, paid: true)
+
+      user_unpaid_this_year = UstsRegistration.unpaid_usts_reg(user)
+
+      all_reg = UstsRegistration.all
+
+      expect(user_unpaid_this_year).to eq([reg_2])
+      expect(all_reg).to eq([reg_1, reg_2, reg_3, reg_4, reg_5, reg_6])
     end
   end
 end
