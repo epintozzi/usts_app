@@ -22,11 +22,13 @@ class UstsRegistration < ApplicationRecord
 
   enum membership_type: [:nonracing, :racing, :kpro]
 
-  # MEMBERSHIP_PRICES = {
-  #   nonracing: 25,
-  #   racing:
-  # }
-
+  def membership_prices
+    {
+      nonracing: 25,
+      racing: 100,
+      kpro: 25
+    }
+  end
 
   def self.full_name_list
     name_list = []
