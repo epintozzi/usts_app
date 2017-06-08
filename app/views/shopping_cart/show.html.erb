@@ -16,6 +16,6 @@
 
   <p class="amount-due" id="total-due"><%= number_to_currency(0) %></p>
 
-  <%= link_to "Pay Now", root_path, class: 'btn btn-solid-red' %>
+  <%= link_to "Pay Now", submit_payment_path, class: 'btn btn-solid-red', method: :post %>
 
 </div>
