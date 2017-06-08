@@ -31,7 +31,7 @@ class Admin::PhotosController < Admin::BaseController
     @photo = Photo.find(params[:id])
     if @photo.update(photo_params)
       flash[:success] = "This photo has successfully been updated."
-      redirect_to admin_photos_path
+      redirect_to admin_galleries_path
     else
       flash[:danger] = "Something went wrong. #{@photo.errors.full_messages.join(' ')}. Please try again."
       render :edit
