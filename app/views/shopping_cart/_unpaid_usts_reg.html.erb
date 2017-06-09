@@ -8,7 +8,7 @@
   </thead>
   <tbody>
     <% @unpaid_usts_registrations.each do |reg| %>
-      <tr>
+      <tr data-id="<%= reg.id %>">
         <td> <%= reg.first_name %> <%= reg.last_name %> </td>
         <td> <%= reg.membership_type %> </td>
         <td> <%= long_race_date(reg.created_at) if reg.created_at%> </td>
