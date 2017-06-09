@@ -1,11 +1,14 @@
 <div class="container">
   <h2 class="page-title">Manage Boat Classes</h2>
 
+  <!-- Fee overrides are matched for KPro based on a string match for the class name as "KPro". Updates to this can be made to the race_fee_override method on the RaceRegistration model. The fee override for KPro is handled in the same method.  -->
+  <p class="lead-text">Due to special fees associated with the KPro Class, please contact <a href="mailto:erin.pintozzi+usts@gmail.com" target="_blank">Erin Pintozzi</a> or web administrator to make changes to the KPro Class.</p>
+
   <%= link_to "Add boat class", new_admin_boat_class_path, class: 'btn btn-solid-red' %>
 
   <% @boat_classes.each do |boat_class| %>
     <p>
-      <%= link_to "Edit", edit_admin_boat_class_path(boat_class), class: "small-link" %>
+      <%= link_to "Edit", edit_admin_boat_class_path(boat_class), class: "small-link" unless boat_class.class_name == "KPro" %>
       <%= boat_class.class_name %> | Fee: <%= number_to_currency(boat_class.registration_fee) %>
     </p>
   <% end %>
