@@ -1,7 +1,7 @@
 <table class="unpaid-race-table-cart">
   <thead>
     <th>Driver</th>
-    <th>Race Site</th>
+    <th>Race</th>
     <th>Class</th>
     <th>Date Registered</th>
     <th>Amount Due</th>
@@ -11,12 +11,11 @@
     <% @unpaid_race_registrations.each do |reg| %>
       <tr data-id="<%= reg.id %>">
         <td> <%= reg.usts_registration.first_name %> <%= reg.usts_registration.last_name %> </td>
-        <td> <%= reg.race.city %> </td>
+        <td> <%= reg.race.city %> - <%= long_race_date(reg.race.start_date) %> </td>
         <td> <%= reg.boat_class.class_name %> </td>
         <td> <%= long_race_date(reg.created_at) if reg.created_at%> </td>
         <td>
           <%= number_to_currency(reg.race_fee_override) %>
-
         </td>
         <td>
           <%= check_box(:race_registration, :paid) %>

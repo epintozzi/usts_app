@@ -633,21 +633,36 @@ RSpec.describe UstsRegistration, type: :model do
       expect(all_reg).to eq([reg_1, reg_2, reg_3])
     end
 
-    it "generates collection of unpaid registrations for a user for this year" do
+    it "scope to registrations for this and future years" do
+
+      reg_1 = create(:usts_registration, race_year: Date.today.year)
+      reg_2 = create(:usts_registration, race_year: Date.today.next_year.year)
+      reg_3 = create(:usts_registration, race_year: Date.today.last_year.year)
+
+      future_reg = UstsRegistration.future_usts_registrations
+
+      all_reg = UstsRegistration.all
+
+      expect(future_reg).to eq([reg_1, reg_2])
+      expect(all_reg).to eq([reg_1, reg_2, reg_3])
+    end
+
+    it "generates collection of unpaid registrations for a user for this and future years" do
       user = create(:user)
       reg_1 = create(:usts_registration, creator_id: user.id, race_year: Date.today.year, paid: 2)
       reg_2 = create(:usts_registration, creator_id: user.id, race_year: Date.today.year, paid: 0)
       reg_3 = create(:usts_registration, creator_id: user.id, race_year: Date.today.last_year.year, paid: 0)
+      reg_7 = create(:usts_registration, creator_id: user.id, race_year: Date.today.next_year.year, paid: 0)
       reg_4 = create(:usts_registration, race_year: Date.today.year, paid: 0)
       reg_5 = create(:usts_registration, race_year: Date.today.last_year.year, paid: 0)
       reg_6 = create(:usts_registration, race_year: Date.today.year, paid: 2)
 
-      user_unpaid_this_year = UstsRegistration.unpaid_usts_reg(user)
+      user_unpaid_this_future_year = UstsRegistration.unpaid_usts_reg(user)
 
       all_reg = UstsRegistration.all
 
-      expect(user_unpaid_this_year).to eq([reg_2])
-      expect(all_reg).to eq([reg_1, reg_2, reg_3, reg_4, reg_5, reg_6])
+      expect(user_unpaid_this_future_year).to eq([reg_2, reg_7])
+      expect(all_reg).to eq([reg_1, reg_2, reg_3, reg_4, reg_5, reg_6, reg_7])
     end
   end
 end
