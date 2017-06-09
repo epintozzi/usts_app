@@ -12,8 +12,10 @@ class RaceRegistration < ApplicationRecord
   validates :boat_class, uniqueness: { scope: [:usts_registration, :race], message: "has already been registered for this driver and race location" }
 
   scope :for_user, -> (user) { where(creator_id: user.id)}
-  scope :unpaid_registrations, -> {where(paid: false)}
+  scope :unpaid_registrations, -> {where(paid: 0)}
   scope :for_future_races, -> { where(race: Race.future) }
+
+  enum paid: [:unpaid, :pending, :paid]
 
   def self.to_csv
     CSV.generate do |csv|
@@ -66,6 +68,18 @@ class RaceRegistration < ApplicationRecord
 
   def self.unpaid_race_reg(user)
     RaceRegistration.for_user(user).unpaid_registrations.for_future_races
+  end
+
+  def race_fee_override
+     if race.fee_override?
+       if boat_class.class_name == "KPro"
+         return 25
+       else
+       race.fee_override
+       end
+     else
+       boat_class.registration_fee
+     end
   end
 
 end

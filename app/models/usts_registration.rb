@@ -17,10 +17,12 @@ class UstsRegistration < ApplicationRecord
   validates :signature, presence: true
 
   scope :for_user, -> (user) { where(creator_id: user.id)}
-  scope :unpaid_registrations, -> { where(paid: false)}
+  scope :unpaid_registrations, -> { where(paid: 0)}
   scope :usts_registrations_this_year, -> { where(race_year: Date.today.year) }
+  scope :future_usts_registrations, -> { where('race_year >= ?', Date.today.year) }
 
   enum membership_type: [:nonracing, :racing, :kpro]
+  enum paid: [:unpaid, :pending, :paid]
 
   def membership_prices
     {
@@ -89,7 +91,7 @@ class UstsRegistration < ApplicationRecord
   end
 
   def self.unpaid_usts_reg(user)
-      UstsRegistration.for_user(user).unpaid_registrations.usts_registrations_this_year
+      UstsRegistration.for_user(user).unpaid_registrations.future_usts_registrations
   end
 
 end

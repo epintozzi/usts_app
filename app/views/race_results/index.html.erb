@@ -2,7 +2,8 @@
   <h2 class="page-title"> <%= Date.today.year %> Race Results </h2>
 
   <% @boat_classes.each do |boat_class| %>
-  <h4><%=boat_class.class_name%></h4>
+  <h4><%= boat_class.class_name %></h4>
+  <% next if @data[boat_class.id].nil? %>
   <table>
     <thead>
       <th>
@@ -17,20 +18,19 @@
         Total
       </th>
     </thead>
-    <% @driver_names = RaceResult.where(race: @races, boat_class: boat_class).pluck(:driver_name).uniq %>
     <tbody>
-      <% @driver_names.each do |driver| %>
+      <% @data[boat_class.id].sort_by {|driver, races| races[:total]} .reverse.each do |driver_name, race_hash| %>
       <tr>
         <td>
-          <%= driver %>
+          <%= driver_name %>
         </td>
         <% @races.each do |race| %>
           <td>
-            <%= RaceResult.where(race: race, boat_class: boat_class, driver_name: driver).first.try(:points) %>
+            <%= race_hash[race.id] %>
           </td>
         <% end %>
         <td>
-          <%= RaceResult.where(boat_class: boat_class, driver_name: driver, race: @races).sum(:points) %>
+          <%= race_hash[:total] %>
         </td>
       </tr>
       <% end %>

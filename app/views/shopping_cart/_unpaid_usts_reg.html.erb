@@ -1,6 +1,7 @@
 <table class="unpaid-usts-table-cart">
   <thead>
     <th>Member</th>
+    <th>Race Year</th>
     <th>Membership Type</th>
     <th>Date Registered</th>
     <th>Amount Due</th>
@@ -8,8 +9,9 @@
   </thead>
   <tbody>
     <% @unpaid_usts_registrations.each do |reg| %>
-      <tr>
+      <tr data-id="<%= reg.id %>">
         <td> <%= reg.first_name %> <%= reg.last_name %> </td>
+        <td> <%= reg.race_year %> </td>
         <td> <%= reg.membership_type %> </td>
         <td> <%= long_race_date(reg.created_at) if reg.created_at%> </td>
         <td>

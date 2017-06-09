@@ -1,11 +1,25 @@
 .jumbotron {
   background-image: asset-url("home_splash_image.jpg");
   background-position: center;
-  margin-top: -20px;
   height: 400px;
   background-repeat: no-repeat;
   background-size: cover;
   margin-bottom: 0px;
+  position: relative;
+  z-index: 2;
+}
+
+.carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.home-slider-image {
+  height: 400px !important;
+  width: 100% !important;
+  object-fit: cover;
 }
 
 .recent-news-band {
@@ -40,14 +54,4 @@
   padding-bottom: 10px;
   padding-left: 25px;
   padding-right: 25px;
-}
-
-.carousel {
-  margin-top: -50px;
-}
-
-.home-slider-image {
-  max-height: 400px !important;
-  min-width: 100% !important;
-  object-fit: cover;
 }

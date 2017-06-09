@@ -13,6 +13,17 @@ function calculateCartTotal(){
   return total;
 }
 
+function updateCartUrl(){
+  var newUrl = "/cart?";
+  $('table.unpaid-race-table-cart input[type="checkbox"]:checked').each(function(i, race) {
+    newUrl += "race_reg[]=" + $(race).parent().parent().data('id') + "&";
+  });
+  $('table.unpaid-usts-table-cart input[type="checkbox"]:checked').each(function(i, usts) {
+    newUrl += "usts_reg[]=" + $(usts).parent().parent().data('id') + "&";
+  });
+  $('#pay-now-button').attr('href', newUrl);
+}
+
 function updateTotalView(newTotal){
   $('#total-due').text(newTotal);
 }
@@ -23,5 +34,6 @@ $(document).ready(function(){
   $('table input[type="checkbox"]').click(function(){
     var newTotal = calculateCartTotal();
     updateTotalView(newTotal);
+    updateCartUrl();
   });
 });

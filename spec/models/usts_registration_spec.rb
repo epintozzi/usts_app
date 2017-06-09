@@ -18,7 +18,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg).to be_invalid
@@ -39,7 +39,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg).to be_invalid
@@ -60,7 +60,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg).to be_invalid
@@ -80,7 +80,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg).to be_invalid
@@ -100,7 +100,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg).to be_invalid
@@ -120,7 +120,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 1,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg).to be_invalid
@@ -140,7 +140,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 2,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg).to be_invalid
@@ -160,7 +160,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg).to be_invalid
@@ -180,7 +180,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg).to be_invalid
@@ -200,7 +200,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg).to be_invalid
@@ -220,7 +220,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg).to be_invalid
@@ -240,7 +240,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg).to be_invalid
@@ -260,7 +260,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg).to be_invalid
@@ -281,7 +281,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg).to be_invalid
@@ -301,7 +301,7 @@ RSpec.describe UstsRegistration, type: :model do
         liability_release: true,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg).to be_invalid
@@ -321,7 +321,7 @@ RSpec.describe UstsRegistration, type: :model do
         liability_release: true,
         membership_type: 0,
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg).to be_invalid
@@ -345,7 +345,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 1,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
         reg_2 = UstsRegistration.create(
         race_year: 2017,
@@ -361,7 +361,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 1,
         signature: "Ryan Barth",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg_1).to be_valid
@@ -383,7 +383,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 2,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
         reg_2 = UstsRegistration.create(
         race_year: 2017,
@@ -399,7 +399,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 2,
         signature: "Ryan Barth",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg_1).to be_valid
@@ -421,7 +421,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
         reg_2 = UstsRegistration.create(
         race_year: 2017,
@@ -437,7 +437,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 0,
         signature: "Ryan Barth",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg_1).to be_valid
@@ -460,7 +460,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
         reg_2 = UstsRegistration.create(
         race_year: 2016,
@@ -476,7 +476,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 0,
         signature: "Ryan Barth",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg_1).to be_valid
@@ -501,7 +501,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg).to be_valid
@@ -525,7 +525,7 @@ RSpec.describe UstsRegistration, type: :model do
         phone: "123-456-7890",
         fax: "987-654-4321",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg).to be_valid
@@ -545,7 +545,7 @@ RSpec.describe UstsRegistration, type: :model do
         membership_type: 0,
         signature: "Erin Pintozzi",
         creator_id: user.id,
-        paid: false
+        paid: 0
         )
 
         expect(reg).to be_valid
@@ -610,8 +610,8 @@ RSpec.describe UstsRegistration, type: :model do
     end
 
     it "scopes usts reg to upaid registrations" do
-      reg_1 = create(:usts_registration, paid: false)
-      reg_2 = create(:usts_registration, paid: true)
+      reg_1 = create(:usts_registration, paid: 0)
+      reg_2 = create(:usts_registration, paid: 2)
 
       unpaid_reg = UstsRegistration.unpaid_registrations
       all_reg = UstsRegistration.all
@@ -633,21 +633,41 @@ RSpec.describe UstsRegistration, type: :model do
       expect(all_reg).to eq([reg_1, reg_2, reg_3])
     end
 
-    it "generates collection of unpaid registrations for a user for this year" do
-      user = create(:user)
-      reg_1 = create(:usts_registration, creator_id: user.id, race_year: Date.today.year, paid: true)
-      reg_2 = create(:usts_registration, creator_id: user.id, race_year: Date.today.year, paid: false)
-      reg_3 = create(:usts_registration, creator_id: user.id, race_year: Date.today.last_year.year, paid: false)
-      reg_4 = create(:usts_registration, race_year: Date.today.year, paid: false)
-      reg_5 = create(:usts_registration, race_year: Date.today.last_year.year, paid: false)
-      reg_6 = create(:usts_registration, race_year: Date.today.year, paid: true)
+    it "scope to registrations for this and future years" do
 
-      user_unpaid_this_year = UstsRegistration.unpaid_usts_reg(user)
+      reg_1 = create(:usts_registration, race_year: Date.today.year)
+      reg_2 = create(:usts_registration, race_year: Date.today.next_year.year)
+      reg_3 = create(:usts_registration, race_year: Date.today.last_year.year)
+
+      future_reg = UstsRegistration.future_usts_registrations
 
       all_reg = UstsRegistration.all
 
-      expect(user_unpaid_this_year).to eq([reg_2])
-      expect(all_reg).to eq([reg_1, reg_2, reg_3, reg_4, reg_5, reg_6])
+      expect(future_reg).to eq([reg_1, reg_2])
+      expect(all_reg).to eq([reg_1, reg_2, reg_3])
+    end
+
+    it "generates collection of unpaid registrations for a user for this and future years" do
+      user = create(:user)
+      reg_1 = create(:usts_registration, creator_id: user.id, race_year: Date.today.year, paid: 2)
+      reg_2 = create(:usts_registration, creator_id: user.id, race_year: Date.today.year, paid: 0)
+      reg_3 = create(:usts_registration, creator_id: user.id, race_year: Date.today.last_year.year, paid: 0)
+      reg_7 = create(:usts_registration, creator_id: user.id, race_year: Date.today.next_year.year, paid: 0)
+      reg_4 = create(:usts_registration, race_year: Date.today.year, paid: 0)
+      reg_5 = create(:usts_registration, race_year: Date.today.last_year.year, paid: 0)
+      reg_6 = create(:usts_registration, race_year: Date.today.year, paid: 2)
+
+      user_unpaid_this_future_year = UstsRegistration.unpaid_usts_reg(user)
+
+      all_reg = UstsRegistration.all
+
+      expect(user_unpaid_this_future_year).to include(reg_2)
+      expect(user_unpaid_this_future_year).to include(reg_7)
+      expect(user_unpaid_this_future_year).to_not include(reg_1)
+      expect(user_unpaid_this_future_year).to_not include(reg_3)
+      expect(user_unpaid_this_future_year).to_not include(reg_4)
+      expect(user_unpaid_this_future_year).to_not include(reg_5)
+      expect(user_unpaid_this_future_year).to_not include(reg_6)
     end
   end
 end

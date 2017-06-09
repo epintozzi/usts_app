@@ -7,7 +7,7 @@ class RacesController < ApplicationController
 
   def show
     @race = Race.find(params[:id])
-    @races = Race.future.all.limit(3)
+    @races = Race.future.all.order(start_date: :asc).limit(3)
   end
 
   def new

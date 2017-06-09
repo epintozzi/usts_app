@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   get '/racing_resources', to: 'pages#racing_resources'
 
   get '/cart', to: 'shopping_cart#show'
+  post '/cart', to: 'shopping_cart#create', as: :submit_payment
+
+  post "/hook" => "shopping_cart#hook"
 
   namespace :admin do
     get '/dashboard', to: 'dashboard#show'

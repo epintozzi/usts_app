@@ -1,7 +1,5 @@
 <div class="">
   <div class="jumbotron">
-    <!-- <h2>US Title Series Home Page</h2> -->
-    <%# binding.pry %>
     <% if (!@gallery.nil? && !@gallery.photos.blank?) %>
       <%= render partial: 'carousel' %>
     <% end %>
