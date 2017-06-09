@@ -53,7 +53,7 @@ RSpec.describe RaceRegistration, type: :model do
         boat_class = create(:boat_class)
         usts_registration = create(:usts_registration)
         race = create(:race)
-        race_reg = RaceRegistration.new(boat_class: boat_class, usts_registration: usts_registration, race: race, boat_number: "V26", paid: 1, boat_owner: "Erin", boat_owner_zip: "80216", boat_name: "Fast Flyer", emergency_contact: "Brad Barth", emergency_phone: "9876544321", emergency_contact_at_race: 1, creator_id: user.id)
+        race_reg = RaceRegistration.new(boat_class: boat_class, usts_registration: usts_registration, race: race, boat_number: "V26", paid: 2, boat_owner: "Erin", boat_owner_zip: "80216", boat_name: "Fast Flyer", emergency_contact: "Brad Barth", emergency_phone: "9876544321", emergency_contact_at_race: 1, creator_id: user.id)
 
         expect(race_reg).to be_valid
       end
@@ -66,10 +66,10 @@ RSpec.describe RaceRegistration, type: :model do
         usts_registration = create(:usts_registration)
         usts_registration_2 = create(:usts_registration)
         race = create(:race)
-        race_reg_1 = RaceRegistration.create(boat_class: boat_class, usts_registration: usts_registration, race: race, boat_number: "V26", paid: 1, boat_owner: "Erin", boat_owner_zip: "80216", boat_name: "Fast Flyer", emergency_contact: "Brad Barth", emergency_phone: "9876544321", emergency_contact_at_race: 1, creator_id: user.id)
-        race_reg_2 = RaceRegistration.create(boat_class: boat_class, usts_registration: usts_registration, race: race, boat_number: "V26", paid: 1, boat_owner: "Erin", boat_owner_zip: "80216", boat_name: "Fast Flyer", emergency_contact: "Brad Barth", emergency_phone: "9876544321", emergency_contact_at_race: 1, creator_id: user.id)
-        race_reg_3 = RaceRegistration.create(boat_class: boat_class_2, usts_registration: usts_registration, race: race, boat_number: "V26", paid: 1, boat_owner: "Erin", boat_owner_zip: "80216", boat_name: "Fast Flyer", emergency_contact: "Brad Barth", emergency_phone: "9876544321", emergency_contact_at_race: 1, creator_id: user.id)
-        race_reg_4 = RaceRegistration.create(boat_class: boat_class, usts_registration: usts_registration_2, race: race, boat_number: "V26", paid: 1, boat_owner: "Erin", boat_owner_zip: "80216", boat_name: "Fast Flyer", emergency_contact: "Brad Barth", emergency_phone: "9876544321", emergency_contact_at_race: 1, creator_id: user.id)
+        race_reg_1 = RaceRegistration.create(boat_class: boat_class, usts_registration: usts_registration, race: race, boat_number: "V26", paid: 2, boat_owner: "Erin", boat_owner_zip: "80216", boat_name: "Fast Flyer", emergency_contact: "Brad Barth", emergency_phone: "9876544321", emergency_contact_at_race: 1, creator_id: user.id)
+        race_reg_2 = RaceRegistration.create(boat_class: boat_class, usts_registration: usts_registration, race: race, boat_number: "V26", paid: 2, boat_owner: "Erin", boat_owner_zip: "80216", boat_name: "Fast Flyer", emergency_contact: "Brad Barth", emergency_phone: "9876544321", emergency_contact_at_race: 1, creator_id: user.id)
+        race_reg_3 = RaceRegistration.create(boat_class: boat_class_2, usts_registration: usts_registration, race: race, boat_number: "V26", paid: 2, boat_owner: "Erin", boat_owner_zip: "80216", boat_name: "Fast Flyer", emergency_contact: "Brad Barth", emergency_phone: "9876544321", emergency_contact_at_race: 1, creator_id: user.id)
+        race_reg_4 = RaceRegistration.create(boat_class: boat_class, usts_registration: usts_registration_2, race: race, boat_number: "V26", paid: 2, boat_owner: "Erin", boat_owner_zip: "80216", boat_name: "Fast Flyer", emergency_contact: "Brad Barth", emergency_phone: "9876544321", emergency_contact_at_race: 1, creator_id: user.id)
 
         expect(race_reg_1).to be_valid
         expect(race_reg_2).to be_invalid
@@ -99,8 +99,8 @@ RSpec.describe RaceRegistration, type: :model do
     end
 
     it "scopes race reg to upaid registrations" do
-      reg_1 = create(:race_registration, paid: false)
-      reg_2 = create(:race_registration, paid: true)
+      reg_1 = create(:race_registration, paid: 0)
+      reg_2 = create(:race_registration, paid: 2)
 
       unpaid_reg = RaceRegistration.unpaid_registrations
       all_reg = RaceRegistration.all
@@ -130,10 +130,10 @@ RSpec.describe RaceRegistration, type: :model do
       race_3 = create(:race, start_date: Date.today - 2, end_date: Date.today - 2)
       race_4 = create(:race, start_date: Date.today - 2, end_date: Date.today - 2)
 
-      reg_1 = create(:race_registration, creator_id: user.id, race_id: race_1.id, paid: true)
-      reg_2 = create(:race_registration, creator_id: user.id, race_id: race_2.id, paid: false)
-      reg_3 = create(:race_registration, creator_id: user.id, race_id: race_3.id, paid: false)
-      reg_4 = create(:race_registration, race_id: race_4.id, paid: true)
+      reg_1 = create(:race_registration, creator_id: user.id, race_id: race_1.id, paid: 2)
+      reg_2 = create(:race_registration, creator_id: user.id, race_id: race_2.id, paid: 0)
+      reg_3 = create(:race_registration, creator_id: user.id, race_id: race_3.id, paid: 0)
+      reg_4 = create(:race_registration, race_id: race_4.id, paid: 2)
 
       user_unpaid_this_year = RaceRegistration.unpaid_race_reg(user)
 
