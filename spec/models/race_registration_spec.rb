@@ -111,7 +111,7 @@ RSpec.describe RaceRegistration, type: :model do
 
     it "scopes race reg to future races date registrations" do
       race_1 = create(:race, start_date: Date.tomorrow, end_date: Date.tomorrow)
-      race_2 = create(:race, start_date: Date.yesterday, end_date: Date.yesterday)
+      race_2 = create(:race, start_date: Date.today - 2, end_date: Date.today - 2)
       reg_1 = create(:race_registration, race_id: race_1.id)
       reg_2 = create(:race_registration, race_id: race_2.id)
 
@@ -127,8 +127,8 @@ RSpec.describe RaceRegistration, type: :model do
       user = create(:user)
       race_1 = create(:race, start_date: Date.tomorrow, end_date: Date.tomorrow)
       race_2 = create(:race, start_date: Date.tomorrow, end_date: Date.tomorrow)
-      race_3 = create(:race, start_date: Date.yesterday, end_date: Date.yesterday)
-      race_4 = create(:race, start_date: Date.yesterday, end_date: Date.yesterday)
+      race_3 = create(:race, start_date: Date.today - 2, end_date: Date.today - 2)
+      race_4 = create(:race, start_date: Date.today - 2, end_date: Date.today - 2)
 
       reg_1 = create(:race_registration, creator_id: user.id, race_id: race_1.id, paid: true)
       reg_2 = create(:race_registration, creator_id: user.id, race_id: race_2.id, paid: false)
