@@ -661,8 +661,8 @@ RSpec.describe UstsRegistration, type: :model do
 
       all_reg = UstsRegistration.all
 
-      expect(user_unpaid_this_future_year).to eq([reg_2, reg_7])
-      expect(all_reg).to eq([reg_1, reg_2, reg_3, reg_4, reg_5, reg_6, reg_7])
+      expect(user_unpaid_this_future_year).to eq([reg_7, reg_2])
+      expect(all_reg).to eq([reg_1, reg_2, reg_3, reg_7, reg_4, reg_5, reg_6])
     end
   end
 end
