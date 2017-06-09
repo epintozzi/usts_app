@@ -15,11 +15,8 @@
         <td> <%= reg.boat_class.class_name %> </td>
         <td> <%= long_race_date(reg.created_at) if reg.created_at%> </td>
         <td>
-          <% if reg.race.fee_override? %>
-            <%= number_to_currency(reg.race.fee_override) %>
-          <% else %>
-            <%= number_to_currency(reg.boat_class.registration_fee) %>
-          <% end %>
+          <%= number_to_currency(reg.race_fee_override) %>
+
         </td>
         <td>
           <%= check_box(:race_registration, :paid) %>

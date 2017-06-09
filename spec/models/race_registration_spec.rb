@@ -142,5 +142,31 @@ RSpec.describe RaceRegistration, type: :model do
       expect(user_unpaid_this_year).to eq([reg_2])
       expect(all_reg).to eq([reg_1, reg_2, reg_3, reg_4])
     end
+
+    it "returns correct override fee for KPro" do
+      boat_class_1 = create(:boat_class, class_name: "KPro", registration_fee: 15)
+      boat_class_2 = create(:boat_class, class_name: "125cc Hydro", registration_fee: 50)
+      race_1 = create(:race, fee_override: nil)
+      race_2 = create(:race, fee_override: 75)
+
+      race_reg_1 = create(:race_registration, race_id: race_1.id, boat_class_id: boat_class_1.id)
+      race_reg_2 = create(:race_registration, race_id: race_2.id, boat_class_id: boat_class_1.id)
+
+      expect(race_reg_1.race_fee_override).to eq(15)
+      expect(race_reg_2.race_fee_override).to eq(25)
+    end
+
+    it "returns correct override fee for non-KPro classes" do
+      boat_class_1 = create(:boat_class, class_name: "KPro", registration_fee: 15)
+      boat_class_2 = create(:boat_class, class_name: "125cc Hydro", registration_fee: 50)
+      race_1 = create(:race, fee_override: nil)
+      race_2 = create(:race, fee_override: 75)
+
+      race_reg_1 = create(:race_registration, race_id: race_1.id, boat_class_id: boat_class_2.id)
+      race_reg_2 = create(:race_registration, race_id: race_2.id, boat_class_id: boat_class_2.id)
+
+      expect(race_reg_1.race_fee_override).to eq(50)
+      expect(race_reg_2.race_fee_override).to eq(75)
+    end
   end
 end

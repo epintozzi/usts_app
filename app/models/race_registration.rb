@@ -70,4 +70,16 @@ class RaceRegistration < ApplicationRecord
     RaceRegistration.for_user(user).unpaid_registrations.for_future_races
   end
 
+  def race_fee_override
+     if race.fee_override?
+       if boat_class.class_name == "KPro"
+         return 25
+       else
+       race.fee_override
+       end
+     else
+       boat_class.registration_fee
+     end
+  end
+
 end
