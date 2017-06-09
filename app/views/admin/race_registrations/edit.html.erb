@@ -4,6 +4,10 @@
 
   <%= form_for [:admin, @race_registration], html: {class: "form-group"} do |f| %>
 
+    <div class="field">
+      <%= f.label :paid, class: 'required' %>
+      <%= f.select :paid, RaceRegistration.paids.keys.to_a, {prompt: "Select Payment Status"}, class: 'form-control' %>
+    </div>
 
     <div class="field">
       <%= f.label :race, class: 'required' %>

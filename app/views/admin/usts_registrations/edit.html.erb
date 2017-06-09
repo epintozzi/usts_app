@@ -5,6 +5,11 @@
   <%= form_for [:admin, @usts_registration] , html: {class: "form-group"} do |f| %>
 
     <div class="field">
+      <%= f.label :paid, class: 'required' %>
+      <%= f.select :paid, UstsRegistration.paids.keys.to_a, {prompt: "Select Payment Status"}, class: 'form-control' %>
+    </div>
+
+    <div class="field">
       <%= f.label :race_year, class: 'required' %>
       <%= f.select :race_year, options_for_select(year_options, selected: Date.current.year), {}, class: 'form-control race-year'  %>
     </div>

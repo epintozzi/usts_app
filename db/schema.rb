@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609210043) do
+ActiveRecord::Schema.define(version: 20170609212849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(version: 20170609210043) do
     t.integer  "creator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "transaction_number"
+    t.datetime "payment_date"
     t.index ["boat_class_id"], name: "index_race_registrations_on_boat_class_id", using: :btree
     t.index ["creator_id"], name: "index_race_registrations_on_creator_id", using: :btree
     t.index ["race_id"], name: "index_race_registrations_on_race_id", using: :btree
@@ -160,9 +162,11 @@ ActiveRecord::Schema.define(version: 20170609210043) do
     t.integer  "membership_type"
     t.text     "signature"
     t.integer  "creator_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.integer  "paid",              default: 0
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "paid",               default: 0
+    t.text     "transaction_number"
+    t.datetime "payment_date"
     t.index ["creator_id"], name: "index_usts_registrations_on_creator_id", using: :btree
   end
 
