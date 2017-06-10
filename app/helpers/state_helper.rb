@@ -53,7 +53,18 @@ module StateHelper
       ['Washington', 'WA'],
       ['West Virginia', 'WV'],
       ['Wisconsin', 'WI'],
-      ['Wyoming', 'WY']
+      ['Wyoming', 'WY'],
+      ['Alberta, Canada', 'AB, CAN'],
+      ['British Columbia, Canada', 'BC, CAN'],
+      ['Manitoba, Canada', 'MB, CAN'],
+      ['New Brunswick, Canada', 'NB, CAN'],
+      ['Newfoundland and Labrador, Canada', 'NL, CAN'],
+      ['Nova Scotia, Canada', 'NS, CAN'],
+      ['Ontario, Canada', 'ON, CAN'],
+      ['Prince Edward Island, Canada', 'PE, CAN'],
+      ['Quebec, Canada', 'QC, CAN'],
+      ['Saskatchewan, Canada', 'SK, CAN'],
+      ['Other', 'Other']
     ]
   end
 
