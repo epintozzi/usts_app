@@ -175,4 +175,29 @@ RSpec.describe RaceRegistration, type: :model do
       expect(race_reg_2.race_fee_override).to eq(75)
     end
   end
+
+  describe "paranoia" do
+    it "soft deletes a race registration" do
+      reg = create(:race_registration)
+
+      expect(RaceRegistration.all).to include(reg)
+
+      reg.destroy
+
+      expect(RaceRegistration.all).to_not include(reg)
+      expect(RaceRegistration.only_deleted).to include(reg)
+      expect(reg.deleted_at).to_not eq(nil)
+    end
+    it "restores a soft deleted race reg" do
+      reg = create(:race_registration)
+
+      reg.destroy
+
+      expect(RaceRegistration.all).to_not include(reg)
+
+      reg.restore
+
+      expect(RaceRegistration.all).to include(reg)
+    end
+  end
 end

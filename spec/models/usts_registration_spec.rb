@@ -680,4 +680,29 @@ RSpec.describe UstsRegistration, type: :model do
       expect(user_unpaid_this_future_year).to_not include(reg_6)
     end
   end
+
+  describe "paranoia" do
+    it "soft deletes a usts registration" do
+      reg = create(:usts_registration)
+
+      expect(UstsRegistration.all).to include(reg)
+
+      reg.destroy
+
+      expect(UstsRegistration.all).to_not include(reg)
+      expect(UstsRegistration.only_deleted).to include(reg)
+      expect(reg.deleted_at).to_not eq(nil)
+    end
+    it "restores a soft deleted usts reg" do
+      reg = create(:usts_registration)
+
+      reg.destroy
+
+      expect(UstsRegistration.all).to_not include(reg)
+
+      reg.restore
+
+      expect(UstsRegistration.all).to include(reg)
+    end
+  end
 end
