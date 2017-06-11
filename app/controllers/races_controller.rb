@@ -10,16 +10,4 @@ class RacesController < ApplicationController
     @races = Race.future.all.order(start_date: :asc).limit(3)
   end
 
-  def new
-  end
-
-  def create
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609212849) do
+ActiveRecord::Schema.define(version: 20170611204556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,8 @@ ActiveRecord::Schema.define(version: 20170609212849) do
     t.string   "sanction_content_type"
     t.integer  "sanction_file_size"
     t.datetime "sanction_updated_at"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_races_on_deleted_at", using: :btree
   end
 
   create_table "sponsors", force: :cascade do |t|

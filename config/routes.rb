@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/dashboard', to: 'dashboard#show'
-    resources :races, except: [:show, :destroy]
+    resources :races, except: [:show]
     resources :news, only: :index
     resources :race_registrations, only: [:index, :show, :edit, :update, :destroy]
     resources :usts_registrations, only: [:index, :show, :edit, :update, :destroy]

@@ -71,7 +71,8 @@ RSpec.describe Race, type: :model do
       list = Race.title_location_list
       count = Race.title_location_list.count
 
-      expect(list).to eq([["Race for the Kids - Lake Alfred, FL", race_1.id], ["Nationals - DePue, IL", race_2.id]])
+      expect(list).to include(["Race for the Kids - Lake Alfred, FL", race_1.id])
+      expect(list).to include(["Nationals - DePue, IL", race_2.id])
       expect(count).to eq(2)
     end
     it "scopes races to future date" do
@@ -92,7 +93,8 @@ RSpec.describe Race, type: :model do
       all_races = Race.all
 
       expect(this_year).to eq([race_1])
-      expect(all_races).to eq([race_1, race_2])
+      expect(all_races).to include(race_1)
+      expect(all_races).to include(race_2)
     end
     it "identifies races as future" do
       race_1 = create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: Date.yesterday, end_date: Date.today)
