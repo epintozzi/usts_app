@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     resources :news, only: :index
     resources :race_registrations, only: [:index, :show, :edit, :update, :destroy]
     resources :usts_registrations, only: [:index, :show, :edit, :update, :destroy]
-    resources :boat_classes, except: [:show, :destroy]
+    resources :boat_classes, except: [:show]
     resources :sponsors, except: [:show, :destroy]
     resources :users, except: [:show, :destroy]
     resources :galleries, except: [:show]

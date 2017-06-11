@@ -42,4 +42,29 @@ RSpec.describe BoatClass, type: :model do
       expect(boat_class).to respond_to(:race_results)
     end
   end
+
+  describe "paranoia" do
+    it "soft deletes a boat_class" do
+      boat_class = create(:boat_class)
+
+      expect(BoatClass.all).to include(boat_class)
+
+      boat_class.destroy
+
+      expect(BoatClass.all).to_not include(boat_class)
+      expect(BoatClass.only_deleted).to include(boat_class)
+      expect(boat_class.deleted_at).to_not eq(nil)
+    end
+    it "restores a soft deleted boat_class" do
+      boat_class = create(:boat_class)
+
+      boat_class.destroy
+
+      expect(BoatClass.all).to_not include(boat_class)
+
+      boat_class.restore
+
+      expect(BoatClass.all).to include(boat_class)
+    end
+  end
 end

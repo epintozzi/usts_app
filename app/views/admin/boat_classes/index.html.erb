@@ -9,6 +9,7 @@
   <% @boat_classes.each do |boat_class| %>
     <p>
       <%= link_to "Edit", edit_admin_boat_class_path(boat_class), class: "small-link" unless boat_class.class_name == "KPro" %>
+      <%= link_to "Delete", admin_boat_class_path(boat_class), method: "delete", class: "small-link", data: {confirm: "Are you sure you want to delete this race?"} unless boat_class.class_name == "KPro" %>
       <%= boat_class.class_name %> | Fee: <%= number_to_currency(boat_class.registration_fee) %>
     </p>
   <% end %>

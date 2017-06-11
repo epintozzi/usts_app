@@ -8,7 +8,7 @@
     <p>
       <%= link_to "Edit", edit_admin_race_path(race), class: "small-link" %>
       <%= link_to "View", race_path(race), class: "small-link" %>
-      <%= link_to "Delete", admin_race_path(race), method: "delete", class: "small-link" %>
+      <%= link_to "Delete", admin_race_path(race), method: "delete", class: "small-link", data: {confirm: "Are you sure you want to delete this race?"} %>
       <%= long_race_date(race.start_date) %>: <%= race.title %> - <%= race.city %>, <%= race.state %>
     </p>
   <% end %>
@@ -16,9 +16,9 @@
   <h3>Past Races</h3>
   <% @all_races.each do |race| %>
     <p>
-      <%= link_to "Edit", edit_admin_race_path(race), class: "small-link" %>
+      <%#= link_to "Edit", edit_admin_race_path(race), class: "small-link" %>
       <%= link_to "View", race_path(race), class: "small-link" %>
-      <%= link_to "Delete", admin_race_path(race), method: "delete", class: "small-link", data: {confirm: "Are you sure you want to delete this race?"} %>
+      <%#= link_to "Delete", admin_race_path(race), method: "delete", class: "small-link", data: {confirm: "Are you sure you want to delete this race?"} %>
       <%= long_race_date(race.start_date) %>: <%= race.title %> - <%= race.city %>, <%= race.state %>
     </p>
   <% end %>
