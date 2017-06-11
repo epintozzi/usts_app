@@ -71,7 +71,8 @@ RSpec.describe Race, type: :model do
       list = Race.title_location_list
       count = Race.title_location_list.count
 
-      expect(list).to eq([["Race for the Kids - Lake Alfred, FL", race_1.id], ["Nationals - DePue, IL", race_2.id]])
+      expect(list).to include(["Race for the Kids - Lake Alfred, FL", race_1.id])
+      expect(list).to include(["Nationals - DePue, IL", race_2.id])
       expect(count).to eq(2)
     end
     it "scopes races to future date" do
@@ -92,7 +93,8 @@ RSpec.describe Race, type: :model do
       all_races = Race.all
 
       expect(this_year).to eq([race_1])
-      expect(all_races).to eq([race_1, race_2])
+      expect(all_races).to include(race_1)
+      expect(all_races).to include(race_2)
     end
     it "identifies races as future" do
       race_1 = create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: Date.yesterday, end_date: Date.today)
@@ -107,6 +109,31 @@ RSpec.describe Race, type: :model do
 
       expect(race_1.race_this_year?).to eq(true)
       expect(race_2.race_this_year?).to eq(false)
+    end
+  end
+
+  describe "paranoia" do
+    it "soft deletes a race" do
+      race = create(:race)
+
+      expect(Race.all).to include(race)
+
+      race.destroy
+
+      expect(Race.all).to_not include(race)
+      expect(Race.only_deleted).to include(race)
+      expect(race.deleted_at).to_not eq(nil)
+    end
+    it "restores a soft deleted race" do
+      race = create(:race)
+
+      race.destroy
+
+      expect(Race.all).to_not include(race)
+
+      race.restore
+
+      expect(Race.all).to include(race)
     end
   end
 end

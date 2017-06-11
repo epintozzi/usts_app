@@ -1,4 +1,6 @@
 class BoatClass < ApplicationRecord
+  acts_as_paranoid
+  
   has_many :race_registrations
   has_many :race_results
 

@@ -20,6 +20,7 @@ gem 'cancancan', '~> 1.10'
 gem "paperclip", "~> 5.0.0"
 gem "figaro"
 gem 'aws-sdk', '~> 2.3'
+gem 'paranoia', '~> 2.2'
 
 group :development, :test do
   gem 'byebug', platform: :mri

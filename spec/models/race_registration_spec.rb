@@ -95,7 +95,8 @@ RSpec.describe RaceRegistration, type: :model do
       all_reg = RaceRegistration.all
 
       expect(RaceRegistration.for_user(user)). to eq([reg_1])
-      expect(all_reg).to eq([reg_1, reg_2])
+      expect(all_reg).to include(reg_1)
+      expect(all_reg).to include(reg_2)
     end
 
     it "scopes race reg to upaid registrations" do
@@ -106,7 +107,8 @@ RSpec.describe RaceRegistration, type: :model do
       all_reg = RaceRegistration.all
 
       expect(unpaid_reg).to eq([reg_1])
-      expect(all_reg).to eq([reg_1, reg_2])
+      expect(all_reg).to include(reg_1)
+      expect(all_reg).to include(reg_2)
     end
 
     it "scopes race reg to future races date registrations" do
@@ -120,7 +122,8 @@ RSpec.describe RaceRegistration, type: :model do
       all_reg = RaceRegistration.all
 
       expect(future_reg).to eq([reg_1])
-      expect(all_reg).to eq([reg_1, reg_2])
+      expect(all_reg).to include(reg_1)
+      expect(all_reg).to include(reg_2)
     end
 
     it "generates collection of unpaid registrations for a user for race dates in the future" do
@@ -140,7 +143,10 @@ RSpec.describe RaceRegistration, type: :model do
       all_reg = RaceRegistration.all
 
       expect(user_unpaid_this_year).to eq([reg_2])
-      expect(all_reg).to eq([reg_1, reg_2, reg_3, reg_4])
+      expect(all_reg).to include(reg_1)
+      expect(all_reg).to include(reg_2)
+      expect(all_reg).to include(reg_3)
+      expect(all_reg).to include(reg_4)
     end
 
     it "returns correct override fee for KPro" do
@@ -167,6 +173,31 @@ RSpec.describe RaceRegistration, type: :model do
 
       expect(race_reg_1.race_fee_override).to eq(50)
       expect(race_reg_2.race_fee_override).to eq(75)
+    end
+  end
+
+  describe "paranoia" do
+    it "soft deletes a race registration" do
+      reg = create(:race_registration)
+
+      expect(RaceRegistration.all).to include(reg)
+
+      reg.destroy
+
+      expect(RaceRegistration.all).to_not include(reg)
+      expect(RaceRegistration.only_deleted).to include(reg)
+      expect(reg.deleted_at).to_not eq(nil)
+    end
+    it "restores a soft deleted race reg" do
+      reg = create(:race_registration)
+
+      reg.destroy
+
+      expect(RaceRegistration.all).to_not include(reg)
+
+      reg.restore
+
+      expect(RaceRegistration.all).to include(reg)
     end
   end
 end

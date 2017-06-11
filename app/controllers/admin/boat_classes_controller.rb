@@ -34,6 +34,13 @@ class Admin::BoatClassesController < Admin::BaseController
     end
   end
 
+  def destroy
+    @boat_class = BoatClass.find(params[:id])
+    @boat_class.destroy
+    flash[:success] = "This boat_class has been deleted."
+    redirect_to admin_boat_classes_path
+  end
+
   private
 
   def boat_class_params

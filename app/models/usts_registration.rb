@@ -1,4 +1,6 @@
 class UstsRegistration < ApplicationRecord
+  acts_as_paranoid
+  
   belongs_to :creator, class_name: "User"
   has_many :race_registrations
 

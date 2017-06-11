@@ -572,7 +572,8 @@ RSpec.describe UstsRegistration, type: :model do
       list = UstsRegistration.full_name_list
       count = UstsRegistration.full_name_list.count
 
-      expect(list).to eq([["Erin Pintozzi", user_1.id], ["Brad Barth", user_2.id]])
+      expect(list).to include(["Erin Pintozzi", user_1.id])
+      expect(list).to include(["Brad Barth", user_2.id])
       expect(count).to eq(2)
     end
 
@@ -583,13 +584,14 @@ RSpec.describe UstsRegistration, type: :model do
       list = UstsRegistration.full_name_list
       count = UstsRegistration.full_name_list.count
 
-      expect(list).to eq([["Erin Pintozzi", user_1.id], ["Brad Barth", user_2.id]])
+      expect(list).to include(["Erin Pintozzi", user_1.id])
+      expect(list).to include(["Brad Barth", user_2.id])
       expect(count).to eq(2)
     end
 
     it "does not include non-racing members on full_name_list" do
       create(:usts_registration, first_name: "Erin", last_name: "Pintozzi", membership_type: 0)
-      user_2 = create(:usts_registration, first_name: "Brad", last_name: "Barth")
+      user_2 = create(:usts_registration, first_name: "Brad", last_name: "Barth",  membership_type: 1)
 
       list = UstsRegistration.where(membership_type: "racing").full_name_list
       count = UstsRegistration.where(membership_type: "racing").full_name_list.count
@@ -606,7 +608,8 @@ RSpec.describe UstsRegistration, type: :model do
       all_reg = UstsRegistration.all
 
       expect(UstsRegistration.for_user(user)). to eq([reg_1])
-      expect(all_reg).to eq([reg_1, reg_2])
+      expect(all_reg).to include(reg_1)
+      expect(all_reg).to include(reg_2)
     end
 
     it "scopes usts reg to upaid registrations" do
@@ -617,7 +620,8 @@ RSpec.describe UstsRegistration, type: :model do
       all_reg = UstsRegistration.all
 
       expect(unpaid_reg).to eq([reg_1])
-      expect(all_reg).to eq([reg_1, reg_2])
+      expect(all_reg).to include(reg_1)
+      expect(all_reg).to include(reg_2)
     end
 
     it "scopes usts reg to regs for this year" do
@@ -630,7 +634,9 @@ RSpec.describe UstsRegistration, type: :model do
       all_reg = UstsRegistration.all
 
       expect(this_year).to eq([reg_1])
-      expect(all_reg).to eq([reg_1, reg_2, reg_3])
+      expect(all_reg).to include(reg_1)
+      expect(all_reg).to include(reg_2)
+      expect(all_reg).to include(reg_3)
     end
 
     it "scope to registrations for this and future years" do
@@ -643,8 +649,12 @@ RSpec.describe UstsRegistration, type: :model do
 
       all_reg = UstsRegistration.all
 
-      expect(future_reg).to eq([reg_1, reg_2])
-      expect(all_reg).to eq([reg_1, reg_2, reg_3])
+      expect(future_reg).to include(reg_1)
+      expect(future_reg).to include(reg_2)
+      expect(future_reg).to_not include(reg_3)
+      expect(all_reg).to include(reg_1)
+      expect(all_reg).to include(reg_2)
+      expect(all_reg).to include(reg_3)
     end
 
     it "generates collection of unpaid registrations for a user for this and future years" do
@@ -668,6 +678,31 @@ RSpec.describe UstsRegistration, type: :model do
       expect(user_unpaid_this_future_year).to_not include(reg_4)
       expect(user_unpaid_this_future_year).to_not include(reg_5)
       expect(user_unpaid_this_future_year).to_not include(reg_6)
+    end
+  end
+
+  describe "paranoia" do
+    it "soft deletes a usts registration" do
+      reg = create(:usts_registration)
+
+      expect(UstsRegistration.all).to include(reg)
+
+      reg.destroy
+
+      expect(UstsRegistration.all).to_not include(reg)
+      expect(UstsRegistration.only_deleted).to include(reg)
+      expect(reg.deleted_at).to_not eq(nil)
+    end
+    it "restores a soft deleted usts reg" do
+      reg = create(:usts_registration)
+
+      reg.destroy
+
+      expect(UstsRegistration.all).to_not include(reg)
+
+      reg.restore
+
+      expect(UstsRegistration.all).to include(reg)
     end
   end
 end

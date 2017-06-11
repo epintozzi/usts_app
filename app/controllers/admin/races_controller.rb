@@ -1,11 +1,8 @@
 class Admin::RacesController < Admin::BaseController
 
   def index
-    @races = Race.all
-  end
-
-  def show
-    @race = Race.find(params[:id])
+    @races = Race.future
+    @all_races = Race.all - @races
   end
 
   def new
@@ -36,6 +33,13 @@ class Admin::RacesController < Admin::BaseController
       flash[:danger] = "Something went wrong. #{@race.errors.full_messages.join(' ')}. Please try again."
       render :edit
     end
+  end
+
+  def destroy
+    @race = Race.find(params[:id])
+    @race.destroy
+    flash[:success] = "This race has been deleted."
+    redirect_to admin_races_path
   end
 
   private
