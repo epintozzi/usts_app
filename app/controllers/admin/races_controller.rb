@@ -5,10 +5,6 @@ class Admin::RacesController < Admin::BaseController
     @all_races = Race.all - @races
   end
 
-  # def show
-  #   @race = Race.find(params[:id])
-  # end
-
   def new
     @race = Race.new()
   end

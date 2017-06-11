@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170611204556) do
+ActiveRecord::Schema.define(version: 20170611213855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,8 +72,10 @@ ActiveRecord::Schema.define(version: 20170611204556) do
     t.datetime "updated_at"
     t.text     "transaction_number"
     t.datetime "payment_date"
+    t.datetime "deleted_at"
     t.index ["boat_class_id"], name: "index_race_registrations_on_boat_class_id", using: :btree
     t.index ["creator_id"], name: "index_race_registrations_on_creator_id", using: :btree
+    t.index ["deleted_at"], name: "index_race_registrations_on_deleted_at", using: :btree
     t.index ["race_id"], name: "index_race_registrations_on_race_id", using: :btree
     t.index ["usts_registration_id"], name: "index_race_registrations_on_usts_registration_id", using: :btree
   end
@@ -169,7 +171,9 @@ ActiveRecord::Schema.define(version: 20170611204556) do
     t.integer  "paid",               default: 0
     t.text     "transaction_number"
     t.datetime "payment_date"
+    t.datetime "deleted_at"
     t.index ["creator_id"], name: "index_usts_registrations_on_creator_id", using: :btree
+    t.index ["deleted_at"], name: "index_usts_registrations_on_deleted_at", using: :btree
   end
 
   add_foreign_key "news", "users", column: "author_id"

@@ -1,4 +1,6 @@
 class RaceRegistration < ApplicationRecord
+  acts_as_paranoid
+  
   belongs_to :boat_class
   belongs_to :usts_registration
   belongs_to :race
