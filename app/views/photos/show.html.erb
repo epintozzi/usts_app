@@ -1,18 +1,18 @@
 <div class="container">
+  <div class="basic-page">
+    <%= link_to "Back to Gallery", gallery_path(@photo.gallery) %>
+  <br>
 
-  <%= link_to "Back to Gallery", gallery_path(@photo.gallery) %>
-<br>
-
-  <%= link_to "< Previous Photo", @photo.previous, class: "small-link" unless @photo == Photo.first %><br>
-  <%= link_to "Next Photo >", @photo.next, class: "small-link" unless @photo == Photo.last%>
-  <%= image_tag(@photo.image.url(:original), class: "gallery-photo-medium") %>
-  <p class="caption">
-    <% if !@photo.caption.blank? %>
-      <%= @photo.caption  %> |
-    <% end %>
-    <% if !@photo.photographer.blank? %>
-      Photographer: <%= @photo.photographer  %>
-    <% end %>
-  </p>
-
+    <%= link_to "< Previous Photo", @photo.previous, class: "small-link" unless @photo == Photo.first %><br>
+    <%= link_to "Next Photo >", @photo.next, class: "small-link" unless @photo == Photo.last%>
+    <%= image_tag(@photo.image.url(:original), class: "gallery-photo-medium") %>
+    <p class="caption">
+      <% if !@photo.caption.blank? %>
+        <%= @photo.caption  %> |
+      <% end %>
+      <% if !@photo.photographer.blank? %>
+        Photographer: <%= @photo.photographer  %>
+      <% end %>
+    </p>
+  </div>
 </div>
