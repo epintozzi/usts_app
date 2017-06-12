@@ -1,22 +1,24 @@
 <div class="container">
-  <%= link_to "Back to All USTS Registrations", admin_usts_registrations_path %>
+  <div class="basic-page">
+    <%= link_to "Back to All USTS Registrations", admin_usts_registrations_path %>
 
-  <h2 class="page-title">USTS Registration for <%= @usts_registration.first_name %> <%= @usts_registration.last_name %></h2>
+    <h2 class="page-title">USTS Registration for <%= @usts_registration.first_name %> <%= @usts_registration.last_name %></h2>
 
-  <h4>USTS Registration Details</h4>
-  <%= link_to "Edit Registration Details", edit_admin_usts_registration_path(@usts_registration), class: "small-link" %>
-  <p>Member Name: <%= @usts_registration.first_name %> <%= @usts_registration.last_name %></p>
-  <p>USTS Member number: <%= @usts_registration.usts_number %></p>
-  <p>Membership Type: <%= @usts_registration.membership_type %></p>
-  <p>Street address: <%= @usts_registration.street_address %></p>
-  <p>City: <%= @usts_registration.city %></p>
-  <p>State: <%= @usts_registration.state %></p>
-  <p>Zipcode: <%= @usts_registration.zip %></p>
-  <p>Phone: <%= @usts_registration.phone %></p>
-  <p>Fax: <%= @usts_registration.fax %></p>
-  <p>Birthdate: <%= long_race_date(@usts_registration.birthdate) %></p>
-  <p>Liability Release? <%= @usts_registration.liability_release? %></p>
-  <% if @usts_registration.creator %>
-    <p>Registered by: <%= @usts_registration.creator.first_name %> <%= @usts_registration.creator.last_name %></p>
-  <% end %>
+    <h4>USTS Registration Details</h4>
+    <%= link_to "Edit Registration Details", edit_admin_usts_registration_path(@usts_registration), class: "small-link" %>
+    <p>Member Name: <%= @usts_registration.first_name %> <%= @usts_registration.last_name %></p>
+    <p>USTS Member number: <%= @usts_registration.usts_number %></p>
+    <p>Membership Type: <%= @usts_registration.membership_type %></p>
+    <p>Street address: <%= @usts_registration.street_address %></p>
+    <p>City: <%= @usts_registration.city %></p>
+    <p>State: <%= @usts_registration.state %></p>
+    <p>Zipcode: <%= @usts_registration.zip %></p>
+    <p>Phone: <%= @usts_registration.phone %></p>
+    <p>Fax: <%= @usts_registration.fax %></p>
+    <p>Birthdate: <%= long_race_date(@usts_registration.birthdate) %></p>
+    <p>Liability Release? <%= @usts_registration.liability_release? %></p>
+    <% if @usts_registration.creator %>
+      <p>Registered by: <%= @usts_registration.creator.first_name %> <%= @usts_registration.creator.last_name %></p>
+    <% end %>
+  </div>
 </div>

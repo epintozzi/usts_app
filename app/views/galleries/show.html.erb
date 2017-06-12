@@ -1,13 +1,15 @@
 <div class="container">
-  <%= link_to "Back to All Galleries", galleries_path %>
-  <h2 class="page-title"> <%= @gallery.name %> </h2>
-  <% if @gallery.photos.blank? %>
-    <p class="text-center">Sorry, it looks like nothing has been added to this gallery yet.</p>
-  <% else %>
-    <% @gallery.photos.each do |photo| %>
-      <div class="col-md-3">
-        <%= link_to(image_tag(photo.image.url(:thumb), class: "center-block gallery-thumb"), photo_path(photo)) %>
-      </div>
+  <div class="basic-page">
+    <%= link_to "Back to All Galleries", galleries_path %>
+    <h2 class="page-title"> <%= @gallery.name %> </h2>
+    <% if @gallery.photos.blank? %>
+      <p class="text-center">Sorry, it looks like nothing has been added to this gallery yet.</p>
+    <% else %>
+      <% @gallery.photos.each do |photo| %>
+        <div class="col-md-3">
+          <%= link_to(image_tag(photo.image.url(:thumb), class: "center-block gallery-thumb"), photo_path(photo)) %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

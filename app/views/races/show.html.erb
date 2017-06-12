@@ -1,62 +1,65 @@
 
-<div class="row">
-  <div class="col-md-6 race-left-grouping">
-    <div class="race-details-show">
-      <h3 class="race-title">
-        <%= @race.title %>
-      </h3>
-      <p class="race-address">
-        <%= @race.street_address %><br>
-        <%= @race.city %>, <%= @race.state %>
-      </p>
-      <p class="race-dates">
-        <%= short_race_date(@race.start_date) %> - <%= short_race_date(@race.end_date) %>
-      </p>
-      <% if @race.future? %>
-        <%= link_to "Register", new_race_registration_path, class: "btn btn-solid-red" %>
-      <% end %>
-      <% if !@race.sanction_file_name.nil? %>
-        <%= link_to "Sanction", @race.sanction.url, class: "btn btn-outline-red", target: :_blank %>
-      <% end %>
-      <br>
-      <%= link_to "See others who are registered", race_registrations_path, class: 'small-link' %>
+<div class="race-detail-top-band">
+  <div class="row">
+    <div class="col-md-6 race-left-grouping">
+      <div class="race-details-show">
+        <h3 class="race-title">
+          <%= @race.title %>
+        </h3>
+        <p class="race-address">
+          <%= @race.street_address %><br>
+          <%= @race.city %>, <%= @race.state %>
+        </p>
+        <p class="race-dates">
+          <%= short_race_date(@race.start_date) %> - <%= short_race_date(@race.end_date) %>
+        </p>
+        <% if @race.future? %>
+          <%= link_to "Register", new_race_registration_path, class: "btn btn-solid-red" %>
+        <% end %>
+        <% if !@race.sanction_file_name.nil? %>
+          <%= link_to "Sanction", @race.sanction.url, class: "btn btn-outline-red", target: :_blank %>
+        <% end %>
+        <br>
+        <%= link_to "See others who are registered", race_registrations_path, class: 'small-link' %>
+      </div>
     </div>
-  </div>
 
-  <div class="col-md-6 race-right-grouping">
-    <!-- map goes here -->
+    <div class="col-md-6 race-right-grouping">
+      <!-- map goes here -->
+    </div>
   </div>
 </div>
 
-<div class="row race-info-band">
-  <div class="col-md-1"></div>
-  <div class="col-md-5">
-    <div class="race-general-info">
-      <h3 class="page-subtitle">General Information</h3>
-      <p class=""><%= simple_format(@race.details) %></p>
+  <div class="row race-info-band">
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <div class="race-general-info">
+        <h3 class="page-subtitle">General Information</h3>
+        <p class=""><%= simple_format(@race.details) %></p>
+      </div>
     </div>
-  </div>
-  <div class="col-md-5">
-    <div class="race-where-to-stay">
-      <h3 class="page-subtitle">Where to Stay</h3>
-      <p class=""><%= simple_format(@race.hotel_information) %></p>
+    <div class="col-md-5">
+      <div class="race-where-to-stay">
+        <h3 class="page-subtitle">Where to Stay</h3>
+        <p class=""><%= simple_format(@race.hotel_information) %></p>
+      </div>
     </div>
+    <div class="col-md-1"></div>
   </div>
-  <div class="col-md-1"></div>
-</div>
 
-<div class="upcoming-events-band">
-  <h3 class="page-subtitle">Upcoming Events</h3>
-  <div class="container">
-    <div class="row">
-      <% @races.each do |race| %>
-        <div class="col-md-4">
-          <div class="race-tile">
-            <%= render partial: "shared/race_tile", locals: {race: race} %>
+  <div class="upcoming-events-band">
+    <h3 class="page-subtitle">Upcoming Events</h3>
+    <div class="container">
+      <div class="row">
+        <% @races.each do |race| %>
+          <div class="col-md-4">
+            <div class="race-tile">
+              <%= render partial: "shared/race_tile", locals: {race: race} %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
 
-</div>
+  </div>
+<!-- </div> -->
