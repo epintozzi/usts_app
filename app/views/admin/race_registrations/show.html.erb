@@ -6,6 +6,7 @@
 
     <h4>Race Registration Details</h4>
     <%= link_to "Edit Registration Details", edit_admin_race_registration_path(@race_registration), class: "small-link" %>
+    <p>Payment Status: <%= @race_registration.paid %> </p>
     <p>Driver: <%= @race_registration.usts_registration.first_name %><%= @race_registration.usts_registration.last_name %></p>
     <p>Race: <%= @race_registration.race.title %> | <%= @race_registration.race.city %>, <%= @race_registration.race.state %></p>
     <p>Class: <%= @race_registration.boat_class.class_name %></p>

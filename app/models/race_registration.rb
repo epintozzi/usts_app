@@ -1,6 +1,6 @@
 class RaceRegistration < ApplicationRecord
   acts_as_paranoid
-  
+
   belongs_to :boat_class
   belongs_to :usts_registration
   belongs_to :race
@@ -38,6 +38,10 @@ class RaceRegistration < ApplicationRecord
                 emergency_phone
                 emergency_contact_at_race
                 paid?
+                transaction_number
+                payment_date
+                payer_email
+                payer_id
                 creator_first_name
                 creator_last_name
                 created_at
@@ -60,6 +64,10 @@ class RaceRegistration < ApplicationRecord
                 race_reg.emergency_phone,
                 race_reg.emergency_contact_at_race,
                 race_reg.paid,
+                race_reg.transaction_number,
+                race_reg.payment_date,
+                race_reg.payer_email,
+                race_reg.payer_id,
                 race_reg.creator.try(:first_name),
                 race_reg.creator.try(:last_name),
                 race_reg.created_at

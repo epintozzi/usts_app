@@ -26,7 +26,8 @@ class ShoppingCartController < ApplicationController
       values.merge!({"amount_#{i}".to_sym => object[0], "item_name_#{i}".to_sym => object[1]})
       i += 1
     end
-
+    # TODO: update payment status to pending here
+    
     redirect_to "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
   end
 
