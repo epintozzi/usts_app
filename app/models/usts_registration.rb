@@ -70,6 +70,10 @@ class UstsRegistration < ApplicationRecord
                 read_waiver?
                 typed_signature
                 paid?
+                transaction_number
+                payment_date
+                payer_email
+                payer_id
                 creator_first_name
                 creator_last_name
                 created_at
@@ -92,6 +96,10 @@ class UstsRegistration < ApplicationRecord
                 usts_reg.liability_release,
                 usts_reg.signature,
                 usts_reg.paid,
+                usts_reg.transaction_number,
+                usts_reg.payment_date,
+                usts_reg.payer_email,
+                usts_reg.payer_id,
                 usts_reg.creator.try(:first_name),
                 usts_reg.creator.try(:last_name),
                 usts_reg.created_at
