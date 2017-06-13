@@ -45,6 +45,9 @@ Rails.application.routes.draw do
     resources :race_results do
       collection {post :import}
     end
+    resources :usts_registrations do
+      collection {post :import}
+    end
   end
 
 end
