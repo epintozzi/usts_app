@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170611220653) do
+ActiveRecord::Schema.define(version: 20170613021019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(version: 20170611220653) do
     t.text     "transaction_number"
     t.datetime "payment_date"
     t.datetime "deleted_at"
+    t.text     "payer_email"
+    t.text     "payer_id"
     t.index ["boat_class_id"], name: "index_race_registrations_on_boat_class_id", using: :btree
     t.index ["creator_id"], name: "index_race_registrations_on_creator_id", using: :btree
     t.index ["deleted_at"], name: "index_race_registrations_on_deleted_at", using: :btree
@@ -174,6 +176,8 @@ ActiveRecord::Schema.define(version: 20170611220653) do
     t.text     "transaction_number"
     t.datetime "payment_date"
     t.datetime "deleted_at"
+    t.text     "payer_email"
+    t.text     "payer_id"
     t.index ["creator_id"], name: "index_usts_registrations_on_creator_id", using: :btree
     t.index ["deleted_at"], name: "index_usts_registrations_on_deleted_at", using: :btree
   end

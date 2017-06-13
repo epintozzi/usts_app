@@ -12,14 +12,14 @@ class ShoppingCartController < ApplicationController
 
     # put anything that gets redirected into a "pending" state
     values = {
-        business: "usts@optonline.net",
+        business: Rails.application.secrets.paypal_merchant,
         cmd: "_cart",
         upload: 1,
         return: "#{Rails.application.secrets.app_host}/cart",
         notify_url: "#{Rails.application.secrets.app_host}/hook",
         no_shipping: 1,
         no_note: 1,
-        # custom: cart_params
+        custom: pay_for.to_json
     }
     i = 1
     item_list.each do |object|
@@ -32,10 +32,23 @@ class ShoppingCartController < ApplicationController
 
   def hook
     params.permit!
-    status = params[:resource][:state]
-    if status == "completed"
+    puts params.to_json
+    # sample response:
+    # {"mc_gross":"90.00","protection_eligibility":"Eligible","item_number1":"","item_number2":"","payer_id":"GSFH5HM3LK7H4","item_number3":"","payment_date":"17:57:25 Jun 12, 2017 PDT","payment_status":"Completed","charset":"windows-1252","first_name":"Joseph","mc_fee":"2.91","notify_version":"3.8","custom":"{\"usts_reg\":[\"2\"],\"race_reg\":[\"18\",\"20\"]}","payer_status":"verified","business":"merchant@gotealeaf.com","num_cart_items":"3","verify_sign":"A2YnYs6LuOd-R8BHIdbWTA6xHgalA7mjQ2Y-MLYHXCPsr4L-PB5kTsTs","payer_email":"coconuts20x6@gmail.com","txn_id":"3A768868P2623945S","payment_type":"instant","last_name":"Pintozzi","item_name1":"2017 USTS Membership for: Brad Barth","receiver_email":"merchant@gotealeaf.com","item_name2":"Race Registration for: Erin Pintozzi at Springfield | KPro","payment_fee":"2.91","item_name3":"Race Registration for: Erin Pintozzi at DePue | 125cc Hydro","quantity1":"1","quantity2":"1","receiver_id":"SJU9C73A5B5FL","quantity3":"1","txn_type":"cart","mc_gross_1":"25.00","mc_currency":"USD","mc_gross_2":"15.00","mc_gross_3":"50.00","residence_country":"US","test_ipn":"1","transaction_subject":"","payment_gross":"90.00","ipn_track_id":"23060ab8af52f","controller":"shopping_cart","action":"hook"}
+    status = params[:payment_status] # Pending/Completed
+    txn_id = params[:txn_id]
+    payment_date = params[:payment_date]
+    payer_email = params[:payer_email]
+    payer_id = params[:payer_id]
+
+    if status == "Completed"
       # store our transaction ID here
       # and mark stuff as paid
+      ids = JSON.parse(params[:custom])
+      usts_reg_ids = ids["usts_reg"]
+      UstsRegistration.where(id: usts_reg_ids).update_all(paid: UstsRegistration.paids[:paid], transaction_number: txn_id, payment_date: payment_date, payer_email: payer_email, payer_id: payer_id)
+      race_reg_ids = ids["race_reg"]
+      RaceRegistration.where(id: race_reg_ids).update_all(paid: RaceRegistration.paids[:paid], transaction_number: txn_id, payment_date: payment_date, payer_email: payer_email, payer_id: payer_id)
     end
     head :ok
   end
