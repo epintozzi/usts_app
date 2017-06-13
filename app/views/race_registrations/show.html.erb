@@ -7,20 +7,19 @@
       Registrations include any races for which you have registered yourself as a logged in user, races for which you have registered for someone else, races for users whose USTS Membership application you submitted, and races where someone else has registered on your behalf IF you created your own USTS Membership Registration through this website. <%= link_to "To see a list of all registered drivers for all races, please click here.", race_registrations_path %>
     </p>
 
-    <h3>Race Registrations </h3>
+    <h3>My Race Registrations </h3>
 
     <% @race_registrations.each do |reg| %>
       <p>
         <font class="admin-flag">Registrant: <%= reg.usts_registration.first_name %> <%= reg.usts_registration.last_name %></font><br>
         Race: <%= reg.race.title %>: <%= reg.race.city %>, <%= reg.race.state %><br>
+        Date: <%= short_race_date(reg.race.start_date) %> - <%= long_race_date(reg.race.end_date) %><br>
         Class: <%= reg.boat_class.class_name %><br>
         <% if !reg.creator.nil? %>
             Registered by: <%= reg.creator.first_name %> <%= reg.creator.last_name %>
         <% end %>
       </p>
     <% end %>
-
-
   </div>
 
 </div>
