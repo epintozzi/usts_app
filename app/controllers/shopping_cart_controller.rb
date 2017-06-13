@@ -15,7 +15,7 @@ class ShoppingCartController < ApplicationController
         business: Rails.application.secrets.paypal_merchant,
         cmd: "_cart",
         upload: 1,
-        return: "#{Rails.application.secrets.app_host}/cart",
+        return: "#{Rails.application.secrets.app_host}/thank_you",
         notify_url: "#{Rails.application.secrets.app_host}/hook",
         no_shipping: 1,
         no_note: 1,
@@ -27,7 +27,7 @@ class ShoppingCartController < ApplicationController
       i += 1
     end
     # TODO: update payment status to pending here
-    
+
     redirect_to "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
   end
 
@@ -54,6 +54,9 @@ class ShoppingCartController < ApplicationController
     head :ok
   end
 
+  def thank_you
+  end
+
   private
 
   def find_usts_registration(pay_for_array)
@@ -61,7 +64,7 @@ class ShoppingCartController < ApplicationController
     pay_for_array["usts_reg"].each do |id|
       usts_reg = UstsRegistration.find(id)
       price = usts_reg.membership_prices[usts_reg.membership_type.to_sym]
-      item_name = "#{usts_reg.race_year} USTS Membership for: #{usts_reg.first_name} #{usts_reg.last_name}"
+      item_name = "#{usts_reg.race_year} #{usts_reg.membership_type} USTS Membership for: #{usts_reg.first_name} #{usts_reg.last_name}"
       usts_items_and_prices << [price, item_name]
     end
     return usts_items_and_prices
@@ -71,7 +74,7 @@ class ShoppingCartController < ApplicationController
     race_items_and_prices = []
     pay_for_array["race_reg"].each do |id|
       race_reg = RaceRegistration.find(id)
-      price = race_reg.boat_class.registration_fee
+      price = race_reg.race_fee_override
       item_name = "Race Registration for: #{race_reg.usts_registration.first_name} #{race_reg.usts_registration.last_name} at #{race_reg.race.city} | #{race_reg.boat_class.class_name}"
       race_items_and_prices << [price, item_name]
     end

@@ -2,6 +2,10 @@ require "rails_helper"
 
 describe "races/:id" do
   scenario "user sees individual race details" do
+    user = create(:user)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
     race = create(:race)
 
     visit race_path(race)
@@ -23,7 +27,20 @@ describe "races/:id" do
   end
 
   scenario "user does not see registration button for race that has passed" do
+    user = create(:user)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    
     race = create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: '2017-04-21', end_date: '2017-04-23')
+
+    visit race_path(race)
+
+    expect(page).to have_link("Sanction")
+    expect(page).to_not have_link("Register")
+  end
+
+  scenario "non-logged in user does not see registration button" do
+    race = create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: Date.tomorrow, end_date: Date.tomorrow)
 
     visit race_path(race)
 
