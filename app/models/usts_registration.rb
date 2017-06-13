@@ -36,7 +36,7 @@ class UstsRegistration < ApplicationRecord
 
   def self.full_name_list
     name_list = []
-    all.each do |registrant|
+    order(first_name: :asc).all.each do |registrant|
       user_and_name = ["#{registrant.first_name} #{registrant.last_name}", registrant.id]
       name_list << user_and_name
     end
