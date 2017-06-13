@@ -9,6 +9,11 @@ class Admin::UstsRegistrationsController < Admin::BaseController
     end
   end
 
+  def import
+    UstsRegistration.import(params[:file])
+    redirect_to admin_usts_registrations_path, notice: "Registrations imported"
+  end
+
   def show
     @usts_registration = UstsRegistration.find(params[:id])
   end

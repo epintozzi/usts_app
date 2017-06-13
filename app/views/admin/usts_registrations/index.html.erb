@@ -1,6 +1,13 @@
 <div class="container">
   <h2 class="page-title">Manage USTS Registrations</h2>
   <%= link_to "Export USTS Registrations", admin_usts_registrations_path(format: "csv"), class: 'btn btn-solid-red' %>
+
+  <%= form_tag import_admin_usts_registrations_path, multipart: true do %>
+  <%= label_tag "Import USTS Registrations" %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import Registrations", class: 'btn btn-solid-red' %>
+  <% end %>
+
   <div class="usts-registration-list">
     <% @usts_registrations.each do |reg| %>
     <p>

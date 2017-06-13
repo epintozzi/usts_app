@@ -1,6 +1,6 @@
 class UstsRegistration < ApplicationRecord
   acts_as_paranoid
-  
+
   belongs_to :creator, class_name: "User"
   has_many :race_registrations
 
@@ -41,6 +41,15 @@ class UstsRegistration < ApplicationRecord
       name_list << user_and_name
     end
     return name_list
+  end
+
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      result_hash = row.to_hash
+      result_hash["race_year"] = result_hash["race_year"].to_i
+      # binding.pry
+      UstsRegistration.create!(result_hash)
+    end
   end
 
   def self.to_csv
