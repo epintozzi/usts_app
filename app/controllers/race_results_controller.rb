@@ -1,7 +1,7 @@
 class RaceResultsController < ApplicationController
 
   def index
-    @boat_classes = BoatClass.all
+    @boat_classes = BoatClass.all.order(id: :asc)
     @races = Race.races_this_year.order(start_date: :asc)
     @data = {}
     # build a big ugly hash

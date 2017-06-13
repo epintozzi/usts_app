@@ -1,7 +1,7 @@
 class Admin::RaceResultsController < Admin::BaseController
 
   def index
-    @boat_classes = BoatClass.all
+    @boat_classes = BoatClass.all.order(id: :asc)
     @races = Race.all.order(start_date: :asc)
   end
 

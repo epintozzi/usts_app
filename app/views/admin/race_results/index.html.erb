@@ -9,11 +9,17 @@
   </p>
 
   <div class="results-id-tables">
-    <%= render partial: 'import_form' %>
-
-    <%= render partial: 'boat_class_id_table' %>
-    <%= render partial: 'race_id_table' %>
-
+    <div class="row">
+      <div class="col-md-4">
+        <%= render partial: 'import_form' %>
+      </div>
+      <div class="col-md-4">
+        <%= render partial: 'boat_class_id_table' %>
+      </div>
+      <div class="col-md-4">
+        <%= render partial: 'race_id_table' %>
+      </div>
+    </div>
   </div>
 
 
