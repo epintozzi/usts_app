@@ -47,7 +47,6 @@ class UstsRegistration < ApplicationRecord
     CSV.foreach(file.path, headers: true) do |row|
       result_hash = row.to_hash
       result_hash["race_year"] = result_hash["race_year"].to_i
-      # binding.pry
       UstsRegistration.create!(result_hash)
     end
   end
