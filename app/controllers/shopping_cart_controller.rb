@@ -61,7 +61,7 @@ class ShoppingCartController < ApplicationController
     pay_for_array["usts_reg"].each do |id|
       usts_reg = UstsRegistration.find(id)
       price = usts_reg.membership_prices[usts_reg.membership_type.to_sym]
-      item_name = "#{usts_reg.race_year} USTS Membership for: #{usts_reg.first_name} #{usts_reg.last_name}"
+      item_name = "#{usts_reg.race_year} #{usts_reg.membership_type} USTS Membership for: #{usts_reg.first_name} #{usts_reg.last_name}"
       usts_items_and_prices << [price, item_name]
     end
     return usts_items_and_prices
@@ -71,7 +71,7 @@ class ShoppingCartController < ApplicationController
     race_items_and_prices = []
     pay_for_array["race_reg"].each do |id|
       race_reg = RaceRegistration.find(id)
-      price = race_reg.boat_class.registration_fee
+      price = race_reg.race_fee_override
       item_name = "Race Registration for: #{race_reg.usts_registration.first_name} #{race_reg.usts_registration.last_name} at #{race_reg.race.city} | #{race_reg.boat_class.class_name}"
       race_items_and_prices << [price, item_name]
     end

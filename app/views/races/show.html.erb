@@ -13,7 +13,7 @@
         <p class="race-dates">
           <%= short_race_date(@race.start_date) %> - <%= short_race_date(@race.end_date) %>
         </p>
-        <% if @race.future? %>
+        <% if @race.future? && current_user%>
           <%= link_to "Register", new_race_registration_path, class: "btn btn-solid-red" %>
         <% end %>
         <% if !@race.sanction_file_name.nil? %>
