@@ -15,7 +15,7 @@ class ShoppingCartController < ApplicationController
         business: Rails.application.secrets.paypal_merchant,
         cmd: "_cart",
         upload: 1,
-        return: "#{Rails.application.secrets.app_host}/cart",
+        return: "#{Rails.application.secrets.app_host}/thank_you",
         notify_url: "#{Rails.application.secrets.app_host}/hook",
         no_shipping: 1,
         no_note: 1,
@@ -27,7 +27,7 @@ class ShoppingCartController < ApplicationController
       i += 1
     end
     # TODO: update payment status to pending here
-    
+
     redirect_to "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
   end
 
@@ -52,6 +52,9 @@ class ShoppingCartController < ApplicationController
       RaceRegistration.where(id: race_reg_ids).update_all(paid: RaceRegistration.paids[:paid], transaction_number: txn_id, payment_date: payment_date, payer_email: payer_email, payer_id: payer_id)
     end
     head :ok
+  end
+
+  def thank_you
   end
 
   private
