@@ -79,11 +79,18 @@ RSpec.describe Race, type: :model do
       create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: '2017-04-21', end_date: '2017-04-23')
       race_2 = create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: Date.tomorrow, end_date: Date.tomorrow)
 
-      list = Race.title_location_list
-      count = Race.title_location_list.count
+      future_races = Race.future
 
-      expect(list).to eq([["Nationals - DePue, IL", race_2.id]])
-      expect(count).to eq(1)
+      expect(future_races).to eq([race_2])
+    end
+    it "scopes races as registerable" do
+      create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: Date.today+4, end_date: Date.today+5)
+      race_2 = create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: Date.today+6, end_date: Date.today+7)
+      create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: Date.today, end_date: Date.today)
+
+      registerable_races = Race.registerable
+
+      expect(registerable_races).to eq([race_2])
     end
     it "scopes races as this year" do
       race_1 = create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: Date.today, end_date: Date.tomorrow)
@@ -102,6 +109,15 @@ RSpec.describe Race, type: :model do
 
       expect(race_1.future?).to eq(false)
       expect(race_2.future?).to eq(true)
+    end
+    it "identifies races as registerable" do
+      race_1 = create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: Date.today+4, end_date: Date.today+5)
+      race_2 = create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: Date.today+6, end_date: Date.today+7)
+      race_3 = create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: Date.today, end_date: Date.today)
+
+      expect(race_1.registerable?).to eq(false)
+      expect(race_2.registerable?).to eq(true)
+      expect(race_3.registerable?).to eq(false)
     end
     it "identifies races as this year" do
       race_1 = create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: '2017-04-21', end_date: '2017-04-23')
