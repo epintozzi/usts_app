@@ -1,6 +1,6 @@
 class Race < ApplicationRecord
   acts_as_paranoid
-  
+
   has_many :race_registrations
   has_many :race_results
 
@@ -14,6 +14,8 @@ class Race < ApplicationRecord
   validates_attachment :sanction, content_type: { content_type: "application/pdf" }
 
   scope :future, -> { where('start_date >= ?', Date.today) } #gets collection of all races in the future
+
+  scope :registerable, -> { where('start_date >= ?', Date.today+5) } #gets collection of all races open for registration
 
   scope :races_this_year, -> { where('start_date > ? AND start_date < ?', Date.today.beginning_of_year, Date.today.end_of_year) }
 
@@ -30,6 +32,10 @@ class Race < ApplicationRecord
 
   def race_this_year?
     self.start_date > Date.today.beginning_of_year && self.start_date < Date.today.end_of_year
+  end
+
+  def registerable?
+    self.start_date > Date.today+5
   end
 
 end
