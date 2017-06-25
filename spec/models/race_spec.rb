@@ -71,8 +71,8 @@ RSpec.describe Race, type: :model do
       list = Race.title_location_list
       count = Race.title_location_list.count
 
-      expect(list).to include(["Race for the Kids - Lake Alfred, FL", race_1.id])
-      expect(list).to include(["Nationals - DePue, IL", race_2.id])
+      expect(list).to include(["Lake Alfred, FL - Race for the Kids", race_1.id])
+      expect(list).to include(["DePue, IL - Nationals", race_2.id])
       expect(count).to eq(2)
     end
     it "scopes races to future date" do
