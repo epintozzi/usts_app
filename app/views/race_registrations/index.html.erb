@@ -2,6 +2,8 @@
 
   <h2 class="page-title">All Race Registrations</h2>
 
+  <p class="lead-text">Registrations for Lake Alfred, Pleasant Prairie, and Springfield will NOT appear below.</p>
+
   <% @all_registrations.each do |race| %>
     <p>
       <%= link_to "#{race[0].title} - #{race[0].city}, #{race[0].state}: #{race[1]} Registered", race_path(race[0]) %>

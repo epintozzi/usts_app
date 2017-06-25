@@ -21,8 +21,8 @@ class Race < ApplicationRecord
 
 
   def self.title_location_list
-    Race.future.map do |race|
-      ["#{race.title} - #{race.city}, #{race.state}", race.id]
+    Race.registerable.map do |race|
+      ["#{race.city}, #{race.state} - #{race.title}", race.id]
     end
   end
 
