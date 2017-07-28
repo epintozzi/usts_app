@@ -1,5 +1,7 @@
 # README
 
+[![Build Status](https://travis-ci.org/epintozzi/usts_app.svg?branch=master)](https://travis-ci.org/epintozzi/usts_app)
+
 The US Title Series web app  provides club information to the public and allows members to register and pay for events online.
 
 Production App: [https://ustitleseries.net](https://ustitleseries.net)
