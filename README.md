@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The US Title Series web app  provides club information to the public and allows members to register and pay for events online.
 
-Things you may want to cover:
+Production App: [https://ustitleseries.net](https://ustitleseries.net)
 
-* Ruby version
+Ruby Version: 2.3.1
+<br>
+Rails Version: 5.0.2
 
-* System dependencies
+#### Setup
 
-* Configuration
+To run this project:
 
-* Database creation
+```
+git clone git@github.com:epintozzi/usts_app.git
+cd usts_app
+bundle install
+rake db:create db:migrate
+rails s
+```
 
-* Database initialization
+#### Testing
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project uses RSpec for testing and can be run with the command `rspec`
+<br>
+You may need to `rake db:test:prepare` before running the tests.
