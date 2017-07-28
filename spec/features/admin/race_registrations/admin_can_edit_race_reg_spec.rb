@@ -6,15 +6,14 @@ describe "/admin/race_registrations/:id" do
     admin = create(:user, role: 2)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
-
     race_reg = create(:race_registration)
 
     visit admin_race_registrations_path
-
     click_on "Edit"
 
     expect(current_path).to eq(edit_admin_race_registration_path(race_reg))
     expect(page).to have_content(race_reg.race.city)
+    expect(page).to have_content(race_reg.boat_class.class_name)
     expect(page).to have_content(race_reg.usts_registration.first_name)
     expect(page).to have_content(race_reg.usts_registration.last_name)
   end
