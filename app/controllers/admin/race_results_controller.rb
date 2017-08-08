@@ -22,6 +22,10 @@ class Admin::RaceResultsController < Admin::BaseController
   end
 
   def destroy
+    @race_result = RaceResult.find(params[:id])
+    @race_result.destroy
+    flash[:success] = "This race result has been deleted."
+    redirect_to admin_race_results_path
   end
 
   def import

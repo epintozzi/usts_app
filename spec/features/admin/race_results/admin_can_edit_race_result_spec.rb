@@ -10,10 +10,7 @@ describe "/admin/race_results" do
     boat_class_1, boat_class_2 = create_list(:boat_class, 2)
     race_result = create(:race_result, driver_name: "Erin", race_id: race_1.id, boat_class_id: boat_class_1.id)
 
-    visit admin_race_results_path
-    click_on "Edit"
-
-    expect(current_path).to eq(edit_admin_race_result_path(race_result))
+    visit edit_admin_race_result_path(race_result)
 
     fill_in "race_result[driver_name]", with: "Ryan"
     select boat_class_2.class_name
