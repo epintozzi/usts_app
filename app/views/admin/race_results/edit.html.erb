@@ -5,30 +5,6 @@
   Note: If an entry for a driver already exists for the same class and location, the race result changes you have made will not save.
   </p>
 
-  <%= form_for [:admin, @race_result], html: {class: "form-group"} do |f| %>
-
-    <div class="field">
-      <%= f.label :driver_name, class: 'required' %>
-      <%= f.text_field :driver_name, class: 'form-control' %>
-    </div>
-
-    <div class="field">
-      <%= f.label :points, class: 'required' %>
-      <%= f.number_field :points, class: 'form-control' %>
-    </div>
-
-    <div class="field">
-      <%= f.label :boat_class, class: 'required' %>
-      <%= f.collection_select :boat_class_id, BoatClass.all, :id, :class_name, { prompt: "Select Class"}, class: 'form-control' %>
-    </div>
-
-    <div class="field">
-      <%= f.label :race, class: 'required' %>
-      <%= f.collection_select :race_id, Race.all, :id, :city, { prompt: "Select Race"}, class: 'form-control' %>
-    </div>
-
-    <%= f.submit class: 'btn btn-solid-red' %>
-
-  <% end %>
+  <%= render partial: 'form' %>
 
 </div>

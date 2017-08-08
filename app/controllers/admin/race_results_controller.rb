@@ -5,8 +5,22 @@ class Admin::RaceResultsController < Admin::BaseController
     @races = Race.all.order(start_date: :asc)
   end
 
+  def new
+    @race_result = RaceResult.new
+  end
+
+  def create
+    @race_result = RaceResult.new(race_result_params)
+    if @race_result.save
+      flash[:success] = "This race result has successfully been created."
+      redirect_to admin_race_results_path
+    else
+      flash[:danger] = "Something went wrong. #{@race_result.errors.full_messages.join(' ')}. Please try again."
+      render :new
+    end
+  end
+
   def edit
-    # binding.pry
     @race_result = RaceResult.find(params[:id])
   end
 

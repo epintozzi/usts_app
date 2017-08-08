@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     resources :users, except: [:show, :destroy]
     resources :galleries, except: [:show]
     resources :photos, except: [:show]
-    resources :race_results, only: [:index, :edit, :update, :destroy]
+    resources :race_results, only: [:index, :create, :edit, :update, :destroy]
     resources :race_results do
       collection {post :import}
     end
