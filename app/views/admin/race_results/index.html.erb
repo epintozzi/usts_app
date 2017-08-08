@@ -49,13 +49,19 @@
           <%= driver %>
         </td>
         <% @races.each do |race| %>
+          <% @race_result = RaceResult.where(race: race, boat_class: boat_class, driver_name: driver).first %>
           <td>
             <%= RaceResult.where(race: race, boat_class: boat_class, driver_name: driver).first.try(:points) %>
+
+            <% if @race_result %>
+              <%= link_to "Edit", edit_admin_race_result_path(@race_result), class: 'small-link' %> | <%= link_to "Delete", root_path, class: 'small-link', data: {confirm: "Are you sure you want to delete this race result?"} %>
+            <% end %>
           </td>
         <% end %>
         <td>
           <%= RaceResult.where(boat_class: boat_class, driver_name: driver, race: @races).sum(:points) %>
         </td>
+
       </tr>
       <% end %>
     </tbody>
