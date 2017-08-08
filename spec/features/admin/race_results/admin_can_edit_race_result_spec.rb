@@ -26,4 +26,55 @@ describe "/admin/race_results" do
     expect(page).to have_content("Ryan")
     expect(page).to_not have_content("Erin")
   end
+
+  scenario "admin can't edit individual race result and save a duplicate" do
+    admin = create(:user, role: 2)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    race = create(:race)
+    boat_class_1, boat_class_2 = create_list(:boat_class, 2)
+    race_result_1 = create(:race_result, driver_name: "Erin", race_id: race.id, boat_class_id: boat_class_1.id)
+    race_result_2 = create(:race_result, driver_name: "Erin", race_id: race.id, boat_class_id: boat_class_2.id)
+
+
+    visit edit_admin_race_result_path(race_result_2)
+
+    select boat_class_1.class_name
+    click_on "Update Race result"
+
+    expect(page).to have_content("Boat class has already been recorded for this driver and race location. Please try again.")
+  end
+
+  scenario "editor cannot edit a race result" do
+    editor = create(:user, role: 1)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(editor)
+
+    race_result = create(:race_result)
+
+    visit edit_admin_race_result_path(race_result)
+
+    expect(page).to have_content("The page you were looking for doesn't exist")
+  end
+
+  scenario "normal user cannot edit a race result" do
+    user = create(:user, role: 0)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    race_result = create(:race_result)
+
+    visit edit_admin_race_result_path(race_result)
+
+    expect(page).to have_content("The page you were looking for doesn't exist")
+  end
+
+  scenario "non-logged in user cannot edit a race result" do
+    race_result = create(:race_result)
+
+    visit edit_admin_race_result_path(race_result)
+
+    expect(page).to have_content("The page you were looking for doesn't exist")
+  end
 end
