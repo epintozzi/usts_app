@@ -1,4 +1,4 @@
-<div class="container">
+<%= render partial: 'admin/shared/admin_header' %>
   <h2 class="page-title">Manage Races</h2>
 
   <%= link_to "Add new race", new_admin_race_path, class: 'btn btn-solid-red' %>
@@ -22,5 +22,5 @@
       <%= long_race_date(race.start_date) %>: <%= race.title %> - <%= race.city %>, <%= race.state %>
     </p>
   <% end %>
-
+</div>
 </div>

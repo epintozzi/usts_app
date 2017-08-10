@@ -1,14 +1,16 @@
-<div class="container">
-  <h2 class="page-title">Manage News</h2>
 
-  <%= link_to "Add news post", new_news_path, class: 'btn btn-solid-red' %>
+    <%= render partial: 'admin/shared/admin_header' %>
 
-  <% @news.each do |post| %>
-    <p>
-      <%= link_to "Edit", edit_news_path(post), class: "small-link" %>
-      <%= link_to "View", news_path(post), class: "small-link" %>
-      <%= post.title %> - Published on <%= news_date(post.published_on) %> by: <%= post.author.first_name %> <%= post.author.last_name %>
-    </p>
-  <% end %>
+    <h2 class="page-title">Manage News</h2>
 
+    <%= link_to "Add news post", new_news_path, class: 'btn btn-solid-red' %>
+
+    <% @news.each do |post| %>
+      <p>
+        <%= link_to "Edit", edit_news_path(post), class: "small-link" %>
+        <%= link_to "View", news_path(post), class: "small-link" %>
+        <%= post.title %> - Published on <%= news_date(post.published_on) %> by: <%= post.author.first_name %> <%= post.author.last_name %>
+      </p>
+    <% end %>
+  </div>
 </div>
