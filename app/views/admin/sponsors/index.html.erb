@@ -1,4 +1,5 @@
-<div class="container">
+<%= render partial: 'admin/shared/admin_header' %>
+
   <h2 class="page-title">Manage Sponsors</h2>
 
   <%= link_to "Add new sponsor", new_admin_sponsor_path, class: 'btn btn-solid-red' %>
@@ -9,5 +10,5 @@
       <%= sponsor.name %>
     </p>
   <% end %>
-
+</div>
 </div>

@@ -1,4 +1,5 @@
-<div class="container">
+<%= render partial: 'admin/shared/admin_header' %>
+
   <h2 class="page-title">Manage Race Registrations</h2>
   <%= link_to "Export Race Registrations", admin_race_registrations_path(format: "csv"), class: 'btn btn-solid-red' %>
   <div class="race-registration-list">
@@ -13,6 +14,6 @@
     <% end %>
 
     </div>
-  </div>
 
+  </div>
 </div>
