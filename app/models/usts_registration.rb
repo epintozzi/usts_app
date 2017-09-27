@@ -26,10 +26,11 @@ class UstsRegistration < ApplicationRecord
   enum membership_type: [:nonracing, :racing, :kpro]
   enum paid: [:unpaid, :pending, :paid]
 
+# manually change to $100 on Mar 1 - perhaps automate later
   def membership_prices
     {
       nonracing: 25,
-      racing: 100,
+      racing: 75,
       kpro: 25
     }
   end
