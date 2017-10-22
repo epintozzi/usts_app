@@ -9,6 +9,10 @@ class Admin::UstsRegistrationsController < Admin::BaseController
     end
   end
 
+  def membership_archives_index
+    @usts_registrations = UstsRegistration.all
+  end
+
   def import
     UstsRegistration.import(params[:file])
     redirect_to admin_usts_registrations_path, notice: "Registrations imported"

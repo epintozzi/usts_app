@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :usts_registration do
-    race_year 2017
+    race_year Date.today.year
     sequence :first_name do |n|
       "First Name #{n}"
     end

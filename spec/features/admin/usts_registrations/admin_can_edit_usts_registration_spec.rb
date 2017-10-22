@@ -4,6 +4,7 @@ describe "/admin/usts_registrations/:id" do
 
   scenario "admin can access edit usts registration form" do
     admin = create(:user, role: 2)
+    race = create(:race, start_date: Date.today)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
