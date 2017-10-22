@@ -83,6 +83,14 @@ RSpec.describe Race, type: :model do
 
       expect(future_races).to eq([race_2])
     end
+    it "scopes races to past date" do
+      race_1 = create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: '2017-04-21', end_date: '2017-04-23')
+      race_2 = create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: Date.tomorrow, end_date: Date.tomorrow)
+
+      past_races = Race.past
+
+      expect(past_races).to eq([race_1])
+    end
     it "scopes races as registerable" do
       create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: Date.today+4, end_date: Date.today+5)
       race_2 = create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: Date.today+6, end_date: Date.today+7)

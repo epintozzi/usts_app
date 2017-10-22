@@ -126,6 +126,40 @@ RSpec.describe RaceRegistration, type: :model do
       expect(all_reg).to include(reg_2)
     end
 
+    it "scopes race reg to past race date registrations" do
+      race_1 = create(:race, start_date: Date.tomorrow, end_date: Date.tomorrow)
+      race_2 = create(:race, start_date: Date.today - 2, end_date: Date.today - 2)
+      reg_1 = create(:race_registration, race_id: race_1.id)
+      reg_2 = create(:race_registration, race_id: race_2.id)
+
+      past_reg = RaceRegistration.for_past_races
+
+      all_reg = RaceRegistration.all
+
+      expect(past_reg).to eq([reg_2])
+      expect(all_reg).to include(reg_1)
+      expect(all_reg).to include(reg_2)
+    end
+
+    it "scopes race reg to races registrations dates this year" do
+      race_1 = create(:race, start_date: Date.tomorrow, end_date: Date.tomorrow)
+      race_2 = create(:race, start_date: Date.today - 2, end_date: Date.today - 2)
+      race_3 = create(:race, start_date: "2017-06-13", end_date: "2017-06-15")
+      reg_1 = create(:race_registration, race_id: race_1.id)
+      reg_2 = create(:race_registration, race_id: race_2.id)
+      reg_3 = create(:race_registration, race_id: race_3.id)
+
+      this_year = RaceRegistration.for_races_this_year
+
+      all_reg = RaceRegistration.all
+
+      expect(this_year).to include(reg_1)
+      expect(this_year).to include(reg_2)
+      expect(all_reg).to include(reg_1)
+      expect(all_reg).to include(reg_2)
+      expect(all_reg).to include(reg_3)
+    end
+
     it "generates collection of unpaid registrations for a user for race dates in the future" do
       user = create(:user)
       race_1 = create(:race, start_date: Date.tomorrow, end_date: Date.tomorrow)

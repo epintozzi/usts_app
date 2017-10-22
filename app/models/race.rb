@@ -14,6 +14,7 @@ class Race < ApplicationRecord
   validates_attachment :sanction, content_type: { content_type: "application/pdf" }
 
   scope :future, -> { where('start_date >= ?', Date.today) } #gets collection of all races in the future
+  scope :past, -> { where('start_date <= ?', Date.today) } #gets collection of all races in the future
 
   scope :registerable, -> { where('start_date >= ?', Date.today+5) } #gets collection of all races open for registration
 
