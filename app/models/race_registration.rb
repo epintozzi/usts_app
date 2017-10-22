@@ -16,6 +16,8 @@ class RaceRegistration < ApplicationRecord
   scope :for_user, -> (user) { where(creator_id: user.id)}
   scope :unpaid_registrations, -> {where(paid: 0)}
   scope :for_future_races, -> { where(race: Race.future) }
+  scope :for_past_races, -> { where(race: Race.past) }
+  scope :for_races_this_year, -> { where(race: Race.races_this_year) }
 
   enum paid: [:unpaid, :pending, :paid]
 
