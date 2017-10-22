@@ -9,15 +9,9 @@
   <%= submit_tag "Import Registrations", class: 'btn btn-outline-red' %>
   <% end %>
 
-  <div class="usts-registration-list">
-    <% @usts_registrations.each do |reg| %>
-    <p>
-      <%= link_to "View", admin_usts_registration_path(reg), class: "small-link" %>
-      <%= link_to "Edit", edit_admin_usts_registration_path(reg), class: "small-link" %>
-      <%= link_to "Delete", admin_usts_registration_path(reg), method: "delete", class: "small-link", data: {confirm: "Are you sure you want to delete this registration?"} %>
-      <%= reg.race_year %>: <%= reg.first_name %> <%= reg.last_name %> - <%= reg.membership_type %>
-    </p>
-    <% end %>
-  </div>
+  <%= link_to "See past years' registrations", admin_membership_archives_index_path, class: 'small-link' %>
+
+  <h4> <%= default_year %> Registrations </h4>
+  <%= render partial: 'usts_registration_list' %>
 </div>
 </div>

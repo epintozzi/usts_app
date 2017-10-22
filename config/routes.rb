@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/dashboard', to: 'dashboard#show'
+    get '/membership_archives_index', to: 'usts_registrations#membership_archives_index'
     resources :races, except: [:show]
     resources :news, only: :index
     resources :race_registrations, only: [:index, :show, :edit, :update, :destroy]
