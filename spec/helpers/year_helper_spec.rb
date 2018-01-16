@@ -22,8 +22,10 @@ describe 'race date helper' do
   context 'future races on the schedule but not in this year' do
     let(:year) { Date.current.year }
     context 'and it is before Oct 1 of the current year' do
-      before do
-        travel_to Time.zone.local(year, 02, 24)
+      around(:each) do |example|
+        travel_to Time.zone.local(year, 02, 24) do
+          example.run
+        end
       end
       it 'returns the current year' do
         create(:race, start_date: Date.today + 1.year)
@@ -32,8 +34,10 @@ describe 'race date helper' do
       end
     end
     context 'and it is after Oct 1 of the current year' do
-      before do
-        travel_to Time.zone.local(year, 10, 24)
+      around(:each) do |example|
+        travel_to Time.zone.local(year, 10, 24) do
+          example.run
+        end
       end
       it 'returns the next year' do
         create(:race, start_date: Date.today + 1.year)
@@ -46,8 +50,10 @@ describe 'race date helper' do
   context 'no future races on the schedule' do
     let(:year) { Date.current.year }
     context 'and it is before Oct 1 of the current year' do
-      before do
-        travel_to Time.zone.local(year, 02, 24)
+      around(:each) do |example|
+        travel_to Time.zone.local(year, 2, 24) do
+          example.run
+        end
       end
       it 'returns the current year' do
         default_reg_year = helper.default_year
@@ -55,8 +61,10 @@ describe 'race date helper' do
       end
     end
     context 'and it is after Oct 1 of the current year' do
-      before do
-        travel_to Time.zone.local(year, 10, 24)
+      around(:each) do |example|
+        travel_to Time.zone.local(year, 10, 24) do
+          example.run
+        end
       end
       it 'returns the next year' do
         default_reg_year = helper.default_year
