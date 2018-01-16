@@ -7,10 +7,8 @@ module YearHelper
   end
 
   def default_year
-    # possibly change because this will fail if there are inteded to be more races
-    # in the season that haven't been to the site yet. Unlikely this scenario would
-    # occur, but it could.
-    if Race.races_this_year.future.empty?
+    # Returns next year if it is after Oct 1 and there are no future races scheduled
+    if Race.races_this_year.future.empty? && (Date.today > Date.parse('October 1'))
       Date.current.next_year.year
     else
       Date.current.year
