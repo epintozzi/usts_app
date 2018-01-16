@@ -128,8 +128,8 @@ RSpec.describe Race, type: :model do
       expect(race_3.registerable?).to eq(false)
     end
     it "identifies races as this year" do
-      race_1 = create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: '2017-04-21', end_date: '2017-04-23')
-      race_2 = create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: '2027-12-21', end_date: '2027-12-23')
+      race_1 = create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: Date.today, end_date: Date.today+1)
+      race_2 = create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: Date.today+500, end_date: Date.today+502)
 
       expect(race_1.race_this_year?).to eq(true)
       expect(race_2.race_this_year?).to eq(false)

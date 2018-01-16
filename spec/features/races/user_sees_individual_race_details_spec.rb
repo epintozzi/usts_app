@@ -14,8 +14,8 @@ describe "races/:id" do
     expect(page).to have_content(race.state)
     expect(page).to have_content(race.street_address)
     expect(page).to have_content(race.title)
-    expect(page).to have_content("Jul 26")
-    expect(page).to have_content("Jul 30")
+    expect(page).to have_content(race.start_date.strftime("%b %-d"))
+    expect(page).to have_content(race.end_date.strftime("%b %-d"))
     expect(page).to have_content("General Information")
     expect(page).to have_content("Where to Stay")
     expect(page).to have_link("Sanction")
@@ -30,7 +30,7 @@ describe "races/:id" do
     user = create(:user)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    
+
     race = create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: '2017-04-21', end_date: '2017-04-23')
 
     visit race_path(race)

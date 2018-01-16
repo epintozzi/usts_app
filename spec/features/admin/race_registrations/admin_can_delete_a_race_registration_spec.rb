@@ -6,7 +6,7 @@ describe "/admin/race_registrations/:id" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-    race_reg = create(:race_registration)
+    create(:race_registration)
 
     visit admin_race_registrations_path
 

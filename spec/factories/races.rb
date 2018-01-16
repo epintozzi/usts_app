@@ -7,8 +7,8 @@ FactoryGirl.define do
     fee_override 50
     longitude 89.3074
     latitude 41.3242
-    start_date "2027-07-26 16:33:57"
-    end_date "2027-07-30 16:33:57"
+    start_date Date.today+7
+    end_date Date.today+9
     sanction Rack::Test::UploadedFile.new(Rails.root() + 'spec/assets/sanction.pdf', 'application/pdf')
     details "These are details about the race"
     hotel_information "This is hotel information about the race"
