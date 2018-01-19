@@ -2,7 +2,7 @@ class RacesController < ApplicationController
   load_and_authorize_resource only: [:new, :create, :edit, :update]
 
   def index
-    @races = Race.all.order(start_date: :asc)
+    @races = Race.races_this_year.order(start_date: :asc)
   end
 
   def show

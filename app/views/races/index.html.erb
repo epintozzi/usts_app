@@ -2,12 +2,16 @@
 
   <h2 class="page-title">Race Schedule</h2>
   <div class="row">
-    <% @races.each do |race| %>
-      <div class="col-md-4">
-        <div class="race-tile">
-          <%= render partial: "shared/race_tile", locals: {race: race} %>
+    <% if @races.present? %>
+      <% @races.each do |race| %>
+        <div class="col-md-4">
+          <div class="race-tile">
+            <%= render partial: "shared/race_tile", locals: {race: race} %>
+          </div>
         </div>
-      </div>
+      <% end %>
+    <% else %>
+      <p class="lead-text"> There are no races scheduled for the current year yet. Check back soon for this year's schedule.</p>
     <% end %>
   </div>
 
