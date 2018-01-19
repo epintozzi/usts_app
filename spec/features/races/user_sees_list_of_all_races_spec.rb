@@ -6,8 +6,8 @@ describe "/races" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    race = create(:race)
-    race2 = Race.create(city: "Denver", state: "CO", start_date: "2017-06-26 16:33:57", end_date: "2017-06-26 16:33:57", title: "New race")
+    race = create(:race, :this_year_upcoming)
+    race2 = Race.create(city: "Denver", state: "CO", start_date: DateTime.now + 2.days, end_date: DateTime.now + 5.days, title: "New race")
 
     visit races_path
 
@@ -23,6 +23,27 @@ describe "/races" do
     expect(page).to have_link("Register")
   end
 
+  scenario "user does not see races from past seasons" do
+    user = create(:user)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    race = create(:race, :this_year_upcoming)
+    race2 = create(:race, :last_year)
+
+    visit races_path
+
+    expect(page).to have_content(race.city)
+    expect(page).to have_content(race.state)
+    expect(page).to have_content(race.start_date.strftime("%b %-d"))
+    expect(page).to have_content(race.end_date.strftime("%b %-d"))
+    expect(page).to_not have_content(race2.city)
+    expect(page).to_not have_content(race2.start_date.strftime("%b %-d"))
+    expect(page).to_not have_content(race2.end_date.strftime("%b %-d"))
+    expect(page).to have_link("Details")
+    expect(page).to have_link("Register")
+  end
+
   scenario "user can access race details via the index page" do
     race = create(:race)
 
@@ -33,7 +54,7 @@ describe "/races" do
   end
 
   scenario "user does not see registration button for past races" do
-    create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: '2017-04-21', end_date: '2017-04-23')
+    create(:race, :this_year_past)
 
     visit races_path
 
@@ -42,7 +63,7 @@ describe "/races" do
   end
 
   scenario "non-logged in user does not see registration button" do
-    create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: Date.tomorrow, end_date: Date.tomorrow)
+    create(:race, :this_year_upcoming)
 
     visit races_path
 
