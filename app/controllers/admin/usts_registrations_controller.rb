@@ -10,7 +10,7 @@ class Admin::UstsRegistrationsController < Admin::BaseController
   end
 
   def membership_archives_index
-    @usts_registrations = UstsRegistration.all
+    @usts_registrations = UstsRegistration.past_usts_registrations
   end
 
   def import
