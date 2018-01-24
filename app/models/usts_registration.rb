@@ -29,11 +29,25 @@ class UstsRegistration < ApplicationRecord
 
 # manually change to $100 on Mar 1 - perhaps automate later
   def membership_prices
-    {
-      nonracing: 25,
-      racing: 75,
-      kpro: 25
-    }
+    membership_price
+  end
+
+  # Increase member price on Mar 1, reduce on Oct 1
+  def membership_price
+    date = Date.today.in_time_zone('Pacific Time (US & Canada)')
+    if date.between?(Date.parse('March 1'), Date.parse('September 30'))
+      {
+        nonracing: 25,
+        racing: 100,
+        kpro: 25
+      }
+    else
+      {
+        nonracing: 25,
+        racing: 75,
+        kpro: 25
+      }
+    end
   end
 
   def self.full_name_list
