@@ -4,7 +4,7 @@ describe "/admin/usts_registrations" do
 
   scenario "admin can access list of usts registrations" do
     admin = create(:user, role: 2)
-    reg_1, reg_2 = create_list(:usts_registration, 2)
+    reg_1, reg_2 = create_list(:usts_registration, 2, :past_year)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 

@@ -22,4 +22,7 @@ FactoryGirl.define do
     signature "Signature text"
     association :creator, factory: :user
   end
+  trait :past_year do
+    race_year Date.today.year - 1
+  end
 end

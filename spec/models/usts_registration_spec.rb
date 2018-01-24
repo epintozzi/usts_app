@@ -658,6 +658,23 @@ RSpec.describe UstsRegistration, type: :model do
       expect(all_reg).to include(reg_3)
     end
 
+    it "scope to registrations for past years" do
+      reg_1 = create(:usts_registration, race_year: Date.today.year)
+      reg_2 = create(:usts_registration, race_year: Date.today.next_year.year)
+      reg_3 = create(:usts_registration, race_year: Date.today.last_year.year)
+
+      past_reg = UstsRegistration.past_usts_registrations
+
+      all_reg = UstsRegistration.all
+
+      expect(past_reg).to include(reg_3)
+      expect(past_reg).to_not include(reg_2)
+      expect(past_reg).to_not include(reg_1)
+      expect(all_reg).to include(reg_1)
+      expect(all_reg).to include(reg_2)
+      expect(all_reg).to include(reg_3)
+    end
+
     it "generates collection of unpaid registrations for a user for this and future years" do
       user = create(:user)
       reg_1 = create(:usts_registration, creator_id: user.id, race_year: Date.today.year, paid: 2)

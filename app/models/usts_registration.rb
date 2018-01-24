@@ -22,6 +22,7 @@ class UstsRegistration < ApplicationRecord
   scope :unpaid_registrations, -> { where(paid: 0)}
   scope :usts_registrations_this_year, -> { where(race_year: Date.today.year) }
   scope :future_usts_registrations, -> { where('race_year >= ?', Date.today.year) }
+  scope :past_usts_registrations, -> { where('race_year < ?', Date.today.year) }
 
   enum membership_type: [:nonracing, :racing, :kpro]
   enum paid: [:unpaid, :pending, :paid]
