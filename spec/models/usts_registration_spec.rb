@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe UstsRegistration, type: :model do
+  include ActiveSupport::Testing::TimeHelpers
   describe "validations" do
     context "invalid attributes" do
       it "is invalid without race_year" do
@@ -564,7 +565,7 @@ RSpec.describe UstsRegistration, type: :model do
     end
   end
 
-  describe "model methods" do
+  describe "class methods" do
     it "generates a list of racing registrants' ids and full names" do
       user_1 = create(:usts_registration, first_name: "Erin", last_name: "Pintozzi", membership_type: 1)
       user_2 = create(:usts_registration, first_name: "Brad", last_name: "Barth", membership_type: 1)
@@ -678,6 +679,46 @@ RSpec.describe UstsRegistration, type: :model do
       expect(user_unpaid_this_future_year).to_not include(reg_4)
       expect(user_unpaid_this_future_year).to_not include(reg_5)
       expect(user_unpaid_this_future_year).to_not include(reg_6)
+    end
+  end
+
+  describe "instance methods" do
+    context 'membership price' do
+      let(:usts_registration) { create(:usts_registration, membership_type: 1) }
+       context 'between Mar 1 and Sep 30' do
+        let(:year) { Date.current.year }
+        around(:each) do |example|
+          travel_to Time.zone.local(year, 3, 1) do
+            example.run
+          end
+        end
+        it 'returns 100' do
+          price_hash = {
+                         nonracing: 25,
+                         racing: 100,
+                         kpro: 25
+                       }
+          expect(usts_registration.membership_prices).to eq(price_hash)
+          expect(usts_registration.membership_prices[usts_registration.membership_type.to_sym]).to eq(100)
+        end
+      end
+      context 'any other date' do
+        let(:year) { Date.current.year }
+        around(:each) do |example|
+          travel_to Time.zone.local(year, 10, 1) do
+            example.run
+          end
+        end
+        it 'returns 75' do
+          price_hash = {
+                         nonracing: 25,
+                         racing: 75,
+                         kpro: 25
+                       }
+          expect(usts_registration.membership_prices).to eq(price_hash)
+          expect(usts_registration.membership_prices[usts_registration.membership_type.to_sym]).to eq(75)
+        end
+      end
     end
   end
 
