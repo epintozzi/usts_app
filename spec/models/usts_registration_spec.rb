@@ -702,10 +702,10 @@ RSpec.describe UstsRegistration, type: :model do
   describe "instance methods" do
     context 'membership price' do
       let(:usts_registration) { create(:usts_registration, membership_type: 1) }
-       context 'between Mar 1 and Sep 30' do
+       context 'between Apr 1 and Oct 30' do
         let(:year) { Date.current.year }
         around(:each) do |example|
-          travel_to Time.zone.local(year, 3, 1) do
+          travel_to Time.zone.local(year, 4, 1) do
             example.run
           end
         end
@@ -722,7 +722,7 @@ RSpec.describe UstsRegistration, type: :model do
       context 'any other date' do
         let(:year) { Date.current.year }
         around(:each) do |example|
-          travel_to Time.zone.local(year, 10, 1) do
+          travel_to Time.zone.local(year, 11, 1) do
             example.run
           end
         end

@@ -25,4 +25,7 @@ FactoryGirl.define do
   trait :past_year do
     race_year Date.today.year - 1
   end
+  trait :paid do
+    paid 2
+  end
 end
