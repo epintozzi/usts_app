@@ -32,7 +32,7 @@ RSpec.describe News, type: :model do
     context "valid attributes" do
       it "is valid with all attributes" do
         user = User.create(first_name: "Erin", last_name: "Pintozzi", email: "erin@email.com", password: "password")
-        news = News.new(title: "News Title", content: "news content", author_id: user.id, image: "http://usts-app-assets.s3.amazonaws.com/sponsors/images/000/000/002/original/depue_mens_club.jpg?1495136989", published_on: '2017-04-19')
+        news = News.new(title: "News Title", content: "news content", author_id: user.id, published_on: '2017-04-19')
 
         expect(news).to be_valid
       end
