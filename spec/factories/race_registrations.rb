@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :race_registration do
     paid 1
     boat_number "V26"

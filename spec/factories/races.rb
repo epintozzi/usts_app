@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :race do
     sequence :title do |n|
       "Race Title #{n}"

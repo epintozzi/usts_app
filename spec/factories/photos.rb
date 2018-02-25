@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :photo do
     photographer "Photographer Name"
     caption "Caption text"

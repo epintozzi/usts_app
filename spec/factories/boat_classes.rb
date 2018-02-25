@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :boat_class do
     sequence :class_name do |n|
       "Class #{n}"

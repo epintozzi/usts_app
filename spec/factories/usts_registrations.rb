@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :usts_registration do
     race_year Date.today.year
     sequence :first_name do |n|
