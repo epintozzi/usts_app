@@ -7,6 +7,7 @@
     <h4>USTS Registration Details</h4>
     <%= link_to "Edit Registration Details", edit_admin_usts_registration_path(@usts_registration), class: "small-link" %>
     <hr>
+    <p>Race Year: <%= @usts_registration.race_year %> </p>
     <p>Payment Status: <%= @usts_registration.paid %> </p>
     <p>Member Name: <%= @usts_registration.first_name %> <%= @usts_registration.last_name %></p>
     <p>USTS Member number: <%= @usts_registration.usts_number %></p>
