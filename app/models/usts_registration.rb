@@ -35,7 +35,7 @@ class UstsRegistration < ApplicationRecord
   # Increase member price on Mar 1, reduce on Oct 1
   def membership_price
     date = Date.today.in_time_zone('Pacific Time (US & Canada)')
-    if date.between?(Date.parse('March 1'), Date.parse('September 30'))
+    if date.between?(Date.parse('April 1'), Date.parse('Oct 30'))
       {
         nonracing: 25,
         racing: 100,
