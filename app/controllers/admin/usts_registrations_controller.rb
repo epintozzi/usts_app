@@ -47,7 +47,7 @@ class Admin::UstsRegistrationsController < Admin::BaseController
   private
 
   def usts_registration_params
-    params.require(:usts_registration).permit(:id, :race_year, :first_name, :last_name, :usts_number, :street_address, :city, :state, :zip, :email, :phone, :fax, :signature, :birthdate, :liability_release, :membership_type, :creator_id)
+    params.require(:usts_registration).permit(:id, :race_year, :first_name, :last_name, :usts_number, :street_address, :city, :state, :zip, :email, :phone, :fax, :signature, :birthdate, :liability_release, :membership_type, :creator_id, :paid)
   end
 
 end
