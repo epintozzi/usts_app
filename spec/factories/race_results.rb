@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :race_result do
     driver_name "Driver Name"
     points 1.5

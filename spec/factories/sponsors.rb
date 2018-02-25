@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :sponsor do
     sequence :name do |n|
       "Sponsor #{n}"
