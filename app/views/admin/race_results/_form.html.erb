@@ -1,6 +1,11 @@
 <%= form_for [:admin, @race_result], html: {class: "form-group"} do |f| %>
 
   <div class="field">
+    <%= f.label :usts_number, "USTS Number", class: 'required' %>
+    <%= f.text_field :usts_number, class: 'form-control' %>
+  </div>
+
+  <div class="field">
     <%= f.label :driver_name, class: 'required' %>
     <%= f.text_field :driver_name, class: 'form-control' %>
   </div>
@@ -17,7 +22,7 @@
 
   <div class="field">
     <%= f.label :race, class: 'required' %>
-    <%= f.collection_select :race_id, Race.all, :id, :city, { prompt: "Select Race"}, class: 'form-control' %>
+    <%= f.collection_select :race_id, Race.races_this_year, :id, :city, { prompt: "Select Race"}, class: 'form-control' %>
   </div>
 
   <%= f.submit class: 'btn btn-solid-red' %>
