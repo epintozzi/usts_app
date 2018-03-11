@@ -10,6 +10,7 @@ describe "/admin/race_results/new" do
 
     visit new_admin_race_result_path
 
+    fill_in "race_result[usts_number]", with: "34567"
     fill_in "race_result[driver_name]", with: "Ryan"
     select boat_class_2.class_name
     select race.city
@@ -28,17 +29,18 @@ describe "/admin/race_results/new" do
 
     race = create(:race)
     boat_class_1, boat_class_2 = create_list(:boat_class, 2)
-    create(:race_result, driver_name: "Erin", race_id: race.id, boat_class_id: boat_class_1.id)
+    create(:race_result, usts_number: '12345', driver_name: "Erin", race_id: race.id, boat_class_id: boat_class_1.id)
 
     visit new_admin_race_result_path
 
+    fill_in "race_result[usts_number]", with: "12345"
     fill_in "race_result[driver_name]", with: "Erin"
     select boat_class_1.class_name
     select race.city
     fill_in "race_result[points]", with: 10
     click_on "Create Race result"
 
-    expect(page).to have_content("Boat class has already been recorded for this driver and race location. Please try again.")
+    expect(page).to have_content("Boat class has already been recorded for this USTS number and race location. Please try again.")
   end
 
   scenario "editor cannot add a race result" do

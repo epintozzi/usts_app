@@ -12,6 +12,7 @@ describe "/admin/race_results" do
 
     visit edit_admin_race_result_path(race_result)
 
+    fill_in "race_result[usts_number]", with: "34567"
     fill_in "race_result[driver_name]", with: "Ryan"
     select boat_class_2.class_name
     select race_2.city
@@ -40,7 +41,7 @@ describe "/admin/race_results" do
     select boat_class_1.class_name
     click_on "Update Race result"
 
-    expect(page).to have_content("Boat class has already been recorded for this driver and race location. Please try again.")
+    expect(page).to have_content("Boat class has already been recorded for this USTS number and race location. Please try again.")
   end
 
   scenario "editor cannot edit a race result" do

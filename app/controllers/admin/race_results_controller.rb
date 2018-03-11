@@ -2,7 +2,7 @@ class Admin::RaceResultsController < Admin::BaseController
 
   def index
     @boat_classes = BoatClass.all.order(id: :asc)
-    @races = Race.all.order(start_date: :asc)
+    @races = Race.races_this_year.order(start_date: :asc)
   end
 
   def new
@@ -50,7 +50,7 @@ class Admin::RaceResultsController < Admin::BaseController
   private
 
   def race_result_params
-    params.require(:race_result).permit(:id, :race_id, :boat_class_id, :driver_name, :points)
+    params.require(:race_result).permit(:id, :usts_number, :race_id, :boat_class_id, :driver_name, :points)
   end
 
 end

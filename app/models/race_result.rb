@@ -8,7 +8,8 @@ class RaceResult < ApplicationRecord
   validates :race, presence: true
   validates :points, presence: true
   validates :driver_name, presence: true
-  validates :boat_class, uniqueness: { scope: [:driver_name, :race], message: "has already been recorded for this driver and race location" }
+  validates :usts_number, presence: true
+  validates :boat_class, uniqueness: { scope: [:usts_number, :race], message: "has already been recorded for this USTS number and race location" }
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
@@ -22,9 +23,9 @@ class RaceResult < ApplicationRecord
   end
 
   def self.update_or_create_by(attributes)
-    attributes["driver_name"] = attributes["driver_name"].titlecase
     points = attributes.delete("points").to_f
-    find_or_create_by(attributes).update(points: points)
+    driver = attributes.delete("driver_name").proper_caps
+    find_or_create_by(attributes).update(points: points, driver_name: driver)
   end
 
 
