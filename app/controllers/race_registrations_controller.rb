@@ -6,9 +6,10 @@ class RaceRegistrationsController < ApplicationController
   end
 
   def show
-    race_regs = RaceRegistration.where(creator_id: current_user.id)
-    race_regs += RaceRegistration.includes(:usts_registration).where(usts_registrations: {creator_id: current_user.id})
-    @race_registrations = race_regs.uniq
+    races_this_year = RaceRegistration.for_races_this_year
+    race_regs = races_this_year.where(creator_id: current_user.id)
+    race_regs += races_this_year.includes(:usts_registration).where(usts_registrations: {creator_id: current_user.id})
+    @race_registrations_this_year = race_regs.uniq
   end
 
   def new
