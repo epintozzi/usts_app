@@ -19,8 +19,9 @@ class RaceRegistrationsController < ApplicationController
   def create
     @race_reg = RaceRegistration.new(race_registration_params)
     @race_reg.creator = current_user
+    message = 'Click here to checkout.'
     if @race_reg.save
-      flash[:success] = "You have successfully registered for this race."
+      flash[:success] = "You have successfully registered for this race. #{view_context.link_to(message, cart_path, html_options = {class: 'small-link'})}"
       redirect_to new_race_registration_path
     else
       flash[:danger] = "Something went wrong. #{@race_reg.errors.full_messages.join('. ')}. Please try your registration again."
