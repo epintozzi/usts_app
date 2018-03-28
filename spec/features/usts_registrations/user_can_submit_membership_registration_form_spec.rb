@@ -34,7 +34,7 @@ describe "usts_registrations/new" do
 
     click_on "Submit Membership Registration"
 
-    expect(page).to have_content("You have successfully sumbitted your registration.")
+    expect(page).to have_content("You have successfully submitted your registration.")
     expect(current_path).to eq(new_usts_registration_path)
   end
 

@@ -14,8 +14,9 @@ class UstsRegistrationsController < ApplicationController
   def create
     @usts_reg = UstsRegistration.new(usts_registration_params)
     @usts_reg.creator = current_user
+    message = 'Click here to checkout.'
     if @usts_reg.save
-      flash[:success] = "You have successfully sumbitted your registration."
+      flash[:success] = "You have successfully submitted your registration. #{view_context.link_to(message, cart_path, html_options = {class: 'small-link'})}"
       redirect_to new_usts_registration_path
     else
       flash[:danger] = "There was a problem with your submission. #{@usts_reg.errors.full_messages.join(' ')}. Please try again."
