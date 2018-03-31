@@ -1,8 +1,10 @@
 class UstsRegistration < ApplicationRecord
   acts_as_paranoid
 
+  before_destroy :check_race_registrations, on: :destroy
+
   belongs_to :creator, class_name: "User"
-  has_many :race_registrations
+  has_many :race_registrations, dependent: :destroy
 
   validates :race_year, presence: true, length: { is: 4 }
   validates :first_name, presence: true
@@ -27,7 +29,6 @@ class UstsRegistration < ApplicationRecord
   enum membership_type: [:nonracing, :racing, :kpro]
   enum paid: [:unpaid, :pending, :paid]
 
-# manually change to $100 on Mar 1 - perhaps automate later
   def membership_prices
     membership_price
   end
@@ -126,6 +127,13 @@ class UstsRegistration < ApplicationRecord
 
   def self.unpaid_usts_reg(user)
       UstsRegistration.for_user(user).unpaid_registrations.future_usts_registrations
+  end
+
+  def check_race_registrations
+    if race_registrations.any?
+      errors[:base] << "Cannot delete a USTS Membership that is associated with a current race registration. Delete #{first_name}'s race registrations and try again"
+      throw :abort
+    end
   end
 
 end

@@ -39,9 +39,13 @@ class Admin::UstsRegistrationsController < Admin::BaseController
 
   def destroy
     @usts_registration = UstsRegistration.find(params[:id])
-    @usts_registration.destroy
-    flash[:success] = "This USTS Member registration has been deleted."
-    redirect_to admin_usts_registrations_path
+    if @usts_registration.destroy
+      flash[:success] = "This USTS Member registration has been deleted."
+      redirect_to admin_usts_registrations_path
+    else
+      flash[:danger] = "#{@usts_registration.errors.full_messages.join(' ')}."
+      redirect_to admin_usts_registrations_path
+    end
   end
 
   private

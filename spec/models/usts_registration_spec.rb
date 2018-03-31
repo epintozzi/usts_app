@@ -762,5 +762,13 @@ RSpec.describe UstsRegistration, type: :model do
 
       expect(UstsRegistration.all).to include(reg)
     end
+    it 'does not delete a registration when associated with existing Race Reg' do
+      usts_reg = create(:usts_registration)
+      create(:race_registration, usts_registration_id: usts_reg.id)
+
+      usts_reg.destroy
+
+      expect(UstsRegistration.all).to include(usts_reg)
+    end
   end
 end
