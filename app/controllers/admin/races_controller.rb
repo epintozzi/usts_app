@@ -37,9 +37,13 @@ class Admin::RacesController < Admin::BaseController
 
   def destroy
     @race = Race.find(params[:id])
-    @race.destroy
-    flash[:success] = "This race has been deleted."
-    redirect_to admin_races_path
+    if @race.destroy
+      flash[:success] = "This race has been deleted."
+      redirect_to admin_races_path
+    else
+      flash[:danger] = "#{@race.errors.full_messages.join(' ')}."
+      redirect_to admin_races_path
+    end
   end
 
   private

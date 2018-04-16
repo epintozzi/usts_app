@@ -48,7 +48,7 @@ class RaceRegistration < ApplicationRecord
                 creator_last_name
                 created_at
                 }
-      all.each do |race_reg|
+      for_races_this_year.each do |race_reg|
         csv << [race_reg.id,
                 race_reg.race.start_date.year,
                 race_reg.race.city,

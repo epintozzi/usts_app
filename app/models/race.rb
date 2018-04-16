@@ -1,7 +1,9 @@
 class Race < ApplicationRecord
   acts_as_paranoid
 
-  has_many :race_registrations
+  before_destroy :check_race_registrations, on: :destroy
+
+  has_many :race_registrations, dependent: :destroy
   has_many :race_results
 
   validates :city, presence: true
@@ -37,6 +39,13 @@ class Race < ApplicationRecord
 
   def registerable?
     self.start_date > Date.today+5
+  end
+
+  def check_race_registrations
+    if race_registrations.any?
+      errors[:base] << "Cannot delete a Race that is associated with a current race registration. Delete race registrations and try again"
+      throw :abort
+    end
   end
 
 end

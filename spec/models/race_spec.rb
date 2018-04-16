@@ -159,5 +159,14 @@ RSpec.describe Race, type: :model do
 
       expect(Race.all).to include(race)
     end
+
+    it 'does not delete a registration when associated with existing Race' do
+      race = create(:race)
+      create(:race_registration, race_id: race.id)
+
+      race.destroy
+
+      expect(Race.all).to include(race)
+    end
   end
 end
