@@ -5,7 +5,10 @@ class RaceRegistrationsController < ApplicationController
     @all_registrations = RaceRegistration.for_future_races.group(:race).count
   end
 
-  def show
+  # shows list of all of a users registrations and registrations a user has made
+  # on behalf of another
+  #
+  def my_registrations
     races_this_year = RaceRegistration.for_races_this_year
     race_regs = races_this_year.where(creator_id: current_user.id)
     race_regs += races_this_year.includes(:usts_registration).where(usts_registrations: {creator_id: current_user.id})

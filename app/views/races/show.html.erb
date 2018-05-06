@@ -20,7 +20,7 @@
           <%= link_to "Sanction", @race.sanction.url, class: "btn btn-outline-red", target: :_blank %>
         <% end %>
         <br>
-        <%= link_to "See others who are registered", race_registrations_path, class: 'small-link' %>
+        <%= link_to "See others who are registered", list_registrations_path(race_id: @race.id), class: 'small-link' %>
       </div>
     </div>
 

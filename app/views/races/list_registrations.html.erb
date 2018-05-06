@@ -1,0 +1,15 @@
+<div class="container">
+
+  <h2 class="page-title">Race Registrations for <%= @race.city %>, <%= @race.state %> | <%= short_race_date(@race.start_date) %> - <%= short_race_date(@race.end_date) %></h2>
+  <div class="container">
+    <% @boat_classes.each do |boat_class| %>
+    <h4><%=boat_class.class_name if !boat_class.race_registrations.empty?%></h4>
+      <% boat_class.race_registrations.where(race_id: @race.id).each do |reg| %>
+        <p>
+          <%= reg.usts_registration.first_name %> <%= reg.usts_registration.last_name %></br>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>
