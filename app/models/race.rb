@@ -38,7 +38,7 @@ class Race < ApplicationRecord
   end
 
   def registerable?
-    self.start_date > Date.today+5
+    self.start_date > Date.today+2
   end
 
   def check_race_registrations
