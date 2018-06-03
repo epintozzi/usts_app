@@ -2,7 +2,7 @@ class RaceResult < ApplicationRecord
   belongs_to :boat_class
   belongs_to :race
 
-  before_save :proper_caps
+  before_save :proper_caps_driver_name
 
   validates :boat_class, presence: true
   validates :race, presence: true
@@ -18,13 +18,13 @@ class RaceResult < ApplicationRecord
     end
   end
 
-  def proper_caps
+  def proper_caps_driver_name
     self.driver_name = self.driver_name.titlecase
   end
 
   def self.update_or_create_by(attributes)
-    points = attributes.delete("points").to_f
-    driver = attributes.delete("driver_name").proper_caps
+    points = attributes.delete('points').to_f
+    driver = attributes.delete('driver_name').titlecase
     find_or_create_by(attributes).update(points: points, driver_name: driver)
   end
 

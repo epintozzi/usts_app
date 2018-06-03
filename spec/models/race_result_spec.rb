@@ -135,4 +135,27 @@ RSpec.describe RaceResult, type: :model do
     end
   end
 
+  describe 'update or create by' do
+    subject { described_class.update_or_create_by(attributes) }
+    let(:boat_class) { create(:boat_class) }
+    let(:race) { create(:race) }
+    let(:attributes) do
+      { 'usts_number' => '12345',
+        'driver_name' => 'tucker doggo',
+        'points' => 400,
+        'boat_class_id' => boat_class.id,
+        'race_id' => race.id }
+    end
+    it 'creates new record' do
+      expect { subject }.to change(RaceResult, :count).by(1)
+    end
+    it 'updates when record already exists' do
+      create(:race_result,
+             usts_number: '12345',
+             boat_class_id: boat_class.id,
+             race_id: race.id)
+      expect { subject }.to change(RaceResult, :count).by(0)
+    end
+  end
+
 end
