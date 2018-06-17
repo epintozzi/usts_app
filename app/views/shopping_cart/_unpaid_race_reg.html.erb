@@ -14,12 +14,21 @@
         <td> <%= reg.race.city %> - <%= long_race_date(reg.race.start_date) %> </td>
         <td> <%= reg.boat_class.class_name %> </td>
         <td> <%= long_race_date(reg.created_at) if reg.created_at%> </td>
-        <td>
-          <%= number_to_currency(reg.race_fee_override) %>
-        </td>
-        <td>
-          <%= check_box(:race_registration, :paid) %>
-        </td>
+        <% if reg.race.registerable? %>
+          <td>
+            <%= number_to_currency(reg.race_fee_override) %>
+          </td>
+          <td>
+            <%= check_box(:race_registration, :paid) %>
+          </td>
+        <% else %>
+          <td>
+            Online payment cutoff date passed
+          </td>
+          <td>
+          </td>
+        <% end %>
+
       </tr>
     <% end %>
   </tbody>

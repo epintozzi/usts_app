@@ -18,10 +18,14 @@ class Race < ApplicationRecord
   scope :future, -> { where('start_date >= ?', Date.today) } #gets collection of all races in the future
   scope :past, -> { where('start_date <= ?', Date.today) } #gets collection of all races in the future
 
-  scope :registerable, -> { where('start_date >= ?', Date.today+5) } #gets collection of all races open for registration
-
   scope :races_this_year, -> { where('start_date > ? AND start_date < ?', Date.today.beginning_of_year, Date.today.end_of_year) }
 
+  #returns collection of all races open for registration
+  def self.registerable
+    Race.all.map do |race|
+      race if race.registerable?
+    end.compact
+  end
 
   def self.title_location_list
     Race.registerable.map do |race|
@@ -38,7 +42,11 @@ class Race < ApplicationRecord
   end
 
   def registerable?
-    self.start_date > Date.today+2
+    cutoff_date > Time.now.in_time_zone('Eastern Time (US & Canada)')
+  end
+
+  def cutoff_date
+    (self.start_date.end_of_day-5.days).in_time_zone('Eastern Time (US & Canada)').end_of_day
   end
 
   def check_race_registrations
