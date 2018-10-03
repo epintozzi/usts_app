@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :gallery do
-    name "Gallery Name"
+    name { "Gallery Name" }
   end
 end

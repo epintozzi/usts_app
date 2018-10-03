@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :photo do
-    photographer "Photographer Name"
-    caption "Caption text"
+    photographer { "Photographer Name" }
+    caption { "Caption text" }
     gallery
-    image Rack::Test::UploadedFile.new(Rails.root() + 'spec/assets/image.JPG', 'image/jpg')
+    image { Rack::Test::UploadedFile.new(Rails.root() + 'spec/assets/image.JPG', 'image/jpg') }
   end
 end
