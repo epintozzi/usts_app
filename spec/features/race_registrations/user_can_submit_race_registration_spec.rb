@@ -4,7 +4,7 @@ describe "race_registrations/new" do
   before :each do
     @boat_class = create(:boat_class, class_name: "125cc Runabout")
     @race = create(:race, title: "Race for the Kids", city: "Lake Alfred")
-    @usts_reg = create(:usts_registration, :paid, first_name: "Erin")
+    @usts_reg = create(:usts_registration, :paid, first_name: "Erin", last_name: "Pintozzi")
     user = create(:user)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)

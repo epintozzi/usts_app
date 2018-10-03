@@ -3,6 +3,6 @@ FactoryBot.define do
     sequence :class_name do |n|
       "Class #{n}"
     end
-    registration_fee 1.50
+    registration_fee { 1.50 }
   end
 end
