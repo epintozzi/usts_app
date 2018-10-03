@@ -28,4 +28,11 @@ FactoryBot.define do
   trait :paid do
     paid 2
   end
+  trait :default_year do
+    if Race.races_this_year.future.empty? && (Date.today > Date.parse('October 1'))
+      race_year Date.current.next_year.year
+    else
+      race_year Date.current.year
+    end
+  end
 end
