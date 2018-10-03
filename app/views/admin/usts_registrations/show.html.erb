@@ -9,6 +9,7 @@
     <hr>
     <p>Race Year: <%= @usts_registration.race_year %> </p>
     <p>Payment Status: <%= @usts_registration.paid %> </p>
+    <p>Paypal Transaction ID: <%= @usts_registration.transaction_number %> </p>
     <p>Member Name: <%= @usts_registration.first_name %> <%= @usts_registration.last_name %></p>
     <p>USTS Member number: <%= @usts_registration.usts_number %></p>
     <p>Membership Type: <%= @usts_registration.membership_type %></p>
@@ -24,5 +25,6 @@
     <% if @usts_registration.creator %>
       <p>Registered by: <%= @usts_registration.creator.first_name %> <%= @usts_registration.creator.last_name %></p>
     <% end %>
+    <p>Registered on: <%= long_race_date(@usts_registration.created_at) %></p>
   </div>
 </div>

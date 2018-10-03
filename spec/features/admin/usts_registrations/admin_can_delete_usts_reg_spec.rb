@@ -6,7 +6,7 @@ describe "/admin/usts_registrations/:id" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-    create(:usts_registration)
+    create(:usts_registration, :default_year)
 
     visit admin_usts_registrations_path
 
