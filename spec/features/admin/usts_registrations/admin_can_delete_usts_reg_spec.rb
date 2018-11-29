@@ -3,10 +3,14 @@ require "rails_helper"
 describe "/admin/usts_registrations/:id" do
   scenario "admin can delete a usts registration" do
     admin = create(:user, role: 2)
-
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    race_year = if Race.races_this_year.future.empty? && (Date.today > Date.parse('October 1'))
+                  Date.current.next_year.year
+                else
+                  Date.current.year
+                end
 
-    create(:usts_registration, :default_year)
+    create(:usts_registration, race_year: race_year)
 
     visit admin_usts_registrations_path
 
