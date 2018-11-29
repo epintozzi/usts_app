@@ -92,7 +92,7 @@ RSpec.describe Race, type: :model do
       expect(past_races).to eq([race_1])
     end
     it "scopes races as registerable" do
-      create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: Date.today+4, end_date: Date.today+5)
+      create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: Date.today.in_time_zone('Eastern Time (US & Canada)').end_of_day+4, end_date: Date.today+5)
       race_2 = create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: Date.today+6, end_date: Date.today+7)
       create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: Date.today, end_date: Date.today)
 
@@ -119,7 +119,7 @@ RSpec.describe Race, type: :model do
       expect(race_2.future?).to eq(true)
     end
     it "identifies races as registerable" do
-      race_1 = create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: Date.today+4, end_date: Date.today+5)
+      race_1 = create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: Date.today.in_time_zone('Eastern Time (US & Canada)').end_of_day+4, end_date: Date.today+5)
       race_2 = create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: Date.today+6, end_date: Date.today+7)
       race_3 = create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: Date.today, end_date: Date.today)
 
