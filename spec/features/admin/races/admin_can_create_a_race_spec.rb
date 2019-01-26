@@ -15,13 +15,13 @@ describe "admin/races/new" do
     fill_in "race[fee_override]", with: 75
 
     within(:css, '.race-start') do
-      select "2018"
+      select Date.today.year
       select "September"
       select "26"
     end
 
     within(:css, '.race-end') do
-      select "2018"
+      select Date.today.year
       select "September"
       select "28"
     end
@@ -49,12 +49,12 @@ describe "admin/races/new" do
     fill_in "race[fee_override]", with: 75
 
     within(:css, '.race-start') do
-      select "2018"
+      select Date.today.year
       select "September"
       select "26"
     end
     within(:css, '.race-end') do
-      select "2018"
+      select Date.today.year
       select "September"
       select "28"
     end
@@ -78,12 +78,12 @@ describe "admin/races/new" do
     fill_in "race[fee_override]", with: 75
 
     within(:css, '.race-start') do
-      select "2018"
+      select Date.today.year
       select "September"
       select "26"
     end
     within(:css, '.race-end') do
-      select "2018"
+      select Date.today.year
       select "September"
       select "28"
     end
@@ -108,12 +108,12 @@ describe "admin/races/new" do
     fill_in "race[fee_override]", with: 75
 
     within(:css, '.race-start') do
-      select "2018"
+      select Date.today.year
       select "September"
       select "26"
     end
     within(:css, '.race-end') do
-      select "2018"
+      select Date.today.year
       select "September"
       select "28"
     end
