@@ -51,7 +51,7 @@ class Race < ApplicationRecord
 
   def check_race_registrations
     if race_registrations.any?
-      errors[:base] << "Cannot delete a Race that is associated with a current race registration. Delete race registrations and try again"
+      errors[:base] << "Cannot delete a #{self.class.name} that is associated with a current race registration. Delete race registrations and try again"
       throw :abort
     end
   end
