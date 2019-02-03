@@ -66,5 +66,14 @@ RSpec.describe BoatClass, type: :model do
 
       expect(BoatClass.all).to include(boat_class)
     end
+
+    it 'does not delete a registration when associated with existing Race' do
+      boat_class = create(:boat_class)
+      create(:race_registration, boat_class_id: boat_class.id)
+
+      boat_class.destroy
+
+      expect(BoatClass.all).to include(boat_class)
+    end
   end
 end
