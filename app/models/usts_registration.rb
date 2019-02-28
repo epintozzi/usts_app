@@ -26,7 +26,7 @@ class UstsRegistration < ApplicationRecord
   scope :future_usts_registrations, -> { where('race_year >= ?', Date.today.year) }
   scope :past_usts_registrations, -> { where('race_year < ?', Date.today.year) }
 
-  enum membership_type: [:nonracing, :racing, :kpro]
+  enum membership_type: [:nonracing, :racing, :kpro, :single_event]
   enum paid: [:unpaid, :pending, :paid]
 
   def membership_prices
@@ -40,13 +40,15 @@ class UstsRegistration < ApplicationRecord
       {
         nonracing: 25,
         racing: 100,
-        kpro: 25
+        kpro: 25,
+        single_event: 50
       }
     else
       {
         nonracing: 25,
         racing: 75,
-        kpro: 25
+        kpro: 25,
+        single_event: 50
       }
     end
   end

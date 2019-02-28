@@ -569,13 +569,15 @@ RSpec.describe UstsRegistration, type: :model do
     it "generates a list of racing registrants' ids and full names" do
       user_1 = create(:usts_registration, first_name: "Erin", last_name: "Pintozzi", membership_type: 1)
       user_2 = create(:usts_registration, first_name: "Brad", last_name: "Barth", membership_type: 1)
+      user_3 = create(:usts_registration, first_name: "Ryan", last_name: "Barth", membership_type: 3)
 
       list = UstsRegistration.full_name_list
       count = UstsRegistration.full_name_list.count
 
       expect(list).to include(["Erin Pintozzi", user_1.id])
       expect(list).to include(["Brad Barth", user_2.id])
-      expect(count).to eq(2)
+      expect(list).to include(["Ryan Barth", user_3.id])
+      expect(count).to eq(3)
     end
 
     it "generates a list of kpro registrants' ids and full names" do
@@ -713,7 +715,8 @@ RSpec.describe UstsRegistration, type: :model do
           price_hash = {
                          nonracing: 25,
                          racing: 100,
-                         kpro: 25
+                         kpro: 25,
+                         single_event: 50
                        }
           expect(usts_registration.membership_prices).to eq(price_hash)
           expect(usts_registration.membership_prices[usts_registration.membership_type.to_sym]).to eq(100)
@@ -730,7 +733,8 @@ RSpec.describe UstsRegistration, type: :model do
           price_hash = {
                          nonracing: 25,
                          racing: 75,
-                         kpro: 25
+                         kpro: 25,
+                         single_event: 50
                        }
           expect(usts_registration.membership_prices).to eq(price_hash)
           expect(usts_registration.membership_prices[usts_registration.membership_type.to_sym]).to eq(75)
