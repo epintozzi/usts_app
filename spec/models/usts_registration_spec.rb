@@ -711,15 +711,15 @@ RSpec.describe UstsRegistration, type: :model do
             example.run
           end
         end
-        it 'returns 100' do
+        it 'returns 125' do
           price_hash = {
                          nonracing: 25,
-                         racing: 100,
+                         racing: 125,
                          kpro: 25,
                          single_event: 50
                        }
           expect(usts_registration.membership_prices).to eq(price_hash)
-          expect(usts_registration.membership_prices[usts_registration.membership_type.to_sym]).to eq(100)
+          expect(usts_registration.membership_prices[usts_registration.membership_type.to_sym]).to eq(125)
         end
       end
       context 'any other date' do
