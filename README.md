@@ -6,7 +6,7 @@ The US Title Series web app  provides club information to the public and allows 
 
 Production App: [https://ustitleseries.net](https://ustitleseries.net)
 
-Ruby Version: 2.3.1
+Ruby Version: 2.5.0
 <br>
 Rails Version: 5.0.2
 
