@@ -14,7 +14,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
-gem 'devise'
+gem 'devise', '>= 4.7.1'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'cancancan', '~> 1.10'
 gem "paperclip", "~> 5.2.0"
