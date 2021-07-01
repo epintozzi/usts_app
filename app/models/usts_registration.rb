@@ -9,7 +9,7 @@ class UstsRegistration < ApplicationRecord
   validates :race_year, presence: true, length: { is: 4 }
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :usts_number, presence: true, unless: :nonracing?
+  validates :usts_number, presence: true, unless: [:nonracing?, :racing_non_usts?]
   validates :usts_number, uniqueness: { scope: [:race_year], message: "has already been registered for this race year" }, unless: :nonracing?
   validates :street_address, presence: true
   validates :city, presence: true
@@ -26,7 +26,7 @@ class UstsRegistration < ApplicationRecord
   scope :future_usts_registrations, -> { where('race_year >= ?', Date.today.year) }
   scope :past_usts_registrations, -> { where('race_year < ?', Date.today.year) }
 
-  enum membership_type: [:nonracing, :racing, :kpro, :single_event]
+  enum membership_type: [:nonracing, :racing, :kpro, :single_event, :racing_non_usts]
   enum paid: [:unpaid, :pending, :paid]
 
   def membership_prices
@@ -41,14 +41,16 @@ class UstsRegistration < ApplicationRecord
         nonracing: 25,
         racing: 125,
         kpro: 25,
-        single_event: 50
+        single_event: 50,
+        racing_non_usts: 0
       }
     else
       {
         nonracing: 25,
         racing: 100,
         kpro: 25,
-        single_event: 50
+        single_event: 50,
+        racing_non_usts: 0
       }
     end
   end
