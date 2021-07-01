@@ -10,7 +10,7 @@ class UstsRegistration < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :usts_number, presence: true, unless: [:nonracing?, :racing_non_usts?]
-  validates :usts_number, uniqueness: { scope: [:race_year], message: "has already been registered for this race year" }, unless: :nonracing?
+  validates :usts_number, uniqueness: { scope: [:race_year], message: "has already been registered for this race year" }, unless: [:nonracing?, :racing_non_usts?]
   validates :street_address, presence: true
   validates :city, presence: true
   validates :state, presence: true
