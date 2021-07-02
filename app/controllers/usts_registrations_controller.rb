@@ -16,6 +16,7 @@ class UstsRegistrationsController < ApplicationController
     @usts_reg.creator = current_user
     message = 'Click here to checkout.'
     if @usts_reg.save
+      @usts_reg.paid! if @usts_reg.racing_non_usts?
       flash[:success] = "You have successfully submitted your registration. #{view_context.link_to(message, cart_path, html_options = {class: 'small-link'})}"
       redirect_to new_usts_registration_path
     else
