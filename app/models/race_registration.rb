@@ -87,6 +87,7 @@ class RaceRegistration < ApplicationRecord
        if boat_class.class_name == "KPro"
          return 25
        elsif boat_class.class_name.downcase.include?('depue only')
+         # needs to be tested and probably rewritten to be less fragile
          boat_class.registration_fee
        else
        race.fee_override
