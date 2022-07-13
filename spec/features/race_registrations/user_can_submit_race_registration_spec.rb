@@ -44,7 +44,7 @@ describe "race_registrations/new" do
     check "race_registration[emergency_contact_at_race]"
     click_on "Submit Race Registration"
 
-    expect(page).to have_content("Something went wrong. Usts registration can't be blank. Please try your registration again.")
+    expect(page).to have_content("Something went wrong. Usts registration must exist. Usts registration can't be blank. Please try your registration again.")
   end
 
   scenario "user sees an error if they create a race reg without a race selected" do
@@ -60,7 +60,7 @@ describe "race_registrations/new" do
     check "race_registration[emergency_contact_at_race]"
     click_on "Submit Race Registration"
 
-    expect(page).to have_content("Something went wrong. Race can't be blank. Please try your registration again.")
+    expect(page).to have_content("Something went wrong. Race must exist. Race can't be blank. Please try your registration again.")
   end
 
   scenario "user sees an error if they create a race reg without a boat class selected" do
@@ -76,7 +76,7 @@ describe "race_registrations/new" do
     check "race_registration[emergency_contact_at_race]"
     click_on "Submit Race Registration"
 
-    expect(page).to have_content("Something went wrong. Boat class can't be blank. Please try your registration again.")
+    expect(page).to have_content("Something went wrong. Boat class must exist. Boat class can't be blank. Please try your registration again.")
   end
 
   scenario "user sees an error if they create a race reg without a boat number" do
