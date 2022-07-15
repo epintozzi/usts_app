@@ -1,4 +1,4 @@
-class AddAttachmentSanctionToRaces < ActiveRecord::Migration
+class AddAttachmentSanctionToRaces < ActiveRecord::Migration[5.0]
   def self.up
     change_table :races do |t|
       t.attachment :sanction
