@@ -48,7 +48,7 @@ describe "/admin/photos/new" do
 
     click_on "Add photo to gallery"
 
-    expect(page).to have_content("Something went wrong. Gallery can't be blank. Please try again.")
+    expect(page).to have_content("Something went wrong. Gallery must exist Gallery can't be blank. Please try again.")
   end
 
   scenario "editor cannot create a image" do
