@@ -84,7 +84,7 @@ class RaceRegistration < ApplicationRecord
 
   def race_fee_override
      if race.fee_override?
-       if boat_class.class_name == "KPro"
+       if boat_class.class_name.include?("KPro")
          return 25
        elsif boat_class.class_name.downcase.include?('depue only')
          # needs to be tested and probably rewritten to be less fragile
