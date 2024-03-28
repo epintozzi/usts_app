@@ -13,7 +13,7 @@ jobs:
       RAILS_ENV: test
       POSTGRES_USER: postgres
       POSTGRES_DB: usts_app_test
-      POSTGRES_HOST_AUTH_METHOD: trust
+      # POSTGRES_HOST_AUTH_METHOD: trust
     steps:
       - checkout
       - ruby/install-deps
@@ -26,15 +26,6 @@ jobs:
       - run:
           name: rspec test
           command: bundle exec rspec
-  deploy:
-    # This is an example deploy job, not actually used by the workflow
-    docker:
-      - image: cimg/base:stable
-    steps:
-      # Replace this with steps to deploy to users
-      - run:
-          name: deploy
-          command: '#e.g. ./deploy.sh'
 workflows:
   build-and-test:
     jobs:
