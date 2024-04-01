@@ -21,3 +21,5 @@
 
 # Ignore image uploads from test suite
 /public/system/*
+
+/coverage
