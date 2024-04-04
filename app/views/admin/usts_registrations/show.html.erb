@@ -25,6 +25,6 @@
     <% if @usts_registration.creator %>
       <p>Registered by: <%= @usts_registration.creator.first_name %> <%= @usts_registration.creator.last_name %></p>
     <% end %>
-    <p>Registered on: <%= long_race_date(@usts_registration.created_at) %></p>
+    <p>Registered on: <%= long_race_date(@usts_registration.created_at.in_time_zone('Eastern Time (US & Canada)')) %></p>
   </div>
 </div>
