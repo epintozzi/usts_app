@@ -24,12 +24,12 @@ FactoryBot.define do
       end_date { Date.today + 9 }
     end
     trait :this_year_past do
-      start_date { Date.today - 7 }
-      end_date { Date.today - 4 }
+      start_date { Date.today - 30 }
+      end_date { Date.today - 27 }
     end
     trait :last_year do
-      start_date { Date.current.last_year - 3 }
-      end_date { Date.current.last_year - 1 }
+      start_date { Date.current.last_year - 30 }
+      end_date { Date.current.last_year - 27 }
     end
   end
 end

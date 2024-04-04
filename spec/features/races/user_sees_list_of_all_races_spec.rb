@@ -24,6 +24,8 @@ describe "/races" do
   end
 
   scenario "user does not see races from past seasons" do
+    # bad test: this fails when there is string overlap between this year and last year race dates;
+    # ex: Apr 1 and Apr 11; Factory has been adjusted but may still cause future issues
     user = create(:user)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
