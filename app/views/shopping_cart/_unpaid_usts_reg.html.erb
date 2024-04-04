@@ -13,7 +13,7 @@
         <td> <%= reg.first_name %> <%= reg.last_name %> </td>
         <td> <%= reg.race_year %> </td>
         <td> <%= reg.membership_type %> </td>
-        <td> <%= long_race_date(reg.created_at) if reg.created_at%> </td>
+        <td> <%= long_race_date(reg.created_at.in_time_zone('Eastern Time (US & Canada)')) if reg.created_at%> </td>
         <td>
           <%= number_to_currency(reg.membership_prices[reg.membership_type.to_sym]) %>
         </td>

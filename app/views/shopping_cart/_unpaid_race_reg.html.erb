@@ -13,7 +13,7 @@
         <td> <%= reg.usts_registration.first_name %> <%= reg.usts_registration.last_name %> </td>
         <td> <%= reg.race.city %> - <%= long_race_date(reg.race.start_date) %> </td>
         <td> <%= reg.boat_class.class_name %> </td>
-        <td> <%= long_race_date(reg.created_at) if reg.created_at%> </td>
+        <td> <%= long_race_date(reg.created_at.in_time_zone('Eastern Time (US & Canada)')) if reg.created_at%> </td>
         <% if reg.race.registerable? %>
           <td>
             <%= number_to_currency(reg.race_fee_override) %>
