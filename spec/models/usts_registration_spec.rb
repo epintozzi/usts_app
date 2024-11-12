@@ -711,6 +711,25 @@ RSpec.describe UstsRegistration, type: :model do
             example.run
           end
         end
+        it 'returns 150' do
+          price_hash = {
+                         nonracing: 25,
+                         racing: 150,
+                         kpro: 25,
+                         single_event: 50,
+                         racing_non_usts: 0
+                       }
+          expect(usts_registration.membership_prices).to eq(price_hash)
+          expect(usts_registration.membership_prices[usts_registration.membership_type.to_sym]).to eq(150)
+        end
+      end
+      context 'any other date' do
+        let(:year) { Date.current.year }
+        around(:each) do |example|
+          travel_to Time.zone.local(year, 11, 1) do
+            example.run
+          end
+        end
         it 'returns 125' do
           price_hash = {
                          nonracing: 25,
@@ -721,25 +740,6 @@ RSpec.describe UstsRegistration, type: :model do
                        }
           expect(usts_registration.membership_prices).to eq(price_hash)
           expect(usts_registration.membership_prices[usts_registration.membership_type.to_sym]).to eq(125)
-        end
-      end
-      context 'any other date' do
-        let(:year) { Date.current.year }
-        around(:each) do |example|
-          travel_to Time.zone.local(year, 11, 1) do
-            example.run
-          end
-        end
-        it 'returns 100' do
-          price_hash = {
-                         nonracing: 25,
-                         racing: 100,
-                         kpro: 25,
-                         single_event: 50,
-                         racing_non_usts: 0
-                       }
-          expect(usts_registration.membership_prices).to eq(price_hash)
-          expect(usts_registration.membership_prices[usts_registration.membership_type.to_sym]).to eq(100)
         end
       end
     end
