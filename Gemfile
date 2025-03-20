@@ -6,8 +6,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.2.0'
-gem 'pg', '~> 0.18'
+gem 'rails', '~> 6.1'
+gem 'pg', '~> 1.1'
 gem 'puma', '~> 3.12'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -23,6 +23,7 @@ gem "figaro"
 gem 'aws-sdk', '~> 2.3'
 gem 'paranoia', '~> 2.2'
 gem 'newrelic_rpm'
+gem 'concurrent-ruby', '1.3.4'
 
 group :development, :test do
   gem 'byebug', platform: :mri

@@ -1,7 +1,7 @@
 class Race < ApplicationRecord
   acts_as_paranoid
 
-  before_destroy :check_race_registrations, on: :destroy
+  before_destroy :check_race_registrations#, on: :destroy
 
   has_many :race_registrations, dependent: :destroy
   has_many :race_results
