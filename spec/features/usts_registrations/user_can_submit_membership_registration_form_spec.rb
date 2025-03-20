@@ -12,9 +12,9 @@ describe "usts_registrations/new" do
 
   scenario "user can submit member registration form" do
 
-    within ('#usts_registration_race_year') do
-      select year
-    end
+    # within ('#usts_registration_race_year') do
+    #   select year
+    # end
     fill_in "usts_registration[first_name]", with: "Erin"
     fill_in "usts_registration[last_name]", with: "Pintozzi"
     fill_in "usts_registration[usts_number]", with: "12345"
@@ -40,9 +40,9 @@ describe "usts_registrations/new" do
 
   scenario "user sees error message if first name is missing when submitting usts registration form" do
 
-    within ('#usts_registration_race_year') do
-      select year
-    end
+    # within ('#usts_registration_race_year') do
+    #   select year
+    # end
     fill_in "usts_registration[last_name]", with: "Pintozzi"
     fill_in "usts_registration[usts_number]", with: "12345"
     select "nonracing"
@@ -66,9 +66,9 @@ describe "usts_registrations/new" do
 
   scenario "user sees error message if last name is missing when submitting usts registration form" do
 
-    within ('#usts_registration_race_year') do
-      select year
-    end
+    # within ('#usts_registration_race_year') do
+    #   select year
+    # end
     fill_in "usts_registration[first_name]", with: "Erin"
     fill_in "usts_registration[usts_number]", with: "12345"
     select "nonracing"
@@ -92,9 +92,9 @@ describe "usts_registrations/new" do
 
   scenario "user sees error message if usts number is missing when submitting usts registration form for racing membership" do
 
-    within ('#usts_registration_race_year') do
-      select year
-    end
+    # within ('#usts_registration_race_year') do
+    #   select year
+    # end
     fill_in "usts_registration[first_name]", with: "Erin"
     fill_in "usts_registration[last_name]", with: "Pintozzi"
     select "racing"
@@ -118,9 +118,9 @@ describe "usts_registrations/new" do
 
   scenario "user sees error message if membership type is not selected when submitting usts registration form" do
 
-    within ('#usts_registration_race_year') do
-      select year
-    end
+    # within ('#usts_registration_race_year') do
+    #   select year
+    # end
     fill_in "usts_registration[first_name]", with: "Erin"
     fill_in "usts_registration[last_name]", with: "Pintozzi"
     fill_in "usts_registration[usts_number]", with: "12345"
@@ -144,9 +144,9 @@ describe "usts_registrations/new" do
 
   scenario "user sees error message if street address is missing when submitting usts registration form" do
 
-    within ('#usts_registration_race_year') do
-      select year
-    end
+    # within ('#usts_registration_race_year') do
+    #   select year
+    # end
     fill_in "usts_registration[first_name]", with: "Erin"
     fill_in "usts_registration[last_name]", with: "Pintozzi"
     fill_in "usts_registration[usts_number]", with: "12345"
@@ -170,9 +170,9 @@ describe "usts_registrations/new" do
 
   scenario "user sees error message if city is missing when submitting usts registration form" do
 
-    within ('#usts_registration_race_year') do
-      select year
-    end
+    # within ('#usts_registration_race_year') do
+    #   select year
+    # end
     fill_in "usts_registration[first_name]", with: "Erin"
     fill_in "usts_registration[last_name]", with: "Pintozzi"
     fill_in "usts_registration[usts_number]", with: "12345"
@@ -196,9 +196,9 @@ describe "usts_registrations/new" do
 
   scenario "user sees error message if state is missing when submitting usts registration form" do
 
-    within ('#usts_registration_race_year') do
-      select year
-    end
+    # within ('#usts_registration_race_year') do
+    #   select year
+    # end
     fill_in "usts_registration[first_name]", with: "Erin"
     fill_in "usts_registration[last_name]", with: "Pintozzi"
     fill_in "usts_registration[usts_number]", with: "12345"
@@ -222,9 +222,9 @@ describe "usts_registrations/new" do
 
   scenario "user sees error message if zip code is missing when submitting usts registration form" do
 
-    within ('#usts_registration_race_year') do
-      select year
-    end
+    # within ('#usts_registration_race_year') do
+    #   select year
+    # end
     fill_in "usts_registration[first_name]", with: "Erin"
     fill_in "usts_registration[last_name]", with: "Pintozzi"
     fill_in "usts_registration[usts_number]", with: "12345"
@@ -248,9 +248,9 @@ describe "usts_registrations/new" do
 
   scenario "user sees error message if liability check mark is missing when submitting usts registration form" do
 
-    within ('#usts_registration_race_year') do
-      select year
-    end
+    # within ('#usts_registration_race_year') do
+    #   select year
+    # end
     fill_in "usts_registration[first_name]", with: "Erin"
     fill_in "usts_registration[last_name]", with: "Pintozzi"
     fill_in "usts_registration[usts_number]", with: "12345"
@@ -274,9 +274,9 @@ describe "usts_registrations/new" do
 
   scenario "user sees error message if liability check mark is missing when submitting usts registration form" do
 
-    within ('#usts_registration_race_year') do
-      select year
-    end
+    # within ('#usts_registration_race_year') do
+    #   select year
+    # end
     fill_in "usts_registration[first_name]", with: "Erin"
     fill_in "usts_registration[last_name]", with: "Pintozzi"
     fill_in "usts_registration[usts_number]", with: "12345"
