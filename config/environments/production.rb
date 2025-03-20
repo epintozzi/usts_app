@@ -130,9 +130,6 @@ Rails.application.configure do
   path: '/:class/:attachment/:id_partition/:style/:filename'
   }
 
-  Paperclip.options[:image_magick_path] = "/opt/ImageMagick/bin"
-  Paperclip.options[:command_path] = "/opt/ImageMagick/bin"
-
   # Setup the mailer config
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
