@@ -1,7 +1,7 @@
 class UstsRegistration < ApplicationRecord
   acts_as_paranoid
 
-  before_destroy :check_race_registrations, on: :destroy
+  before_destroy :check_race_registrations#, on: :destroy
 
   belongs_to :creator, class_name: "User"
   has_many :race_registrations, dependent: :destroy

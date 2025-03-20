@@ -4,7 +4,7 @@ class BoatClass < ApplicationRecord
   has_many :race_registrations
   has_many :race_results
 
-  before_destroy :check_race_registrations, on: :destroy
+  before_destroy :check_race_registrations#, on: :destroy
 
   validates :class_name, presence: true, uniqueness: true
   validates :registration_fee, presence: true
