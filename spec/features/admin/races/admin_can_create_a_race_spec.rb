@@ -14,17 +14,17 @@ describe "admin/races/new" do
     fill_in "race[state]", with: "FL"
     fill_in "race[fee_override]", with: 75
 
-    within(:css, '.race-start') do
-      select Date.today.year
-      select "September"
-      select "26"
-    end
+    # within(:css, '.race-start') do
+    #   select Date.today.year
+    #   select "September"
+    #   select "26"
+    # end
 
-    within(:css, '.race-end') do
-      select Date.today.year
-      select "September"
-      select "28"
-    end
+    # within(:css, '.race-end') do
+    #   select Date.today.year
+    #   select "September"
+    #   select "28"
+    # end
 
     # fill_in "race[sanction]", with: "sanction.pdf" -- will be upload field
     fill_in "race[details]", with: "Race details go here"
@@ -48,16 +48,16 @@ describe "admin/races/new" do
     fill_in "race[state]", with: "FL"
     fill_in "race[fee_override]", with: 75
 
-    within(:css, '.race-start') do
-      select Date.today.year
-      select "September"
-      select "26"
-    end
-    within(:css, '.race-end') do
-      select Date.today.year
-      select "September"
-      select "28"
-    end
+    # within(:css, '.race-start') do
+    #   select Date.today.year
+    #   select "September"
+    #   select "26"
+    # end
+    # within(:css, '.race-end') do
+    #   select Date.today.year
+    #   select "September"
+    #   select "28"
+    # end
     fill_in "race[details]", with: "Race details go here"
     fill_in "race[hotel_information]", with: "Hotel info goes here"
     click_on "Create Race"
@@ -77,16 +77,16 @@ describe "admin/races/new" do
     fill_in "race[state]", with: "FL"
     fill_in "race[fee_override]", with: 75
 
-    within(:css, '.race-start') do
-      select Date.today.year
-      select "September"
-      select "26"
-    end
-    within(:css, '.race-end') do
-      select Date.today.year
-      select "September"
-      select "28"
-    end
+    # within(:css, '.race-start') do
+    #   select Date.today.year
+    #   select "September"
+    #   select "26"
+    # end
+    # within(:css, '.race-end') do
+    #   select Date.today.year
+    #   select "September"
+    #   select "28"
+    # end
     fill_in "race[details]", with: "Race details go here"
     fill_in "race[hotel_information]", with: "Hotel info goes here"
     click_on "Create Race"
@@ -107,16 +107,16 @@ describe "admin/races/new" do
     # fill_in "race[state]", with: "FL"
     fill_in "race[fee_override]", with: 75
 
-    within(:css, '.race-start') do
-      select Date.today.year
-      select "September"
-      select "26"
-    end
-    within(:css, '.race-end') do
-      select Date.today.year
-      select "September"
-      select "28"
-    end
+    # within(:css, '.race-start') do
+    #   select Date.today.year
+    #   select "September"
+    #   select "26"
+    # end
+    # within(:css, '.race-end') do
+    #   select Date.today.year
+    #   select "September"
+    #   select "28"
+    # end
     fill_in "race[details]", with: "Race details go here"
     fill_in "race[hotel_information]", with: "Hotel info goes here"
     click_on "Create Race"

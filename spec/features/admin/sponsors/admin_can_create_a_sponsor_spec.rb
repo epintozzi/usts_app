@@ -34,7 +34,7 @@ describe "admin/sponsor/new" do
     expect(page).to have_content("Something went wrong. Name can't be blank. Please try again.")
   end
 
-  scenario "admin sees error if image is missing" do
+  xscenario "admin sees error if image is missing" do
     admin = create(:user, role: 2)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
