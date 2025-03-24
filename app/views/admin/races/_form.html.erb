@@ -50,6 +50,11 @@
     <%= f.number_field :fee_override, {min: 0, class: 'form-control'} %>
   </div>
 
+  <div class="field">
+    <%= f.check_box :registration_override? %>
+    <%= f.label :registration_override?, "Please check the box to prevent online registration for this race."%>
+  </div>
+
   <div class="action">
     <%= f.submit class: "btn btn-solid-red"%>
   </div>

@@ -49,7 +49,7 @@ class Admin::RacesController < Admin::BaseController
   private
 
   def race_params
-    params.require(:race).permit(:id, :street_address, :city, :state, :fee_override, :start_date, :end_date, :sanction, :details, :hotel_information, :title)
+    params.require(:race).permit(:id, :street_address, :city, :state, :fee_override, :start_date, :end_date, :sanction, :details, :hotel_information, :title, :registration_override)
   end
 
 end

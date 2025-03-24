@@ -100,6 +100,17 @@ RSpec.describe Race, type: :model do
 
       expect(registerable_races).to eq([race_2])
     end
+    it "is not registerable when registration_override is true" do
+      race = create(:race, start_date: Date.today + 10, end_date: Date.today + 12, registration_override: true)
+
+      expect(race.registerable?).to eq(false)
+    end
+
+    it "is registerable when registration_override is false and within registration period" do
+      race = create(:race, start_date: Date.today + 10, end_date: Date.today + 12, registration_override: false)
+
+      expect(race.registerable?).to eq(true)
+    end
     it "scopes races as this year" do
       race_1 = create(:race, title: "Race for the Kids", city: "Lake Alfred", state: "FL", start_date: Date.today, end_date: Date.tomorrow)
       race_2 = create(:race, title: "Nationals", city: "DePue", state: "IL", start_date: Date.today.next_year, end_date: Date.tomorrow.next_year)
