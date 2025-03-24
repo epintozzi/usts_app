@@ -47,4 +47,23 @@ describe "races/:id" do
     expect(page).to have_link("Sanction")
     expect(page).to_not have_link("Register")
   end
+  scenario "does not show Register button when registration_override is true" do
+    user = create(:user)
+    race = create(:race, registration_override: true)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit race_path(race)
+
+    expect(page).to_not have_link("Register")
+  end
+
+  scenario "shows Register button when registration_override is false" do
+    user = create(:user)
+    race = create(:race, registration_override: false)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit race_path(race)
+
+    expect(page).to have_link("Register")
+  end
 end

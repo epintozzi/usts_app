@@ -42,7 +42,7 @@ class Race < ApplicationRecord
   end
 
   def registerable?
-    cutoff_date > Time.now.in_time_zone('Eastern Time (US & Canada)')
+    cutoff_date > Time.now.in_time_zone('Eastern Time (US & Canada)') && !registration_override
   end
 
   def cutoff_date
